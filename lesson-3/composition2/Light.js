@@ -16,6 +16,12 @@ class Light
         this.#sm.vars.interfaceObj = this.#smInterfaceObj;
     }
 
+    //-------------- public methods ----------------
+
+    start() {
+        this.#sm.start();
+    }
+
     inc() {
         this.#dispatchEvent(LightSm.EventId.INC);
     }
@@ -28,13 +34,11 @@ class Light
         this.#dispatchEvent(LightSm.EventId.OFF);
     }
 
+    //-------------- private methods ----------------
+
     #dispatchEvent(eventId) {
         this.#sm.dispatchEvent(eventId);
         document.getElementById("count-var").innerText = this.#smInterfaceObj.count + "";
-    }
-
-    start() {
-        this.#sm.start();
     }
 
     #lightBlue() {
@@ -49,9 +53,6 @@ class Light
         this.#print("RED");
     }
 
-    /**
-     * @param {string} message
-     */
     #print(message) {
         const output = document.getElementById("output");
         output.append(message + "\n");
