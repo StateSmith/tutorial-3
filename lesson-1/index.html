@@ -1,0 +1,11 @@
+<html>
+    <script src="LightSm.js"></script> <!-- generated state machine file -->
+    <script>
+        let stateMachine = new LightSm();
+        stateMachine.start();
+    </script>
+    <body>
+        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.INCREASE)">INCREASE</button>
+        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.DIM)">DIM</button>
+    </body>
+</html>

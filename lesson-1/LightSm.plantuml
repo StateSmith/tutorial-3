@@ -1,0 +1,25 @@
+@startuml LightSm
+
+[*] --> OFF
+
+OFF: enter / window.alert("Light is OFF");
+OFF --> ON1 : INCREASE
+
+ON1: enter / window.alert("Light is ON");
+ON1 --> OFF : DIM
+
+
+'######################## StateSmith config ########################
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+' Feel free to remove or modify it as needed.
+
+/'! $CONFIG : toml
+[SmRunnerSettings]
+transpilerId = "JavaScript"
+
+[SmRunnerSettings.simulation]
+enableGeneration = false
+'/
+
+@enduml

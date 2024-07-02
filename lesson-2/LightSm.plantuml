@@ -1,0 +1,43 @@
+@startuml LightSm
+
+'//////////////////// STATE ORGANIZATION ////////////////////
+' Note: StateSmith treats state names and events as case insensitive.
+' More info: https://github.com/StateSmith/StateSmith/wiki/PlantUML
+
+[*] -> OFF
+
+state ON_GROUP {
+    [*] -> ON1
+    state ON1
+    state ON2
+}
+
+'//////////////////// STATE HANDLERS ////////////////////
+
+'OFF
+OFF: enter / print("OFF entered");
+OFF --> ON1 : inc
+
+'ON_GROUP
+ON_GROUP --> OFF: turn_off
+
+'ON1
+ON1: enter / print("ON1 entered");
+ON1 --> ON2 : inc
+ON1 --> OFF : dim
+
+'ON2
+ON2: enter / print("ON2 entered");
+ON2 --> ON1 : dim
+
+
+'######################## StateSmith config ########################
+/'! $CONFIG : toml
+[SmRunnerSettings]
+transpilerId = "JavaScript"
+
+[SmRunnerSettings.simulation]
+enableGeneration = false
+'/
+
+@enduml

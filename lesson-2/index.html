@@ -1,0 +1,19 @@
+<html>
+    <script src="LightSm.js"></script> <!-- generated state machine file -->
+    <body>
+        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.INC)">INC</button>
+        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.DIM)">DIM</button>
+        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.TURN_OFF)">TURN_OFF</button>
+        <pre id="output" style="border: 1px solid black;"></pre>
+    </body>
+
+    <!-- start the state machine after the page is loaded -->
+    <script>
+        function print(message) {
+            document.getElementById('output').innerText += message + "\n";
+        }
+
+        let stateMachine = new LightSm();
+        stateMachine.start();
+    </script>
+</html>
