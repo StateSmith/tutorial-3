@@ -11,7 +11,7 @@
     <!-- start the state machine after the page is loaded -->
     <script>
         function print(message) {
-            document.getElementById('output').innerText += message + "\n";
+            document.getElementById('output').append(message + "\n");
         }
 
         let myStateMachine = new LightSm();

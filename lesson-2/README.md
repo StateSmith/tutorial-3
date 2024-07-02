@@ -85,3 +85,14 @@ enableGeneration = false
 @enduml
 ```
 
+# Generate The State Machine Code
+Run the below command in this (`lesson-2`) directory to run StateSmith on the diagram file.
+```
+ss.cli run --here
+```
+
+<br>
+
+# Interact With The State Machine 🌍
+Now that we've generated the state machine JavaScript code, let's interact with it.
+Open `index.html` with a web browser.
