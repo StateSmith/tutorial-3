@@ -51,7 +51,6 @@ ON3 --> ON2 : dim
 FileTop = """
     "use strict";
     """
-
 # Note that we want the below default expansion to be a single line to avoid extra newlines in the generated code.
 DefaultAnyExpTemplate = """this.{AutoNameCopy()}"""
 
