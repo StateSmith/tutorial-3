@@ -5,7 +5,7 @@
 
 
 // Generated state machine
-class LightSm extends LightSmBase
+class LightSm
 {
     static EventId = 
     {
@@ -43,6 +43,11 @@ class LightSm extends LightSmBase
     
     // Used internally by state machine. Don't modify.
     #currentStateExitHandler;
+    
+    // Variables. Can be used for inputs, outputs, user variables...
+    vars = {
+        interfaceObj: null
+    };
     
     // Starts the state machine. Must be called before dispatching events. Not thread safe.
     start()
@@ -129,7 +134,7 @@ class LightSm extends LightSmBase
         // uml: enter / { print("---"); }
         {
             // Step 1: execute action `print("---");`
-            this.print("---");
+            this.vars.interfaceObj.print("---");
         } // end of behavior for OFF
     }
     
@@ -220,7 +225,7 @@ class LightSm extends LightSmBase
         // uml: enter / { print("$--"); }
         {
             // Step 1: execute action `print("$--");`
-            this.print("$--");
+            this.vars.interfaceObj.print("$--");
         } // end of behavior for ON1
     }
     
@@ -292,7 +297,7 @@ class LightSm extends LightSmBase
         // uml: enter / { print("$$-"); }
         {
             // Step 1: execute action `print("$$-");`
-            this.print("$$-");
+            this.vars.interfaceObj.print("$$-");
         } // end of behavior for ON2
     }
     
@@ -363,14 +368,14 @@ class LightSm extends LightSmBase
         // uml: enter / { print("$$$"); }
         {
             // Step 1: execute action `print("$$$");`
-            this.print("$$$");
+            this.vars.interfaceObj.print("$$$");
         } // end of behavior for ON3
         
         // ON3 behavior
         // uml: enter / { count++; }
         {
             // Step 1: execute action `count++;`
-            this.count++;
+            this.vars.interfaceObj.count++;
         } // end of behavior for ON3
     }
     

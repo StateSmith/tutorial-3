@@ -2,28 +2,40 @@
 class Light
 {
     sm = new LightSm();
-    count = 0;
+
+    // `sm_` prefix marks members that are intended for use by state machine.
+    // You could also choose to make a proper interface class for the state machine.
+    sm_count = 0;
 
     constructor() {
-        this.sm.
+        this.sm.vars.interfaceObj = this;
     }
 
-    lightBlue() {
+    dispatchEvent(eventId) {
+        this.sm.dispatchEvent(eventId);
+        document.getElementById("count-var").innerText = this.sm_count + "";
+    }
+
+    start() {
+        this.sm.start();
+    }
+
+    sm_lightBlue() {
         this.print("BLUE");
     }
 
-    lightYellow() {
+    sm_lightYellow() {
         this.print("YELLOW");
     }
 
-    lightRed() {
+    sm_lightRed() {
         this.print("RED");
     }
 
     /**
      * @param {string} message
      */
-    print(message) {
+    sm_print(message) {
         const output = document.getElementById("output");
         output.append(message + "\n");
     }

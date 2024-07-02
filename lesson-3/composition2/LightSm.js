@@ -5,7 +5,7 @@
 
 
 // Generated state machine
-class LightSm extends LightSmBase
+class LightSm
 {
     static EventId = 
     {
@@ -43,6 +43,11 @@ class LightSm extends LightSmBase
     
     // Used internally by state machine. Don't modify.
     #currentStateExitHandler;
+    
+    // Variables. Can be used for inputs, outputs, user variables...
+    vars = {
+        interfaceObj: null
+    };
     
     // Starts the state machine. Must be called before dispatching events. Not thread safe.
     start()
@@ -129,7 +134,7 @@ class LightSm extends LightSmBase
         // uml: enter / { print("---"); }
         {
             // Step 1: execute action `print("---");`
-            this.print("---");
+            this.vars.interfaceObj.print("---");
         } // end of behavior for OFF
     }
     
@@ -217,10 +222,10 @@ class LightSm extends LightSmBase
         this.#currentEventHandlers[LightSm.EventId.INC] = this.#ON1_inc;
         
         // ON1 behavior
-        // uml: enter / { print("$--"); }
+        // uml: enter / { lightBlue(); }
         {
-            // Step 1: execute action `print("$--");`
-            this.print("$--");
+            // Step 1: execute action `lightBlue();`
+            this.vars.interfaceObj.lightBlue();
         } // end of behavior for ON1
     }
     
@@ -289,10 +294,10 @@ class LightSm extends LightSmBase
         this.#currentEventHandlers[LightSm.EventId.INC] = this.#ON2_inc;
         
         // ON2 behavior
-        // uml: enter / { print("$$-"); }
+        // uml: enter / { lightYellow(); }
         {
-            // Step 1: execute action `print("$$-");`
-            this.print("$$-");
+            // Step 1: execute action `lightYellow();`
+            this.vars.interfaceObj.lightYellow();
         } // end of behavior for ON2
     }
     
@@ -360,17 +365,17 @@ class LightSm extends LightSmBase
         this.#currentEventHandlers[LightSm.EventId.DIM] = this.#ON3_dim;
         
         // ON3 behavior
-        // uml: enter / { print("$$$"); }
+        // uml: enter / { lightRed(); }
         {
-            // Step 1: execute action `print("$$$");`
-            this.print("$$$");
+            // Step 1: execute action `lightRed();`
+            this.vars.interfaceObj.lightRed();
         } // end of behavior for ON3
         
         // ON3 behavior
         // uml: enter / { count++; }
         {
             // Step 1: execute action `count++;`
-            this.count++;
+            this.vars.interfaceObj.count++;
         } // end of behavior for ON3
     }
     

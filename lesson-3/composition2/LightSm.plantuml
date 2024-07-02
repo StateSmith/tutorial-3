@@ -24,17 +24,17 @@ OFF --> ON1 : inc
 ON_GROUP --> OFF: off
 
 'ON1
-ON1: enter / print("$--");
+ON1: enter / lightBlue();
 ON1 --> ON2 : inc
 ON1 --> OFF : dim
 
 'ON2
-ON2: enter / print("$$-");
+ON2: enter / lightYellow();
 ON2 --> ON3 : inc
 ON2 --> ON1 : dim
 
 'ON3
-ON3: enter / print("$$$");
+ON3: enter / lightRed();
 ON3: enter / count++;
 ON3 --> ON2 : dim
 
@@ -51,12 +51,11 @@ ON3 --> ON2 : dim
 FileTop = """
     "use strict";
     """
-
+VariableDeclarations = """
+    interfaceObj: null
+    """
 # Note that we want the below default expansion to be a single line to avoid extra newlines in the generated code.
-DefaultAnyExpTemplate = """this.{AutoNameCopy()}"""
-
-[RenderConfig.JavaScript]
-ExtendsSuperClass = "LightSmBase"
+DefaultAnyExpTemplate = """{VarsPath}interfaceObj.{AutoNameCopy()}"""
 
 [SmRunnerSettings]
 transpilerId = "JavaScript"
