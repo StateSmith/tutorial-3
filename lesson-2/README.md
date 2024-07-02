@@ -2,9 +2,9 @@
 In this lesson, we will create a new state machine from scratch.
 
 ## Create A New PlantUML File
-We can do this manually, or ss.cli can help us by generating a template for us.
+We can do this manually, or `ss.cli` can help us by generating a new diagram from template for us.
 
-Let's use ss.cli to generate a new state machine template for us.
+Let's use `ss.cli`. Run the following command in the terminal:
 
 ```bash
 ss.cli
@@ -84,3 +84,4 @@ enableGeneration = false
 '/
 @enduml
 ```
+

@@ -1,9 +1,10 @@
 <html>
     <script src="LightSm.js"></script> <!-- generated state machine file -->
     <body>
-        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.INC)">INC</button>
-        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.DIM)">DIM</button>
-        <button onclick="stateMachine.dispatchEvent(LightSm.EventId.TURN_OFF)">TURN_OFF</button>
+        Tip: don't forget that you have to create and generate the state machine before you can interact with it here.<br><br>
+        <button onclick="myStateMachine.dispatchEvent(LightSm.EventId.INC)">INC</button>
+        <button onclick="myStateMachine.dispatchEvent(LightSm.EventId.DIM)">DIM</button>
+        <button onclick="myStateMachine.dispatchEvent(LightSm.EventId.TURN_OFF)">TURN_OFF</button>
         <pre id="output" style="border: 1px solid black;"></pre>
     </body>
 
@@ -13,7 +14,7 @@
             document.getElementById('output').innerText += message + "\n";
         }
 
-        let stateMachine = new LightSm();
-        stateMachine.start();
+        let myStateMachine = new LightSm();
+        myStateMachine.start();
     </script>
 </html>
