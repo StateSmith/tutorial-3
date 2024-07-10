@@ -21,13 +21,12 @@ skinparam state {
 
 '############################ state organization ############################
 
-' Define the initial transition that is taken when the state machine starts.
-[*] -> SMALL
+state SMALL
 
-' Define a regular state with a dark style. Style is optional.
+' The DEFEAT state has an optional <<dark>> style.
 state DEFEAT <<dark>>
 
-' Define a super state (composite state) with substates
+' The LARGE state is a super state (AKA composite state) with substates
 state LARGE {
     state SUPER <<blue>>
     state FIRE  <<red>>
@@ -36,6 +35,9 @@ state LARGE {
 }
 
 '############################ handlers ############################
+
+' Define the initial transition that is taken when the state machine starts.
+[*] -> SMALL
 
 SMALL: enter / smallMario();
 SMALL --> SUPER: MUSHROOM
@@ -69,8 +71,7 @@ end note
 ' Feel free to remove or modify it as needed.
 
 /'! $CONFIG : toml
-[SmRunnerSettings]
-transpilerId = "JavaScript"
+SmRunnerSettings.transpilerId = "JavaScript"
 '/
 
 @enduml

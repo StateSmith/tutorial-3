@@ -1,3 +1,8 @@
+# Prerequisite
+Be able to run `ss.cli` as explained in the main [../README.md](../README.md) file.
+
+<br>
+
 # Where is my preferred programming language?
 Don't worry, there is a language specific example in a later lesson.
 
@@ -7,9 +12,7 @@ All the **non**-language specific examples will use html/javascript because ever
 <br>
 
 # Code Generation
-We are now ready to run our StateSmith code generation.
-
-In this (lesson-0) directory run the following command to run StateSmith <u>h</u>ere (in this directory).
+In this directory (`lesson-0`) run the following command to run StateSmith <u>h</u>ere (in this directory).
 
 ```sh
 ss.cli run -h
@@ -70,13 +73,12 @@ Check out the file [MarioSm.plantuml](./MarioSm.plantuml) to see the diagram tha
 You can define a diagram a number of ways using PlantUML. Here's one simple example. First layout your states:
 
 ```plantuml
-' Define the initial transition that is taken when the state machine starts.
-[*] -> SMALL
+state SMALL
 
-' Define a regular state with a dark style. Style is optional.
+' The DEFEAT state has an optional <<dark>> style.
 state DEFEAT <<dark>>
 
-' Define a super state (composite state) with substates
+' The LARGE state is a super state (AKA composite state) with substates
 state LARGE {
     state SUPER <<blue>>
     state FIRE  <<red>>
@@ -87,6 +89,9 @@ state LARGE {
 Then add your state behaviors (transitions/code):
 
 ```plantuml
+' Define the initial transition that is taken when the state machine starts.
+[*] -> SMALL
+
 SMALL: enter / smallMario();
 SMALL --> SUPER: MUSHROOM
 SMALL --> FIRE: FIRE_FLOWER
