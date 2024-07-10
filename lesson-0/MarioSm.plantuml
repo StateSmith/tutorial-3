@@ -11,8 +11,6 @@ skinparam state {
     ' blue style:
     BackgroundColor<<blue>> 1ba1e2
     FontColor<<blue>> white
-    ' gold style:
-    BackgroundColor<<gold>> f0a30a
     ' dark style:
     BackgroundColor<<dark>> 545454
     FontColor<<dark>> white
@@ -21,49 +19,39 @@ skinparam state {
 
 '############################ state organization ############################
 
-state SMALL
-
 ' The DEFEAT state has an optional <<dark>> style.
 state DEFEAT <<dark>>
 
-' The LARGE state is a super state (AKA composite state) with substates
-state LARGE {
+' Define a super state (AKA composite state) with substates
+state ALIVE {
+    ' Define the initial transition of this super state.
+    [*] -> SMALL
+    state SMALL
     state SUPER <<blue>>
     state FIRE  <<red>>
-    state CAPE  <<gold>>
-    note "Note HIT transition for all substates" as N1 
 }
 
 '############################ handlers ############################
 
-' Define the initial transition that is taken when the state machine starts.
-[*] -> SMALL
+' Define the initial transition of state machine.
+[*] -> ALIVE
+
+ALIVE --> DEFEAT: CRUSH
 
 SMALL: enter / smallMario();
 SMALL --> SUPER: MUSHROOM
 SMALL --> FIRE: FIRE_FLOWER
-SMALL --> CAPE: FEATHER
 SMALL --> DEFEAT: HIT
-
-DEFEAT: enter / defeatedMario();
-DEFEAT --> SMALL: MUSHROOM
-
-LARGE --> SMALL: HIT
 
 SUPER: enter / superMario();
 SUPER --> FIRE: FIRE_FLOWER
-SUPER --> CAPE: FEATHER
+SUPER --> SMALL: HIT
 
 FIRE: enter / fireMario();
-FIRE --> CAPE: FEATHER
+FIRE --> SUPER: HIT
 
-CAPE: enter / capeMario();
-CAPE --> FIRE: FIRE_FLOWER
-CAPE --> SUPER: HIT
-note on link
-This transition has preceedence over
-LARGE's HIT transition to SMALL.
-end note
+DEFEAT: enter / defeatedMario();
+DEFEAT --> SMALL: MUSHROOM
 
 '######################## StateSmith config ########################
 ' The below special comment block sets the StateSmith configuration.

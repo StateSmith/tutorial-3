@@ -23,10 +23,10 @@
         <div id="mario">
             <img src="">
         </div>
-        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.HIT)"><img src="img/goomba.webp"></button>
+        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.CRUSH)" title="CRUSH"><img src="img/thwomp.png"></button>
+        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.HIT)" title="HIT"><img src="img/goomba.webp"></button>
         <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.MUSHROOM)"><img src="img/mushroom.webp"></button>
         <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.FIRE_FLOWER)"><img src="img/fire-flower.png"></button>
-        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.FEATHER)"><img src="img/feather.webp"></button>
     </body>
 
     <!-- JavaScript below html body so that we don't need to wait for body to load -->
@@ -62,10 +62,5 @@
         function fireMario() {
             marioImg.src = "img/fire-mario-dance.gif"
         }
-
-        function capeMario() {
-            marioImg.src = "img/cape-mario-walking.gif"
-        }
     </script>
-
 </html>
