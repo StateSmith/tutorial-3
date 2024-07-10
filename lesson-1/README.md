@@ -28,9 +28,9 @@ Here's the diagram we will be using for this lesson. It is a simple light switch
 We specify our state machine in the `LightSm.plantuml` file like this:
 
 ```plantuml
+@startuml MarioSm
 ' Single line comments (like this) start with a single quote.
-' The line below specifies the name of the state machine.
-@startuml LightSm
+' The name of the state machine is specified above.
 
 ' specify the initial transition
 [*] --> OFF

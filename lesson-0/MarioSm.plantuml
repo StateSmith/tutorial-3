@@ -1,0 +1,76 @@
+@startuml MarioSm
+' Single line comments (like this) start with a single quote.
+' The name of the state machine is specified above.
+
+'############################ styles ############################
+' Define some colors for the states. Totally optional.
+skinparam state {
+    ' red style:
+    BackgroundColor<<red>> a20025
+    FontColor<<red>> white
+    ' blue style:
+    BackgroundColor<<blue>> 1ba1e2
+    FontColor<<blue>> white
+    ' gold style:
+    BackgroundColor<<gold>> f0a30a
+    ' dark style:
+    BackgroundColor<<dark>> 545454
+    FontColor<<dark>> white
+}
+
+
+'############################ state organization ############################
+
+' Define the initial transition that is taken when the state machine starts.
+[*] -> SMALL
+
+' Define a regular state with a dark style. Style is optional.
+state DEFEAT <<dark>>
+
+' Define a super state (composite state) with substates
+state LARGE {
+    state SUPER <<blue>>
+    state FIRE  <<red>>
+    state CAPE  <<gold>>
+    note "Note HIT transition for all substates" as N1 
+}
+
+'############################ handlers ############################
+
+SMALL: enter / smallMario();
+SMALL --> SUPER: MUSHROOM
+SMALL --> FIRE: FIRE_FLOWER
+SMALL --> CAPE: FEATHER
+SMALL --> DEFEAT: HIT
+
+DEFEAT: enter / defeatedMario();
+DEFEAT --> SMALL: MUSHROOM
+
+LARGE --> SMALL: HIT
+
+SUPER: enter / superMario();
+SUPER --> FIRE: FIRE_FLOWER
+SUPER --> CAPE: FEATHER
+
+FIRE: enter / fireMario();
+FIRE --> CAPE: FEATHER
+
+CAPE: enter / capeMario();
+CAPE --> FIRE: FIRE_FLOWER
+CAPE --> SUPER: HIT
+note on link
+This transition has preceedence over
+LARGE's HIT transition to SMALL.
+end note
+
+'######################## StateSmith config ########################
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+' Feel free to remove or modify it as needed.
+
+/'! $CONFIG : toml
+[SmRunnerSettings]
+transpilerId = "JavaScript"
+'/
+
+@enduml
