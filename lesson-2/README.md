@@ -25,6 +25,7 @@ Select `User Friendly` and hit enter.<br>
 ![](docs/select-user-friendly.png)
 
 Type in the name of the state machine `LightSm` and hit enter.<br>
+📢 NOTE! It must be exactly `LightSm` for the rest of this lesson to work.<br>
 ![](docs/type-light-sm.png)
 
 Select `JavaScript` and hit enter.<br>
@@ -101,8 +102,25 @@ Additionally, add a transition from `ON1` to `ON2` when the `INC` event is recei
 
 We need to add four additional lines to the PlantUML file. See if you can do it yourself. If you get stuck, you can find the solution below.
 
-<br>
-<br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
+ *scroll down* ▼ <br>
 
 When you are finished, your PlantUML graphical diagram should look like this:
 
@@ -173,8 +191,8 @@ RenderConfig.AutoExpandedVars = """
 
 Note the following about the `AutoExpandedVars` section:
 * We are using a TOML multi-line string here so that it is easy to add more than one variable.
-* The variable is in the `AutoExpandedVars` section so we can reference it in the PlantUML file naturally.
-* **<u>This</u> declaration syntax is programming language specific**. If we were generating C/C++/C# (instead of JS), we would use C/C++/C# syntax to initialize the variable. 
+* The variable is in the `AutoExpandedVars` section so we can reference it in the PlantUML file naturally instead of writing `this.vars.count` or something similar.
+* **<u>This</u> declaration syntax is programming language specific**. If we were generating C/C++/C# (instead of JS), we would use different syntax to initialize the variable. 
 More info [here](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md#renderconfigautoexpandedvars).
 
 
@@ -204,7 +222,7 @@ ON2 --> ON3: INC [count >= 3]
 ```
 
 ### Ensure Event Handling Order
-We now have multiple `ON2` behaviors that are triggered by the `INC` event. Sometimes we don't care, but in this specific case, we need to ensure that the `count++` behavior is executed before the transition behavior guard `[count >= 3]` is evaluated. Otherwise, it may take four `INC` events to transition to `ON3`.
+We now have multiple `ON2` behaviors that are triggered by the `INC` event. Sometimes we don't care about their execution order, but in this specific case, we need to ensure that the `count++` behavior is executed before the transition behavior guard `[count >= 3]` is evaluated. Otherwise, it may take four `INC` events to transition to `ON3`.
 
 We can do this with a small StateSmith ordering extension to UML syntax. Simply add a `1.` before the `INC` event:
 
@@ -212,7 +230,7 @@ We can do this with a small StateSmith ordering extension to UML syntax. Simply 
 ON2: 1. INC / count++;
 ```
 
-We don't need to order the transition behavior because unordered behaviors are executed after ordered behaviors.
+We don't need to order the other transition behavior because unordered behaviors are executed after ordered behaviors.
 
 Your ON2 state should now look like this:
 
@@ -283,12 +301,20 @@ Generate the code using `ss.cli` and open `index.html` in a web browser to inter
 # Polling A Timeout Transition
 Let's assume that the `ON3` state will cause the flashlight to overheat if it stays in that state for too long. We will add a timeout transition that will transition to the `OFF` state if the flashlight stays in the `ON3` state for more than 5 seconds.
 
-We could implement this many ways, but I want to show how you can use "polling" to check guard conditions instead of relying only on events.
+We could implement this many ways, but I want to show how you can use "polling" to check guard conditions.
+
+StateSmith state machines are purely event driven. They just sit waiting for you to feed them the next event (no thread, or background CPU usage).
+
+If you need to poll certain conditions, simply send the `DO` event to your state machine at the rate you want. You have full control over how and when the state machine runs.
+
+Any transition without an event specified will use the `DO` event. This is different than UML, but we found the UML way caused problems for most users.
+
+
 
 ### Add Transition To `OFF` State
 A future section will cover how to use the current time to implement a timeout transition. For now, we will simply re-use the `count` variable to implement a timeout transition.
 
-The `index.html` JavaScript is already setup to dispatch the `DO` event to the state machine every 500ms. All we need to do is wait for 10 `DO` events to transition to the `OFF` state. Why 10? 5 seconds, 2 events per second.
+The `index.html` JavaScript is already setup to dispatch the `DO` event to the state machine every 500ms. All we need to do is wait for 10 `DO` events to transition to the `OFF` state. Why 10? 5 seconds x 2 events/second.
 
 Add the following lines to the PlantUML file:
 
@@ -300,7 +326,7 @@ ON3 --> OFF: [count <= 0]
 
 We see that the transition from `ON3` to `OFF` is guarded by `[count <= 0]`, but there is no event explicitly associated with it like `DIM` or `INC`.
 
-For convenience, StateSmith will *implicitly* assume the `DO` event for any behavior/transition that does not have an explicit event associated with it.
+For convenience, StateSmith will *implicitly* assume the `DO` event for any behavior/transition that do not have an explicit event associated with it.
 
 You can see this if you open the `LightSm.sim.html` file in your browser and look at the `ON3` state. You will see that the transition to `OFF` is guarded by `DO [count <= 0]`.
 
@@ -346,7 +372,7 @@ Add the transition from `ON_GROUP` to `OFF` when the `OFF` event is received.
 ON_GROUP --> OFF: OFF
 ```
 
-And that's it! 
+And that's it! Normally handwriting a hierarchical state machine is a lot more work. Easy for us.
 
 ### Test It
 Your design should now look like this:
