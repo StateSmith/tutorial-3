@@ -1,104 +1,78 @@
+<!-- This is a hand written file. It is written to be easy to follow. -->
 <html>
-<script src="LightSm.js"></script> <!-- generated state machine file -->
-<script>
-    let stateMachine = new LightSm();
-    stateMachine.start();
-</script>
+    <!-- ignore this blank favicon -->
+    <link rel="icon" href="data:;base64,=">
 
-<body>
-    <button onclick="stateMachine.dispatchEvent(LightSm.EventId.INCREASE)">INCREASE</button>
-    <button onclick="stateMachine.dispatchEvent(LightSm.EventId.DIM)">DIM</button>
-    <button id="button">Click on me</button>
-</body>
-<style>
-    particle {
-        position: fixed;
-        left: 0;
-        top: 0;
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0;
-    }
+    <body>
+        <p>
+            An example hierarchical state machine for Mario. Press the buttons below to exercise the state machine.<br>
+            If you see a broken image below, you still need to follow the <code>README.md</code> in this directory.
+        </p>
+        <div id="mario">
+            <img src="">
+        </div>
+        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.CRUSH)" title="CRUSH"><img src="img/thwomp.png"></button>
+        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.HIT)" title="HIT"><img src="img/goomba.webp"></button>
+        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.MUSHROOM)"><img src="img/mushroom.webp"></button>
+        <button onclick="myMarioSm.dispatchEvent(MarioSm.EventId.FIRE_FLOWER)"><img src="img/fire-flower.png"></button>
+    </body>
 
-    button {
-        padding: 10px;
-    }
+    <!-- JavaScript below html body so that we don't need to wait for body to load -->
 
-    body {
-        overflow: hidden;
-        display: flex;
-        height: 100vh;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
+    <!-- Include generated state machine file -->
+    <script src="MarioSm.js"></script>
 
-<script>
-    if (document.body.animate) {
-        document.querySelector('#button').addEventListener('click', pop);
-    }
+    <script>
+        // Get mario image element so that we can change the image with state changes
+        const marioImg = document.querySelector("#mario img");
 
-    function pop(e) {
-        // Quick check if user clicked the button using a keyboard
-        if (e.clientX === 0 && e.clientY === 0) {
-            const bbox = document.querySelector('#button').getBoundingClientRect();
-            const x = bbox.left + bbox.width / 2;
-            const y = bbox.top + bbox.height / 2;
-            for (let i = 0; i < 30; i++) {
-                // We call the function createParticle 30 times
-                // We pass the coordinates of the button for x & y values
-                createParticle(x, y);
-            }
-        } else {
-            for (let i = 0; i < 30; i++) {
-                // We call the function createParticle 30 times
-                // As we need the coordinates of the mouse, we pass them as arguments
-                createParticle(e.clientX, e.clientY);
-            }
+        // Create a new instance (you could have multiple) of our Mario state machine and start it
+        let myMarioSm = new MarioSm();
+        myMarioSm.start();
+
+        // Below are global functions that are called by the state machine.
+        // You don't have to use global functions with StateSmith.
+        // We will cover various alternatives in a later lesson (composition, inheritance, etc.).
+
+        // switch Mario image to small mario gif
+        function smallMario() {
+            marioImg.src = "img/small-mario-dance.gif"
         }
-    }
 
-    function createParticle(x, y) {
-        const particle = document.createElement('particle');
-        document.body.appendChild(particle);
+        function defeatedMario() {
+            marioImg.src = "img/defeated-2.gif"
+        }
 
-        // Calculate a random size from 5px to 25px
-        const size = Math.floor(Math.random() * 20 + 5);
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        // Generate a random color in a blue/purple palette
-        particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+        function superMario() {
+            marioImg.src = "img/big-mario-dance.gif"
+        }
 
-        // Generate a random x & y destination within a distance of 75px from the mouse
-        const destinationX = x + (Math.random() - 0.5) * 2 * 75;
-        const destinationY = y + (Math.random() - 0.5) * 2 * 75;
+        function fireMario() {
+            marioImg.src = "img/fire-mario-dance.gif"
+        }
+    </script>
 
-        // Store the animation in a variable as we will need it later
-        const animation = particle.animate([
-            {
-                // Set the origin position of the particle
-                // We offset the particle with half its size to center it around the mouse
-                transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
-                opacity: 1
-            },
-            {
-                // We define the final coordinates as the second keyframe
-                transform: `translate(${destinationX}px, ${destinationY}px)`,
-                opacity: 0
-            }
-        ], {
-            // Set a random duration from 500 to 1500ms
-            duration: Math.random() * 1000 + 500,
-            easing: 'cubic-bezier(0, .9, .57, 1)',
-            // Delay every particle with a random value of 200ms
-            delay: Math.random() * 200
-        });
+    <!-- Don't worry about the below CSS styling -->
+    <style>
+        button img {
+            padding: 10px;
+            width: 20vw;
+            max-width: 100px;
+        }
 
-        // When the animation is complete, remove the element from the DOM
-        animation.onfinish = () => {
-            particle.remove();
-        };
-    }
-</script>
+        #mario img {
+            height: 60vh;
+            padding-bottom: 5vh;
+        }
 
+        button:hover {
+            background-color: hsl(197, 93%, 52%);
+            cursor: pointer;
+        }
+
+        button:active {
+            background-color: #f7d514;
+            cursor: pointer;
+        }
+    </style>
 </html>

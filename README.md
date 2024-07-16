@@ -164,4 +164,4 @@ You should see output similar to the following:
 
 
 # Onwards! ⏭️
-Navigate to [lesson-0](./lesson-0/README.md) and see the readme there.
+Navigate to [lesson-1](./lesson-1/README.md) and see the readme there.
