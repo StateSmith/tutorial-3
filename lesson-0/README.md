@@ -124,8 +124,7 @@ transpilerId = "JavaScript"
 '/
 ```
 
-------------------------->>>>> FIXME
-put in link to the docs for the settings
+More settings are available here: https://github.com/StateSmith/StateSmith/issues/335
 
 <br>
 
