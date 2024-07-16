@@ -1,0 +1,362 @@
+<html>
+<!-- generated state machine file -->
+<script src="LightSm.js"></script>
+
+<!-- blank favicon -->
+<link rel="icon" href="data:;base64,=">
+
+<body>
+    <div id="main">
+        <p style="padding:10px;">
+            Your state machine must be named <code>LightSm</code>.
+        </p>
+        <img class="laser" id="laser-blue" src="img/laser-blue-2.png" />
+        <img class="laser" id="laser-yellow" src="img/laser-yellow-2.png" />
+        <img class="laser" id="laser-red" src="img/laser-red-2.png" />
+        <img id="flashlight" src="img/flashlight.png" />
+    </div>
+
+    <div id="below">
+        <button onclick="offEvent()">OFF</button>
+        <button onclick="dimEvent()">DIM</button>
+        <button onclick="incEvent()">INC</button>
+        <br>
+        <br>
+        State: <code id="state-id">not set yet...</code>
+        <br>
+        State machine vars:
+        <pre id="sm-vars"></pre>
+        <label for="visual-effects" title="laser particle visual effects">Visual effects</label>
+        <input type="checkbox" id="visual-effects" title="laser particle visual effects" checked />
+        <br>
+        <br>
+        Log:
+        <pre id="log"></pre>
+    </div>
+</body>
+
+
+<style>
+    body {
+        background-image: url(img/background-2.jpg);
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+
+    #main {
+        height: 400px;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    #below {
+        padding: 10px;
+    }
+
+    pre {
+        border: 1px solid rgb(165, 165, 165);
+        min-height: 20px;
+        max-height: 200px;
+        overflow-y: auto;
+        max-width: 600px;
+        background-color: rgb(37, 37, 37, 0.7);
+        padding: 5px;
+    }
+
+    particle {
+        position: fixed;
+        left: 0;
+        top: 0;
+        /* for circles, do: */
+        border-radius: 20%;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    button {
+        padding: 10px;
+    }
+
+    #flashlight {
+        position: absolute;
+        left: 50px;
+        top: 100px;
+        width: 400px;
+        /* put in front of particles */
+        z-index: 100;
+    }
+
+    .laser {
+        position: absolute;
+        left: 80px;
+        height: 80px;
+        width: 100vw;
+        top: 220px;
+        left: 424px;
+    }
+
+    #laser-yellow {
+        height: 150px;
+        top: 186px;
+    }
+
+    #laser-red {
+        height: 240px;
+        top: 145px;
+    }
+
+    /* just a helper for picking colors in vscode */
+    .colorPicker-red {
+        background-color: hsl(0, 100%, 59%);
+    }
+
+    /* just a helper for picking colors in vscode */
+    .colorPicker-blue {
+        background-color: hsl(212, 100%, 69%);
+    }
+
+    /* just a helper for picking colors in vscode */
+    .colorPicker-yellow {
+        background-color: hsl(60, 100%, 50%);
+    }
+</style>
+
+
+
+<script>
+    let g_stateMachine = null;
+    let g_laserName = null;
+
+    function offEvent() {
+        dispatchEvent("OFF");
+        // hideLasers();
+    }
+
+    function dimEvent() {
+        dispatchEvent("DIM");
+        // showLaser("blue");
+    }
+
+    function incEvent() {
+        dispatchEvent("INC");
+        // showLaser("yellow");
+    }
+
+    function dispatchEvent(eventName) {
+        if (g_stateMachine === null) {
+            addLog("Your state machine either doesn't exist yet or isn't named properly.");
+            return;
+        }
+
+        const eventId = LightSm.EventId[eventName];
+
+        if (eventId === undefined) {
+            addLog(`Your state machine doesn't have an event handler for the '${eventName}' button yet.`);
+            return;
+        }
+
+        addLog("Dispatching event: " + LightSm.eventIdToString(eventId));
+        g_stateMachine.dispatchEvent(eventId);
+        updateSmElements();
+    }
+
+    function updateSmElements() {
+        updateSmVars();
+        document.getElementById("state-id").textContent = LightSm.stateIdToString(g_stateMachine.stateId);
+    }
+
+    function updateSmVars() {
+        let text = "";
+
+        if (g_stateMachine == null) {
+            text = "<none>";
+        } else {
+            for (const varName in g_stateMachine.vars) {
+                if (Object.hasOwnProperty.call(g_stateMachine.vars, varName)) {
+                    const varValue = g_stateMachine.vars[varName];
+                    text += `${varName}: ${varValue}\n`;
+                }
+            }
+        }
+
+        const smVarsPre = document.getElementById("sm-vars");
+        smVarsPre.textContent = text;
+    }
+
+    function hideLasers() {
+        let lasers = document.querySelectorAll(".laser");
+        lasers.forEach(laser => {
+            laser.style.display = "none";
+        });
+
+        let particles = document.querySelectorAll("particle");
+        particles.forEach(particle => {
+            particle.remove();
+        });
+    }
+
+    function blueLaser() {
+        showLaser("blue");
+    }
+
+    function yellowLaser() {
+        showLaser("yellow");
+    }
+
+    function redLaser() {
+        showLaser("red");
+    }
+
+    function off() {
+        g_laserName = null;
+        hideLasers();
+    }
+
+    function getLaserDomByName(name) {
+        return document.getElementById("laser-" + name);
+    }
+
+    function getCurrentLaserDom() {
+        if (g_laserName == null)
+            return null;
+
+        return document.getElementById("laser-" + g_laserName);
+    }
+
+    function showLaser(name) {
+        hideLasers();
+        g_laserName = name;
+        let laserDom = getLaserDomByName(name);
+        show(laserDom);
+    }
+
+    function show(element) {
+        element.style.display = "inline";
+    }
+
+    off();
+
+    // blueLaser();
+    // yellowLaser();
+    // redLaser();
+
+</script>
+
+<script>
+    const visualEffectsCheckbox = document.getElementById("visual-effects");
+
+    if (document.body.animate) {
+        window.setInterval(() => {
+            if (visualEffectsCheckbox.checked) {
+                createBeamParticle();
+            }
+        }, 100);
+    }
+
+    // inspired from https://css-tricks.com/playing-with-particles-using-the-web-animations-api/
+    function createBeamParticle() {
+        let laserDom = getCurrentLaserDom();
+        if (!laserDom) return;
+
+        let maxDurationMs = 1200;
+        let particleColor = g_laserName;
+        let opacity = 0.1;
+
+        switch (g_laserName) {
+            case "blue":
+                particleColor = `hsl(${randInt(200 - 5, 200 + 5)}, 100%, 39%)`;
+                opacity = 0.1;
+                break;
+            case "yellow":
+                particleColor = `hsl(${randInt(60 - 10, 60 + 10)}, 100%, 49%)`;
+                particleColor = "yellow";
+                opacity = 0.1;
+                break;
+            case "red":
+                particleColor = `hsl(${randInt(0, 10)}, 100%, 59%)`
+                opacity = 0.1;
+                break;
+        }
+
+        const laserBoundingRect = laserDom.getBoundingClientRect();
+        const height = Math.floor(Math.random() * laserBoundingRect.height / 3) + laserBoundingRect.height / 3;
+        const width = randInt(80, 150);
+
+        let x = laserBoundingRect.x - 350; // minus to have beam start hidden so that it appears to exit instead of appear in front of flashlight
+        const y = laserBoundingRect.y + laserBoundingRect.height / 2 - height / 2;
+
+        const particle = document.createElement('particle');
+        document.body.appendChild(particle);
+
+        particle.style.background = particleColor;
+        particle.style.width = `${width}px`;
+        particle.style.height = `${height}px`;
+        particle.style.opacity = 0; // important to set to zero so that it doesn't show up while waiting for delay to finish
+
+        const destinationX = laserBoundingRect.x + laserBoundingRect.width;
+        const destinationY = y;
+
+        const animation = particle.animate([
+            // first key frame
+            {
+                transform: `translate(${x}px, ${y}px)`,
+                opacity: opacity,
+            },
+            // last key frame
+            {
+                transform: `translate(${destinationX}px, ${destinationY}px)`,
+                opacity: opacity,
+            }
+        ], {
+            duration: randInt(maxDurationMs / 2, maxDurationMs),
+            delay: randInt(maxDurationMs / 4, 200)
+        });
+
+        animation.onfinish = () => {
+            particle.remove();
+        };
+    }
+
+    function addLog(message)
+    {
+        const logDiv = document.getElementById("log");
+        logDiv.append(message + "\n");
+        logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
+    function randInt(min, max) {
+        const range = max - min;
+        let result = Math.random() * (range + 1) + min;   // +1 because random doesn't reach 1.0
+        result = Math.floor(result);
+        return result;
+    }
+
+</script>
+
+
+<script>
+    try {
+        g_stateMachine = new LightSm();
+        g_stateMachine.start();
+        updateSmElements();
+        addLog("Started your state machine.");
+
+        if (LightSm.EventId.DO != undefined) {
+            window.setInterval(() => {
+                dispatchEvent("DO");
+                updateSmElements();
+            }, 500);
+        }
+    }
+    catch (e) {
+        addLog("FAILED starting your state machine.");
+        addLog("This is normal if you haven't implemented it yet.");
+        console.log(e);
+    }
+</script>
+
+
+</html>
