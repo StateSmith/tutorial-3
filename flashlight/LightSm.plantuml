@@ -1,9 +1,6 @@
 @startuml LightSm
 
-' //////////////////////// STATE ORGANIZATION ///////////////////////
-' Note: StateSmith treats state names and events as case insensitive.
-' More info: https://github.com/StateSmith/StateSmith/wiki/PlantUML
-
+' STATES
 state OFF
 
 state ON_GROUP {
@@ -12,9 +9,7 @@ state ON_GROUP {
     state ON3
 }
 
-' ///////////////////////// STATE HANDLERS /////////////////////////
-' Syntax: https://github.com/StateSmith/StateSmith/wiki/Behaviors
-
+' STATE HANDLERS
 [*] -> OFF
 
 OFF: enter / off();
@@ -37,9 +32,6 @@ ON3: enter / count = 5 * 2;
 ON3: 1. do / count--;
 ON3 --> ON2: DIM
 ON3 --> OFF: [count <= 0]
-
-' //////////////////////// StateSmith config ////////////////////////
-' More info: https://github.com/StateSmith/StateSmith/issues/335
 
 /'! $CONFIG : toml
 RenderConfig.AutoExpandedVars = """

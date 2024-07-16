@@ -8,7 +8,7 @@
 <body>
     <div id="main">
         <p style="padding:10px;">
-            Your state machine must be named <code>LightSm</code>.
+            A laser flashlight controller state machine.
         </p>
         <img class="laser" id="laser-blue" src="img/laser-blue-2.png" />
         <img class="laser" id="laser-yellow" src="img/laser-yellow-2.png" />
@@ -24,7 +24,7 @@
         <br>
         State: <code id="state-id">not set yet...</code>
         <br>
-        State machine vars:
+        State machine variables:
         <pre id="sm-vars"></pre>
         <label for="visual-effects" title="laser particle visual effects">Visual effects</label>
         <input type="checkbox" id="visual-effects" title="laser particle visual effects" checked />
@@ -61,7 +61,7 @@
         min-height: 20px;
         max-height: 200px;
         overflow-y: auto;
-        max-width: 600px;
+        max-width: 800px;
         background-color: rgb(37, 37, 37, 0.7);
         padding: 5px;
     }
@@ -147,7 +147,7 @@
 
     function dispatchEvent(eventName) {
         if (g_stateMachine === null) {
-            addLog("Your state machine either doesn't exist yet or isn't named properly.");
+            addLog("Your state machine either doesn't exist yet, has an error, or isn't named properly.");
             return;
         }
 
@@ -354,6 +354,7 @@
     catch (e) {
         addLog("FAILED starting your state machine.");
         addLog("This is normal if you haven't implemented it yet.");
+        addLog("Make sure your state machine is named `LightSm` and that you are generating JavaScript.");
         console.log(e);
     }
 </script>
