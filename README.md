@@ -40,32 +40,33 @@ ss.cli --version
 
 You can now skip to the next section (past downloading).
 
+
+
+
 <br>
 
 ## Download the standalone binary (no dotnet required)
-Download the correct binary for your computer from the StateSmith github repo.
+🔥 Please note that the standalone binaries are new. I've only been able to test on a few architectures [noted here](https://github.com/StateSmith/StateSmith/wiki/Binary-Files#platform-testing). Your help testing would be appreciated.
 
-Please note that binary files are about 145 MB in size, but will be trimmed down to about to 90 MB in the future.
-
->>>>>>>>>>>>>>>> FIXME use compressed files
+If you run into any issues, please consider installing the StateSmith CLI using a dotnet SDK as described in the previous section. It has worked well for many users so far and is indirectly supported by Microsoft.
 
 ### Windows
-1. Download binary from [here](https://github.com/StateSmith/StateSmith/releases/tag/cli-v0.10.0-alpha-2). If unsure, use [windows-x64](https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0-alpha-2/ss.cli-win-x64.exe).
+1. Download binary from [here](https://github.com/StateSmith/StateSmith/releases). If unsure, use `windows-x64`.
 2. Put the binary in this directory.
 3. Rename the downloaded binary to `ss.cli.exe`.
 
 ### Linux
-The below instructions assume Linux x64 (non-Alpine). Alpine and `ARM` binaries also available [here](https://github.com/StateSmith/StateSmith/releases/tag/cli-v0.10.0-alpha-2).
+The below instructions assume Linux x64 (non-Alpine). Alpine and `ARM` binaries also [available](https://github.com/StateSmith/StateSmith/releases).
 
 ```sh
-# download the binary
-wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0-alpha-2/ss.cli-linux-x64
-
-# make binary executable
-chmod +x ss.cli-linux-x64
+# download the 60 MB binary
+wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0/ss.cli-linux-x64-compressed
 
 # rename the binary so that following instructions are cross platform
-mv ss.cli-linux-x64 ss.cli
+mv ss.cli-linux-x64-compressed ss.cli
+
+# make binary executable
+chmod +x ss.cli
 
 # optional: move the binary to a location in your PATH
 # If you choose not to do this, you will need to run the binary with `./ss.cli`
@@ -73,19 +74,18 @@ sudo mv ss.cli /usr/local/bin
 ```
 
 ### Mac
-The below instructions assume MacOs x64 (minimum macOS version is 10.12 Sierra). More available [here](https://github.com/StateSmith/StateSmith/releases/tag/cli-v0.10.0-alpha-2).
+🔥 We only have a bit of testing on Mac right now. It looks like `arm64` is not working, but you can use `x64` even on new Macs. See [comment here](https://github.com/StateSmith/StateSmith/issues/260#issuecomment-2210249795).
 
->>>>>>>>>>>>>>>> FIXME note arm64 issue https://github.com/StateSmith/StateSmith/issues/260#issuecomment-2210249795
 
 ```sh
-# download the binary
-wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0-alpha-2/ss.cli-osx-x64
-
-# make binary executable
-chmod +x ss.cli-osx-x64
+# download the 60 MB binary
+wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0/ss.cli-osx-x64-compressed
 
 # rename the binary so that following instructions are cross platform
 mv ss.cli-osx-x64 ss.cli
+
+# make binary executable
+chmod +x ss.cli
 
 # optional: move the binary to a location in your PATH
 # If you choose not to do this, you will need to run the binary with `./ss.cli`
@@ -105,7 +105,7 @@ You should see output similar to the following:
 
 ```
 Using settings directory: /home/afk/.config/StateSmith.Cli
-StateSmith.Cli 0.10.0-alpha-2+fe7b05401136da5df801e5371a7c303ed04465ed
+StateSmith.Cli 0.10.0+4a4e30018e9a371124530fa96cf2ba3322b80459
 ```
 
 Make sure the version is at least `0.10.0`.
