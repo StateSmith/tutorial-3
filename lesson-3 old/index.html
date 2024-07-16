@@ -1,3 +1,5 @@
+<html>
+
 <head>
     <script src="LightSm.js"></script>
     <script src="index.js"></script>
@@ -5,43 +7,30 @@
 
 <body>
     <div>
-        Light bulb 1:
+        <h2>Light Bulb 1</h2>
         <div id="id-light-bulb-1" style="width: 100px; height: 100px;"></div>
         <br>
-        <button id="id-button-off-1">OFF</button>
-        <button id="id-button-on-1">ON</button>
+        <button onclick="offPress1()">OFF</button>
+        <button onclick="onPress1()">ON</button>
     </div>
-
-    <br>
-    <br>
 
     <div>
-        Light bulb 2:
+        <h2>Light Bulb 2</h2>
         <div id="id-light-bulb-2" style="width: 100px; height: 100px;"></div>
         <br>
-        <button id="id-button-off-2">OFF</button>
-        <button id="id-button-on-2">ON</button>
+        <button onclick="offPress2()">OFF</button>
+        <button onclick="onPress2()">ON</button>
     </div>
-
 </body>
-<script>
-    // Create LightController #1
-    const lightBulbHtmlElement1 = document.getElementById('id-light-bulb-1');
-    const lightController1 = new LightController(lightBulbHtmlElement1);
-    // Connect buttons to lightController #1
-    const buttonOff1 = document.getElementById('id-button-off-1');
-    const buttonOn1 = document.getElementById('id-button-on-1');
-    buttonOff1.addEventListener('click', () => lightController1.handleOffPress());
-    buttonOn1.addEventListener('click', () => lightController1.handleOnPress());
 
-    // Create LightController #2
-    const lightBulbHtmlElement2 = document.getElementById('id-light-bulb-2');
-    const lightController2 = new LightController(lightBulbHtmlElement2);
-    // Connect buttons to lightController #2
-    const buttonOff2 = document.getElementById('id-button-off-2');
-    const buttonOn2 = document.getElementById('id-button-on-2');
-    buttonOff2.addEventListener('click', () => lightController2.handleOffPress());
-    buttonOn2.addEventListener('click', () => lightController2.handleOnPress());
+<script>
+    const lightController1 = new LightController(document.getElementById('id-light-bulb-1'));
+    function onPress1()  { lightController1.handleOnPress();  }
+    function offPress1() { lightController1.handleOffPress(); }
+
+    const lightController2 = new LightController(document.getElementById('id-light-bulb-2'));
+    function onPress2()  { lightController2.handleOnPress();  }
+    function offPress2() { lightController2.handleOffPress(); }
 </script>
 
 </html>

@@ -51,9 +51,13 @@ class LightController
 
     _turnOn() {
         this._lightHtmlObject.style.backgroundColor = "yellow";
+        this._lightHtmlObject.style.color = "black";
+        this._lightHtmlObject.textContent = "Count: " + this._smContext.count;
     }
 
     _turnOff() {
         this._lightHtmlObject.style.backgroundColor = "black";
+        this._lightHtmlObject.style.color = "white";
+        this._lightHtmlObject.textContent = "Count: " + this._smContext.count;
     }
 }

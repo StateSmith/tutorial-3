@@ -126,17 +126,17 @@ class LightSm
         this.#currentEventHandlers[LightSm.EventId.ON_PRESS] = this.#OFF_on_press;
         
         // OFF behavior
-        // uml: enter / { turnOff(); }
-        {
-            // Step 1: execute action `turnOff();`
-            this.vars.myInterface.turnOff();
-        } // end of behavior for OFF
-        
-        // OFF behavior
         // uml: enter / { count++; }
         {
             // Step 1: execute action `count++;`
             this.vars.myInterface.count++;
+        } // end of behavior for OFF
+        
+        // OFF behavior
+        // uml: enter / { turnOff(); }
+        {
+            // Step 1: execute action `turnOff();`
+            this.vars.myInterface.turnOff();
         } // end of behavior for OFF
     }
     

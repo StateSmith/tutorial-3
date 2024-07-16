@@ -7,8 +7,8 @@ state ON1
 ' STATE HANDLERS
 [*] -> OFF
 
-OFF: enter / turnOff();
 OFF: enter / count++;
+OFF: enter / turnOff();
 OFF --> ON1: ON_PRESS
 
 note "Increment count just to show we can" as N1

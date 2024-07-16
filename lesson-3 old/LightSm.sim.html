@@ -220,9 +220,9 @@ OFF
 
 OFF : OFF
 
-OFF : enter / #123; turnOff()#59; #125;
-
 OFF : enter / #123; count++#59; #125;
+
+OFF : enter / #123; turnOff()#59; #125;
 
 ON1
 
@@ -407,17 +407,17 @@ evaluateGuard = null;
         } // end of behavior for OFF
         
         // OFF behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "turnOff();"); }
-        {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "turnOff();");`
-            this.tracer?.log("⚡ FSM would execute action: " + "turnOff();");
-        } // end of behavior for OFF
-        
-        // OFF behavior
         // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "count++;"); }
         {
             // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "count++;");`
             this.tracer?.log("⚡ FSM would execute action: " + "count++;");
+        } // end of behavior for OFF
+        
+        // OFF behavior
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "turnOff();"); }
+        {
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "turnOff();");`
+            this.tracer?.log("⚡ FSM would execute action: " + "turnOff();");
         } // end of behavior for OFF
     }
     
