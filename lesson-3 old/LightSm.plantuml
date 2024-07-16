@@ -31,7 +31,6 @@ VariableDeclarations = """
     // needs to be set before running the state machine
     myInterface: null,
     """
-
 DefaultAnyExpTemplate = "{VarsPath}myInterface.{AutoNameCopy()}"
 '/
 @enduml

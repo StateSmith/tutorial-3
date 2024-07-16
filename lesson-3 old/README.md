@@ -1,7 +1,7 @@
 # Connecting Your State Machine to the Outside World
 A state machine is often part of a larger system.
 
-So far, our designs have mostly been calling global functions to interact with the outside world. This is a simple way to get started, but it's not the only way to interact with the outside world. In this lesson, we'll look at a few ways to connect your state machine to the outside world.
+So far, our designs have mostly been calling global functions to interact with the outside world. This is a simple way to get started, but it's not the only way to interact with the outside world. In this lesson, we'll look at a few ways to connect your state machine to other code.
 
 Each language has various technical options for connecting your state machine to the outside world:
 * `C99/C++`: [preprocessor include .inc file](https://github.com/StateSmith/StateSmith-examples/tree/main/c-include-sm-basic-2-plantuml-tutorial) (recommended), composition, globals.
@@ -29,35 +29,88 @@ Before starting the state machine the `LightController` class does the following
 * sets `LightSmContext` function pointers to its own functions
 * sets a variable in `LightSm` to reference the `LightSmContext` object
 
-```mermaid
-classDiagram
+![](docs/2024-07-16-18-17-34.png)
 
-    LightController --> LightSmContext
-    LightController --> LightSm
-    LightSm --> LightSmContext
+<!--
+mermaid diagram link: https://mermaid.live/edit#pako:eNqVk01vgzAMhv8K8mmTaAX0g8Jhl623TZ3UnSakKiOmRIMEJaFqV_HfF6C0W6Galksivw_2G8ccIRYUIYQ4I0o9MbKVJI94xC2zmpj1zLapfhRcS5FlKK1jK9arkGxHNLbIOq8h3Gtro7rjTbRmujKNXH5kLLbKghro7r4npITTDFf8VaJSt_Uk6QOnwhtdSr7it6UkGdRMPtRvLEc5KDPVaMt9wSTSDqkGWnjpz7mDjGsrFiU_9-naY8_YkJv_WLjU3hFpsiUokcdoaWGM_HoyylRBdJwud8h1L-n1UIxGD1e3_JP7ARhf_QRgg7lVThg149nYjkCnmGMEoTlSIj8jiHhluHZslpRpISFMSKbQBlJqsT7wGEItS-yg04h3QWy-eTn9A_VmQ0E4hEfYQzid-uOFN5-5jhf4ge_bcDDB2XhqApPAmXuB4_pBZcOXECalMw5cz1m4rmfUxcSfz5pk743Y1pOi3KYni9U3PJkaKw
+ -->
 
-    class LightController {
-        private LightSmContext _smContext
-        private LightSm _sm
+This diagram shows how the function objects/pointers in the `LightSmContext` class are set to the functions in the `LightController` class.
 
-        public handleOnPress()
-        public handleOffPress()
-        private _turnOn()
-        private _turnOff()
-        private _resetTimer()
-        private _isTimerExpired()
-    }
+![](docs/2024-07-16-18-20-05.png)
 
-    class LightSmContext {
-      int count
-      turnOn()
-      turnOff()
-      resetTimer()
-      isTimerExpired()
-    }
+This allows the state machine to effectively call private methods in the `LightController` class. It also has a number of other benefits like making it easier to test the state machine.
 
-    class LightSm {
-      var reference to context
-      dispatchEvent()
-    }
+## Design
+The PlantUML diagram below shows the behavior the light controller example:
+
+* `OFF` is the initial state and transitions to `ON1` when the on button is pressed.
+* `ON1` transitions to `OFF` if the timer expires or the off button is pressed.
+
+![](docs/2024-07-16-18-22-47.png)
+
+Open `index.html` in a browser to see multiple instances of the light controller in action.
+
+![](docs/light-bulbs.gif)
+
+
+## PlantUML Settings
+At the bottom of the PlantUML file, you can see the settings that were used to generate the code.
+
+```toml
+# This is a TOML comment line
+
+SmRunnerSettings.transpilerId = "JavaScript"
+
+# [RenderConfig] below is a TOML "table"
+# It's like a prefix for all the keys below it until the next table
+[RenderConfig]
+VariableDeclarations = """
+    // The `myInterface` var below needs to be manually set to a reference of LightSmContext
+    // before running the state machine.
+    myInterface: null,
+    """
+
+DefaultAnyExpTemplate = "{VarsPath}myInterface.{AutoNameCopy()}"
 ```
+
+The most interesting part of the above is the `DefaultAnyExpTemplate` setting. You can [read more about it here](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md#renderconfigdefaultanyexptemplate).
+
+Essentially it translates your state machine action code:
+* `resetTimer()` into `this.vars.myInterface.resetTimer()`
+* `count++` into `this.vars.myInterface.count++`
+
+You can see this clearly in the generated LightSm.js file:
+
+```javascript
+class LightSm
+{
+    // snip...
+
+    #OFF_enter()
+    {
+        // snip...
+        
+        // OFF behavior
+        // uml: enter / { count++; }
+        {
+            // Step 1: execute action `count++;`
+            this.vars.myInterface.count++;
+        } // end of behavior for OFF
+        
+        // OFF behavior
+        // uml: enter / { turnOff(); }
+        {
+            // Step 1: execute action `turnOff();`
+            this.vars.myInterface.turnOff();
+        } // end of behavior for OFF
+    }
+}
+```
+
+<br>
+
+# Inheritance Tips
+Inheritance (if your language supports it) is another way to connect your state machine to the outside world.
+
+You can have your state machine inherit from a base class that contains the functions you want to call. This is a simple way to connect your state machine to the outside world.
