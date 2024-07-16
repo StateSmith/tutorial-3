@@ -1,11 +1,11 @@
 # Let's try it quick!
 With the goal of keeping things as simple as possible to start, this tutorial uses `PlantUML` as the diagram tool, but StateSmith also supports `draw.io` (covered in other tutorials). This is a good place to start.
 
-The design is a small Hierarchical State Machine (HSM) that represents the state of Mario in a game.
+The first design we will look at is a small Hierarchical State Machine (HSM) that represents the state of Mario in a game.
 
 ![](docs/fsm.png)
 
-As you complete the lessons in this tutorial, you'll be able to interact with the generated state machine in your web browser. One of the later lessons will be programming language specific.
+As you complete the lessons in this tutorial, you'll be able to interact with the generated state machines in your web browser. One of the later lessons will be programming language specific.
 
 ![](docs/interact.gif)
 

@@ -36,6 +36,7 @@ state ALIVE {
 ' Define the initial transition of state machine.
 [*] -> ALIVE
 
+' Transition to the DEFEAT state if crushed.
 ALIVE --> DEFEAT: CRUSH
 
 SMALL: enter / smallMario();

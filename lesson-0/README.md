@@ -73,29 +73,31 @@ Check out the file [MarioSm.plantuml](./MarioSm.plantuml) to see the diagram tha
 You can define a diagram a number of ways using PlantUML. Here's one simple example. First layout your states:
 
 ```plantuml
-state SMALL
-
 ' The DEFEAT state has an optional <<dark>> style.
 state DEFEAT <<dark>>
 
-' The LARGE state is a super state (AKA composite state) with substates
-state LARGE {
+' Define a super state (AKA composite state) with substates
+state ALIVE {
+    ' Define the initial transition of this super state.
+    [*] -> SMALL
+    state SMALL
     state SUPER <<blue>>
     state FIRE  <<red>>
-    state CAPE  <<gold>>
 }
 ```
 
 Then add your state behaviors (transitions/code):
 
 ```plantuml
-' Define the initial transition that is taken when the state machine starts.
-[*] -> SMALL
+' Define the initial transition of state machine.
+[*] -> ALIVE
+
+' Transition to the DEFEAT state if crushed.
+ALIVE --> DEFEAT: CRUSH
 
 SMALL: enter / smallMario();
 SMALL --> SUPER: MUSHROOM
 SMALL --> FIRE: FIRE_FLOWER
-SMALL --> CAPE: FEATHER
 SMALL --> DEFEAT: HIT
 ```
 
