@@ -83,7 +83,7 @@ ss.cli run --here
 
 ## Interact With The State Machine 🌍
 Now that we've generated the state machine JavaScript code, let's interact with it.
-Open `index.html` with a web browser.
+Open `index.html` with a web browser. You may need to refresh the page in your browser to see the changes.
 
 You should now be able to use the `INC` and `DIM` buttons to control the laser flashlight.
 
@@ -305,7 +305,7 @@ For convenience, StateSmith will *implicitly* assume the `DO` event for any beha
 You can see this if you open the `LightSm.sim.html` file in your browser and look at the `ON3` state. You will see that the transition to `OFF` is guarded by `DO [count <= 0]`.
 
 ### Polled State Machines
-In case the last section wasn't clear, polled state machines need the `DO` event to be dispatched to them periodically. This enables them check guard conditions.
+In case the last section wasn't clear, polled state machines need the `DO` event to be dispatched to them periodically. This enables them to check guard conditions.
 
 If, however, you want a behavior/transition to be checked for any event/trigger, check out StateSmith [TriggerMaps](https://github.com/StateSmith/StateSmith/issues/161).
 
