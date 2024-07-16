@@ -1,0 +1,37 @@
+@startuml LightSm
+
+' STATES
+state OFF
+state ON1
+
+' STATE HANDLERS
+[*] -> OFF
+
+OFF: enter / turnOff();
+OFF: enter / count++;
+OFF --> ON1: ON_PRESS
+
+note "Increment count just to show we can" as N1
+
+ON1: enter / turnOn();
+ON1: enter / resetTimer();
+ON1 --> OFF: OFF_PRESS
+ON1 --> OFF: [isTimerExpired()]
+
+
+/'! $CONFIG : toml
+# This is a TOML comment line
+
+SmRunnerSettings.transpilerId = "JavaScript"
+
+# Below is a TOML "table"
+# It's like a prefix for all the keys below it until the next table
+[RenderConfig]
+VariableDeclarations = """
+    // needs to be set before running the state machine
+    myInterface: null,
+    """
+
+DefaultAnyExpTemplate = "{VarsPath}myInterface.{AutoNameCopy()}"
+'/
+@enduml
