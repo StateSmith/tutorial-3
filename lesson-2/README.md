@@ -103,25 +103,26 @@ Additionally, add a transition from `ON1` to `ON2` when the `INC` event is recei
 We need to add four additional lines to the PlantUML file. See if you can do it yourself. If you get stuck, you can find the solution below.
 
  *scroll down* ▼ <br>
+ <br>
+ <br>
+ <br>
+ <br>
  *scroll down* ▼ <br>
+ <br>
+ <br>
+ <br>
+ <br>
  *scroll down* ▼ <br>
+ <br>
+ <br>
+ <br>
+ <br>
  *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
- *scroll down* ▼ <br>
-
+ <br>
+ <br>
+ <br>
+ <br>
+ 
 When you are finished, your PlantUML graphical diagram should look like this:
 
 ![](docs/2024-07-16-01-47-22.png)
@@ -384,8 +385,9 @@ Generate the code using `ss.cli` and open `index.html` in a web browser to inter
 <br>
 <br>
 
-# Next Steps
+# Onwards! ⏭️
 Congratulations! You've created a brand new state machine from scratch that controls a laser flashlight.
 
 In the next section will discuss options on how to connect your state machine to the outside world.
 
+Head on over to [lesson 3 README.md](../lesson-3/README.md).

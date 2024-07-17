@@ -125,6 +125,8 @@ This is really handy because you can see the graphical diagram update live as yo
 # What About StateSmith Commands In PlantUML File?
 The bottom of the `.plantuml` file contains a special comment block that can be used to configure StateSmith settings. This is where you can specify the transpiler to use, and other settings.
 
+The format uses [TOML](https://toml.io/en/) syntax.
+
 ```plantuml
 /'! $CONFIG : toml
 [SmRunnerSettings]
