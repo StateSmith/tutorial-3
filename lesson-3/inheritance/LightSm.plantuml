@@ -1,0 +1,27 @@
+@startuml LightSm
+
+' STATES
+state OFF
+state ON1
+
+' STATE HANDLERS
+[*] -> OFF
+
+OFF: enter / count++;
+OFF: enter / turnOff();
+OFF --> ON1: ON_PRESS
+
+note "Increment count just to show we can" as N1
+
+ON1: enter / turnOn();
+ON1: enter / resetTimer();
+ON1 --> OFF: OFF_PRESS
+ON1 --> OFF: [isTimerExpired()]
+
+
+/'! $CONFIG : toml
+SmRunnerSettings.transpilerId = "JavaScript"
+RenderConfig.JavaScript.ExtendsSuperClass = "LightSmBase"
+RenderConfig.DefaultAnyExpTemplate = "this.{AutoNameCopy()}"
+'/
+@enduml
