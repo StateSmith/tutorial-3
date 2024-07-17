@@ -1,26 +1,35 @@
-// you don't need a base. Just showing as an option.
+// hand written file
 "use strict";
-class LightSmBase
-{
+
+// Base class for the state machine
+class LightSmBase {
     count = 0;
+    
+    // HTML object that we will color and add text to
+    _lightHtmlObject = null;
 
-    lightBlue() {
-        this.print("BLUE");
+    // Holds milliseconds when the timer was started
+    _timerStartMs = 0;
+
+    resetTimer() {
+        this._timerStartMs = Date.now();
     }
 
-    lightYellow() {
-        this.print("YELLOW");
+    // Returns true if the timer was started more than 3 seconds ago
+    isTimerExpired() {
+        return Date.now() - this._timerStartMs > 3000;
     }
 
-    lightRed() {
-        this.print("RED");
+    // Called by the state machine when the light should be turned on
+    turnOn() {
+        this._lightHtmlObject.style.backgroundColor = "yellow";
+        this._lightHtmlObject.style.color = "black"; // text color
+        this._lightHtmlObject.textContent = "Count: " + this.count;
     }
 
-    /**
-     * @param {string} message
-     */
-    print(message) {
-        const output = document.getElementById("output");
-        output.append(message + "\n");
+    turnOff() {
+        this._lightHtmlObject.style.backgroundColor = "black";
+        this._lightHtmlObject.style.color = "white"; // text color
+        this._lightHtmlObject.textContent = "Count: " + this.count;
     }
 }

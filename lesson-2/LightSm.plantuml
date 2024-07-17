@@ -1,0 +1,42 @@
+@startuml LightSm
+
+' STATES
+state OFF
+
+state ON_GROUP {
+    state ON1
+    state ON2
+    state ON3
+}
+
+' STATE HANDLERS
+[*] -> OFF
+
+OFF: enter / off();
+OFF --> ON1: INC
+
+ON_GROUP --> OFF: OFF
+
+ON1: enter / blueLaser();
+ON1 --> ON2: INC
+ON1 --> OFF: DIM
+
+ON2: enter / yellowLaser();
+ON2: enter / count = 0;
+ON2: 1. INC / count++;
+ON2 --> ON3: INC [count >= 3]
+ON2 --> ON1: DIM
+
+ON3: enter / redLaser();
+ON3: enter / count = 5 * 2;
+ON3: 1. do / count--;
+ON3 --> ON2: DIM
+ON3 --> OFF: [count <= 0]
+
+/'! $CONFIG : toml
+RenderConfig.AutoExpandedVars = """
+    count: 0,
+    """
+SmRunnerSettings.transpilerId = "JavaScript"
+'/
+@enduml

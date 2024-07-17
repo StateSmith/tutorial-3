@@ -1,17 +1,45 @@
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Quick Start 1</title>
-    <script src="LightSmBase.js"></script>
-    <script src="LightSm.js"></script>
+    <script src="LightSmBase.js"></script> <!-- Include the user hand written js. -->
+    <script src="LightSm.js"></script> <!-- Include the generated state machine js. Depends on LightSmBase.js. -->
+    <script src="LightController.js"></script> <!-- Include the user hand written js. Depends on LightSm.js. -->
 </head>
-<body style="background-color: black; color: white;">
-    <button id="inc">INC</button>
-    <button id="dim">DIM</button>
-    <button id="off">OFF</button>
-    State machine count var: <code id="count-var">0</code>
-    <pre id="output"></pre>
+
+<body>
+    <div>
+        <h2>Light Bulb 1</h2>
+        <div id="id-light-bulb-1" style="width: 100px; height: 100px;"></div>
+        <br>
+        <button onclick="offPress1()">OFF</button>
+        <button onclick="onPress1()">ON</button>
+    </div>
+
+    <div>
+        <h2>Light Bulb 2</h2>
+        <div id="id-light-bulb-2" style="width: 100px; height: 100px;"></div>
+        <br>
+        <button onclick="offPress2()">OFF</button>
+        <button onclick="onPress2()">ON</button>
+    </div>
 </body>
-<script src="index.js"></script>
+
+<script>
+    // a little bit of javascript that sends the button presses to light controllers
+
+    const lightController1 = new LightController(document.getElementById('id-light-bulb-1'));
+    function onPress1()  { lightController1.handleOnPress();  }
+    function offPress1() { lightController1.handleOffPress(); }
+
+    const lightController2 = new LightController(document.getElementById('id-light-bulb-2'));
+    function onPress2()  { lightController2.handleOnPress();  }
+    function offPress2() { lightController2.handleOffPress(); }
+
+    // periodically tell controllers to update AKA send 'DO' events to their state machines
+    setInterval(() => {
+        lightController1.update();
+        lightController2.update();
+    }, 100);
+</script>
 
 </html>

@@ -1,0 +1,66 @@
+@startuml MarioSm
+' Single line comments (like this) start with a single quote.
+' The name of the state machine is specified above.
+
+'############################ styles ############################
+' Define some colors for the states. Totally optional.
+skinparam state {
+    ' red style:
+    BackgroundColor<<red>> a20025
+    FontColor<<red>> white
+    ' blue style:
+    BackgroundColor<<blue>> 1ba1e2
+    FontColor<<blue>> white
+    ' dark style:
+    BackgroundColor<<dark>> 545454
+    FontColor<<dark>> white
+}
+
+
+'############################ state organization ############################
+
+' The DEFEAT state has an optional <<dark>> style.
+state DEFEAT <<dark>>
+
+' Define a super state (AKA composite state) with substates
+state ALIVE {
+    ' Define the initial transition of this super state.
+    [*] -> SMALL
+    state SMALL
+    state SUPER <<blue>>
+    state FIRE  <<red>>
+}
+
+'############################ handlers ############################
+
+' Define the initial transition of state machine.
+[*] -> ALIVE
+
+' Transition to the DEFEAT state if crushed.
+ALIVE --> DEFEAT: CRUSH
+
+SMALL: enter / smallMario();
+SMALL --> SUPER: MUSHROOM
+SMALL --> FIRE: FIRE_FLOWER
+SMALL --> DEFEAT: HIT
+
+SUPER: enter / superMario();
+SUPER --> FIRE: FIRE_FLOWER
+SUPER --> SMALL: HIT
+
+FIRE: enter / fireMario();
+FIRE --> SUPER: HIT
+
+DEFEAT: enter / defeatedMario();
+DEFEAT --> SMALL: MUSHROOM
+
+'######################## StateSmith config ########################
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+' Feel free to remove or modify it as needed.
+
+/'! $CONFIG : toml
+SmRunnerSettings.transpilerId = "JavaScript"
+'/
+
+@enduml
