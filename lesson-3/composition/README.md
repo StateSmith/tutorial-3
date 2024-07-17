@@ -8,7 +8,7 @@ It doesn't have to an "interface" in the strict sense of the word. It can be a c
 ## Example
 In this lesson, we'll look at a simple example of a light controller that uses a composition pattern to interact with a light state machine.
 
-The `LightController` class contains both a state machine context `LightSmContext` and a state machine `LightSm`. The state machine context is a simple class that variables and function pointers.
+The `LightController` class contains both a state machine context `LightSmContext` (which acts like the interface) and a state machine `LightSm`. The state machine context is a simple class that variables and function pointers.
 
 Before starting the state machine the `LightController` class does the following:
 * sets `LightSmContext` function pointers to its own functions
