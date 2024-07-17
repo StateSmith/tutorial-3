@@ -20,7 +20,7 @@ You should download the full contents of this tutorial to your computer so that 
 <br>
 
 # Downloading the StateSmith CLI
-StateSmith is written in cross platform C# and can be run on Windows, Linux, and MacOS. I chose C# because I make heavy use of the open source Roslyn compiler to transpile the generated state machine code into C99/C++, CSharp, JavaScript...
+StateSmith is written in cross platform C# and can be run on Windows, Linux, and macOS. I chose C# because I make heavy use of the open source Roslyn compiler to transpile the generated state machine code into C99/C++, CSharp, JavaScript...
 
 There are two main ways to run the StateSmith CLI:
 1. Download the pre-built binary for your computer (no need for dotnet).
@@ -74,7 +74,7 @@ sudo mv ss.cli /usr/local/bin
 ```
 
 ### Mac
-🔥 We only have a bit of testing on Mac right now. It looks like `arm64` is not working, but you can use `x64` even on new Macs. See [comment here](https://github.com/StateSmith/StateSmith/issues/260#issuecomment-2210249795).
+🔥 We only have a bit of testing on macOS right now. It looks like `arm64` is not working, but you can use `x64` even on new arm based macs. See [comment here](https://github.com/StateSmith/StateSmith/issues/260#issuecomment-2210249795).
 
 
 ```sh

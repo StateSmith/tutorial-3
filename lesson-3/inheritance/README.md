@@ -1,5 +1,5 @@
 # Inheritance Pattern
-Same state machine design is the same as the composition example but implemented with inheritance.
+This example uses the same state machine design as the composition example but implemented this time using inheritance.
 
 ![](docs/design.png)
 
@@ -61,7 +61,7 @@ See .js files for implementation details.
 
 ## Tips
 * Depending upon your target language, you may be able to inject class code into the generated state machine class. I would use this sparingly, but it can be useful if you want to do something unique.
-* C# idea to make it easier to combine the base class and abstraction (controller) class in one class easily.
+* C# idea to make it easier to combine the base class and abstraction (controller) class in one class.
     * https://github.com/StateSmith/StateSmith/issues/356
 
 

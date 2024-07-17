@@ -3,14 +3,14 @@ This pattern is one of the most flexible.
 
 The concept is simple. You use a state machine variable to store a reference to an object that implements a specific interface. The state machine can then call functions on the interface to interact with the outside world.
 
-It doesn't have to an "interface" in the strict sense of the word. It can be a class or a struct with variables and functions.
+It doesn't have to be an "interface" in the strict sense of the word. It can be a class or a struct with variables and functions.
 
 ## Example
 In this lesson, we'll look at a simple example of a light controller that uses a composition pattern to interact with a light state machine.
 
-The `LightController` class contains both a state machine context `LightSmContext` (which acts like the interface) and a state machine `LightSm`. The state machine context is a simple class that variables and function pointers.
+The `LightController` class contains both a state machine context `LightSmContext` (which acts like the interface) and a state machine `LightSm`. The state machine context is a simple class with variables and function pointers.
 
-Before starting the state machine the `LightController` class does the following:
+Before starting the state machine, the `LightController` class does the following:
 * sets `LightSmContext` function pointers to its own functions
 * sets a variable in `LightSm` to reference the `LightSmContext` object
 
@@ -27,7 +27,7 @@ This diagram shows how the function objects/pointers in the `LightSmContext` cla
 This allows the state machine to effectively call private methods in the `LightController` class. It also has a number of other benefits like making it easier to test the state machine.
 
 ## Design
-The PlantUML diagram below shows the behavior the light controller example:
+The PlantUML diagram below shows the behavior of the light controller example:
 
 * `OFF` is the initial state and transitions to `ON1` when the on button is pressed.
 * `ON1` transitions to `OFF` if the timer expires or the off button is pressed.

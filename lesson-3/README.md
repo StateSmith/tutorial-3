@@ -27,10 +27,10 @@ Use whatever pattern you prefer.
 # Congratulations! 🎉
 You now know how to create a state machine using PlantUML and StateSmith.
 
-Here's some next steps if you are interested in learning more:
+Here are some next steps if you are interested in learning more:
 * [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) for language specific details. You don't need to run code generation again. It's already done for you. You can run/explore the projects without needing to run .csx files.
 * [fundamentals page](https://statesmith.github.io/fundamentals-1/)
 * [examples](https://github.com/StateSmith/StateSmith-examples/blob/main/README.md)
 * [draw.io](https://github.com/StateSmith/StateSmith/wiki/draw.io) - great for large designs
-* [youtube channel](https://www.youtube.com/@statesmith)
+* [YouTube channel](https://www.youtube.com/@statesmith)
 
