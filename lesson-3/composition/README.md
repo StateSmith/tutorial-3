@@ -22,7 +22,7 @@ mermaid diagram link: https://mermaid.live/edit#pako:eNqVk01vgzAMhv8K8mmTaAX0g8J
 
 This diagram shows how the function objects/pointers in the `LightSmContext` class are set to the functions in the `LightController` class.
 
-![](./docs/color-arrows.png.png)
+![](./docs/color-arrows.png)
 
 This allows the state machine to effectively call private methods in the `LightController` class. It also has a number of other benefits like making it easier to test the state machine.
 
