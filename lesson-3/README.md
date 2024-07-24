@@ -15,21 +15,37 @@ See [`RenderConfig`](https://github.com/StateSmith/StateSmith/blob/main/docs/set
 
 
 # C99/C++
-If you are using C/C++, check out this [.inc file tutorial](https://github.com/StateSmith/StateSmith-examples/tree/main/c-include-sm-basic-2-plantuml-tutorial) and skip the below `Composition & Inheritance` section.
+If you are using C/C++, check out this [.inc file tutorial](https://github.com/StateSmith/StateSmith-examples/tree/main/c-include-sm-basic-2-plantuml-tutorial).
 
 
 <br>
 
-# Composition & Inheritance
-> Not for C/C++.
+# Composition
+Pros:
+- generally more flexible
+- works for any language
+- easy to test
 
-There are two sub directories in this lesson for each pattern. The state machine design is the same in both cases. The difference is in how the state machine is connected to the outside world.
+Cons:
+- a bit more work to set up
+- might use a bit more RAM for function pointers (depending on language/platform)
 
-Explore both example directories to see the differences.
+See [composition](./composition/README.md) for more details.
 
-Use whatever pattern you prefer.
-* Composition is generally more flexible and easier to test.
-* Inheritance can be simpler and is usually less work.
+
+<br>
+
+# Inheritance
+> Not applicable to C99 or C++ (currently implemented in C style).
+
+Pros:
+- often less work
+
+Cons:
+- less flexible
+- can feel un-natural for some designs
+
+See [inheritance](./inheritance/README.md) for more details.
 
 
 <br>

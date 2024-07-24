@@ -1,0 +1,33 @@
+@startuml LightSm
+
+' STATES
+state OFF
+state ON1
+
+' STATE HANDLERS
+[*] -> OFF
+
+OFF: enter / ctx.count++;
+OFF: enter / ctx.turnOff();
+OFF --> ON1: ON_PRESS
+
+note "'ctx' is short for 'context'" as N1
+
+ON1: enter / ctx.turnOn();
+ON1: enter / ctx.resetTimer();
+ON1 --> OFF: OFF_PRESS
+ON1 --> OFF: [ctx.isTimerExpired()]
+
+' //////////////////////// StateSmith config ////////////////////////
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+
+/'! $CONFIG : toml
+SmRunnerSettings.transpilerId = "JavaScript"
+SmRunnerSettings.simulation.enableGeneration = false
+RenderConfig.AutoExpandedVars = """
+    // needs to be set before running the state machine
+    ctx: null,
+    """
+'/
+@enduml
