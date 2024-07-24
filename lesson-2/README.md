@@ -3,7 +3,7 @@ In this lesson, we will create a new state machine from scratch that controls a 
 
 You can see it in action by opening `index.html` in a web browser.
 
-![](docs/intro.png)
+![](./docs/intro.png)
 
 ## Delete Existing `LightSm.*` Files
 Our goal is to create a new state machine from scratch so go ahead and delete the existing `LightSm.*` files in this directory.
@@ -19,29 +19,29 @@ ss.cli
 ```
 
 Use the arrow keys to select `Create` and hit enter.<br>
-![](docs/main-menu.png)
+![](./docs/main-menu.png)
 
 Select `User Friendly` and hit enter.<br>
-![](docs/select-user-friendly.png)
+![](./docs/select-user-friendly.png)
 
 Type in the name of the state machine `LightSm` and hit enter.<br>
 📢 NOTE! It must be exactly `LightSm` for the rest of this lesson to work.<br>
-![](docs/type-light-sm.png)
+![](./docs/type-light-sm.png)
 
 Select `JavaScript` and hit enter.<br>
-![](docs/select-js.png)
+![](./docs/select-js.png)
 
 Select `PlantUML` and hit enter.<br>
-![](docs/select-plantuml.png)
+![](./docs/select-plantuml.png)
 
 Take the default suggestion for diagram name/path by hitting enter.<br>
-![](docs/take-diagram-path-suggestion.png)
+![](./docs/take-diagram-path-suggestion.png)
 
 Select the minimal (or any) template and hit enter.<br>
-![](docs/select-plantuml-minimal-template.png)
+![](./docs/select-plantuml-minimal-template.png)
 
 Select `yes` to confirm and hit enter.<br>
-![](docs/confirm-minimal.png)
+![](./docs/confirm-minimal.png)
 
 You should now see a `LightSm.plantuml` file in this directory.
 
@@ -74,7 +74,7 @@ SmRunnerSettings.transpilerId = "JavaScript"
 
 We now have a state machine with two states `OFF` and `ON1`. The `OFF` state is the initial state and the `ON1` state is the state when the laser flashlight is on.
 
-![](docs/2024-07-16-01-48-31.png)
+![](./docs/two-states.png)
 
 # Generate The State Machine Code
 Run the below command in this directory to generate code from your diagram file.
@@ -125,7 +125,7 @@ We need to add four additional lines to the PlantUML file. See if you can do it 
  
 When you are finished, your PlantUML graphical diagram should look like this:
 
-![](docs/2024-07-16-01-47-22.png)
+![](./docs/add-on2.png)
 
 and your PlantUML text file should now look something like this:
 
@@ -235,11 +235,11 @@ We don't need to order the other transition behavior because unordered behaviors
 
 Your ON2 state should now look like this:
 
-![](docs/2024-07-16-02-27-20.png)
+![](./docs/on2-closeup.png)
 
 If you accidentally put the `1.` in the wrong place, you will either get a StateSmith error message, or your generated code will have a syntax error:
 
-![](docs/2024-07-16-02-30-09.png)
+![](./docs/order-error-ex.png)
 
 If you are ever unsure about the syntax, you can always refer to the StateSmith behavior documentation [here](https://github.com/StateSmith/StateSmith/wiki/Behaviors).
 
@@ -253,7 +253,7 @@ ON3 --> ON2: DIM
 
 Your PlantUML file should now look like this:
 
-![](docs/2024-07-16-02-38-22.png)
+![](./docs/finish-on3.png)
 
 ```plantuml
 @startuml LightSm
@@ -340,7 +340,7 @@ If, however, you want a behavior/transition to be checked for any event/trigger,
 ### Test It
 Your design should now look like this:
 
-![](docs/2024-07-16-03-14-33.png)
+![](./docs/transition-to-off.png)
 
 Generate the code using `ss.cli` and open `index.html` in a web browser to interact with the state machine. You may need to refresh the page in your browser to see the changes.
 
@@ -378,7 +378,7 @@ And that's it! Normally handwriting a hierarchical state machine is a lot more w
 ### Test It
 Your design should now look like this:
 
-![](docs/2024-07-16-03-19-37.png)
+![](./docs/final.png)
 
 Generate the code using `ss.cli` and open `index.html` in a web browser to interact with the state machine. You may need to refresh the page in your browser to see the changes.
 

@@ -14,7 +14,7 @@ Before starting the state machine, the `LightController` class does the followin
 * sets `LightSmContext` function pointers to its own functions
 * sets a variable in `LightSm` to reference the `LightSmContext` object
 
-![](docs/2024-07-16-18-17-34.png)
+![](./docs/class-diagram.png)
 
 <!--
 mermaid diagram link: https://mermaid.live/edit#pako:eNqVk01vgzAMhv8K8mmTaAX0g8Jhl623TZ3UnSakKiOmRIMEJaFqV_HfF6C0W6Galksivw_2G8ccIRYUIYQ4I0o9MbKVJI94xC2zmpj1zLapfhRcS5FlKK1jK9arkGxHNLbIOq8h3Gtro7rjTbRmujKNXH5kLLbKghro7r4npITTDFf8VaJSt_Uk6QOnwhtdSr7it6UkGdRMPtRvLEc5KDPVaMt9wSTSDqkGWnjpz7mDjGsrFiU_9-naY8_YkJv_WLjU3hFpsiUokcdoaWGM_HoyylRBdJwud8h1L-n1UIxGD1e3_JP7ARhf_QRgg7lVThg149nYjkCnmGMEoTlSIj8jiHhluHZslpRpISFMSKbQBlJqsT7wGEItS-yg04h3QWy-eTn9A_VmQ0E4hEfYQzid-uOFN5-5jhf4ge_bcDDB2XhqApPAmXuB4_pBZcOXECalMw5cz1m4rmfUxcSfz5pk743Y1pOi3KYni9U3PJkaKw
@@ -22,7 +22,7 @@ mermaid diagram link: https://mermaid.live/edit#pako:eNqVk01vgzAMhv8K8mmTaAX0g8J
 
 This diagram shows how the function objects/pointers in the `LightSmContext` class are set to the functions in the `LightController` class.
 
-![](docs/2024-07-16-18-20-05.png)
+![](./docs/color-arrows.png.png)
 
 This allows the state machine to effectively call private methods in the `LightController` class. It also has a number of other benefits like making it easier to test the state machine.
 
@@ -32,11 +32,11 @@ The PlantUML diagram below shows the behavior of the light controller example:
 * `OFF` is the initial state and transitions to `ON1` when the on button is pressed.
 * `ON1` transitions to `OFF` if the timer expires or the off button is pressed.
 
-![](docs/2024-07-16-18-22-47.png)
+![](./docs/fsm.png)
 
 Open `index.html` in a browser to see multiple instances of the light controller in action.
 
-![](docs/light-bulbs.gif)
+![](./docs/light-bulbs.gif)
 
 
 ## PlantUML Settings
@@ -104,7 +104,7 @@ Instead of using `DefaultAnyExpTemplate`, you can explicitly use a context varia
 
 See the [composition-2](../composition-2/README.md) example for more details.
 
-![](docs/ctx.png)
+![](./docs/ctx.png)
 
 ## Implementation Details
 See .js files for implementation details.

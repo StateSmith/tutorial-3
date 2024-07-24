@@ -10,7 +10,7 @@ https://mermaid.live/edit#pako:eNp9klFPgzAQx79Kc0-asKXAYIMYH9S9aWaiT4aXSo_RCC1py
 
  -->
 
- ![](docs/2024-07-16-19-59-55.png)
+ ![](./docs/class-diagram.png)
  
 ## PlantUML Settings
 At the bottom of the PlantUML file, you can see the TOML settings that were used to generate the code.
