@@ -18,7 +18,7 @@ At the bottom of the PlantUML file, you can see the TOML settings that were used
 ```toml
 SmRunnerSettings.transpilerId = "JavaScript"
 RenderConfig.JavaScript.ExtendsSuperClass = "LightSmBase"
-RenderConfig.DefaultAnyExpTemplate = "this.{AutoNameCopy()}"
+RenderConfig.DefaultAnyExpTemplate = "this.{AutoNameCopy()}" # not needed for C#
 ```
 
 The most interesting part of the above is the `DefaultAnyExpTemplate` setting. You can [read more about it here](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md#renderconfigdefaultanyexptemplate).
@@ -27,6 +27,8 @@ Essentially it translates your state machine action code:
 * `resetTimer()` into `this.resetTimer()`
 * `count++` into `this.count++`
 * ...
+
+📢**NOTE!!!** The `DefaultAnyExpTemplate` setting is not needed for C# as `resetTimer()` is already equivalent to `this.resetTimer()`.
 
 You can see this clearly in the generated LightSm.js file:
 
@@ -55,6 +57,21 @@ class LightSm extends LightSmBase
     }
 }
 ```
+
+## `DefaultAnyExpTemplate` Affects Every Identifier
+For example, if you had the text `output_press = true;` in your state machine, it would be expanded to `this.output_press = this.true;`.
+
+See [issue 363](https://github.com/StateSmith/StateSmith/issues/363) for workaround and plans for improvement.
+
+## Alternative to `DefaultAnyExpTemplate`
+Instead of using `DefaultAnyExpTemplate`, you can explicitly just use `this.` like `this.count++` in your state machine code.
+
+See the [inheritance-2](../inheritance-2/README.md) example for more details.
+
+![](docs/inheritance-2.png)
+
+This is a bit more verbose, but allows us to also access global variables/functions/keywords normally without them being picked up by `DefaultAnyExpTemplate`.
+
 
 ## Implementation Details
 See .js files for implementation details.

@@ -94,6 +94,18 @@ class LightSm
 }
 ```
 
+## `DefaultAnyExpTemplate` Affects Every Identifier
+For example, if you had the text `output_press = true;` in your state machine, it would be expanded to `this.vars.myInterface.output_press = this.vars.myInterface.true;`.
+
+See [issue 363](https://github.com/StateSmith/StateSmith/issues/363) for workaround and plans for improvement.
+
+## Alternative to `DefaultAnyExpTemplate`
+Instead of using `DefaultAnyExpTemplate`, you can explicitly use a context variable in your diagram. You can name it whatever you want `i`, `iface`, `c`, `ctx`...
+
+See the [composition-2](../composition-2/README.md) example for more details.
+
+![](docs/ctx.png)
+
 ## Implementation Details
 See .js files for implementation details.
 
