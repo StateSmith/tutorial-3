@@ -327,7 +327,7 @@ ON3 --> OFF: [count <= 0]
 
 We see that the transition from `ON3` to `OFF` is guarded by `[count <= 0]`, but there is no event explicitly associated with it like `DIM` or `INC`.
 
-For convenience, StateSmith will *implicitly* assume the `DO` event for any behavior/transition that do not have an explicit event associated with it.
+For convenience, StateSmith will *implicitly* assume the `DO` event for any behavior/transition that does not have an explicit event associated with it.
 
 You can see this if you open the `LightSm.sim.html` file in your browser and look at the `ON3` state. You will see that the transition to `OFF` is guarded by `DO [count <= 0]`.
 
@@ -388,6 +388,6 @@ Generate the code using `ss.cli` and open `index.html` in a web browser to inter
 # Onwards! ⏭️
 Congratulations! You've created a brand new state machine from scratch that controls a laser flashlight.
 
-In the next section will discuss options on how to connect your state machine to the outside world.
+In the next section, we will discuss options on how to connect your state machine to the outside world.
 
 Head on over to [lesson 3 README.md](../lesson-3/README.md).
