@@ -50,8 +50,10 @@ You can now skip to the next section (past downloading).
 
 If you run into any issues, please consider installing the StateSmith CLI using a dotnet SDK as described in the previous section. It has worked well for many users so far and is indirectly supported by Microsoft.
 
+Release files: [https://github.com/StateSmith/StateSmith/releases](https://github.com/StateSmith/StateSmith/releases)
+
 ### Windows
-1. Download binary from [here](https://github.com/StateSmith/StateSmith/releases). If unsure, use `windows-x64`.
+1. Download binary from releases page. If unsure, use [windows-x64-compressed](https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0/ss.cli-win-x64-compressed.exe).
 2. Put the binary in this directory.
 3. Rename the downloaded binary to `ss.cli.exe`.
 
@@ -82,7 +84,7 @@ sudo mv ss.cli /usr/local/bin
 wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.10.0/ss.cli-osx-x64-compressed
 
 # rename the binary so that following instructions are cross platform
-mv ss.cli-osx-x64 ss.cli
+mv ss.cli-osx-x64-compressed ss.cli
 
 # make binary executable
 chmod +x ss.cli
