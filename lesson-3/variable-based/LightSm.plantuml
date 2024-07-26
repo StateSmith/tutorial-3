@@ -1,0 +1,45 @@
+@startuml LightSm
+
+' STATES
+state OFF {
+    state OFF_READY
+    state OFF_TIMED_OUT {
+        note "Wait for switch release" as N1
+    }
+    [*] -> OFF_READY
+}
+
+state ON1
+
+' STATE HANDLERS
+[*] --> OFF
+
+OFF: enter / count++;
+OFF: enter / font_color = "white";
+OFF: enter / bg_color = "black";
+
+OFF_READY --> ON1: [ input_active ]
+
+OFF_TIMED_OUT -up-> OFF_READY: [ ! input_active ]
+
+ON1: enter / font_color = "black";
+ON1: enter / bg_color = "yellow";
+ON1: enter / timer_ms = 0;
+ON1 -> OFF: [ ! input_active ]
+ON1 -> OFF_TIMED_OUT: [timer_ms > 3000]
+
+
+/'! $CONFIG : toml
+SmRunnerSettings.transpilerId = "JavaScript"
+RenderConfig.AutoExpandedVars = """
+    // INPUTs
+    input_active: false,
+    timer_ms: 0, // state machine clears this value as needed
+
+    // OUTPUTs from the state machine
+    font_color: "white",
+    bg_color: "grey",
+    count: 0,
+    """
+'/
+@enduml
