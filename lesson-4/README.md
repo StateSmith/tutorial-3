@@ -38,7 +38,7 @@ RenderConfig.JavaScript.UseExportOnClass = true
 RenderConfig.FileTop = """
     "use strict";    
     import { LightSmBase } from "./LightSmBase.js"; // or whatever you need...
-    """;
+    """
 ```
 
 
