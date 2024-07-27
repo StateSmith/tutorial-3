@@ -220,7 +220,7 @@ OFF
 
 OFF : OFF
 
-OFF : enter / #123; printf("Light is#58#59; OFF" NEWLINE)#59; #125;
+OFF : enter / #123; printf("Light is OFF" NEWLINE)#59; #125;
 
 state ON_GROUP {
 
@@ -436,10 +436,10 @@ evaluateGuard = null;
         } // end of behavior for OFF
         
         // OFF behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is: OFF\" NEWLINE);"); }
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\" NEWLINE);"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is: OFF\" NEWLINE);");`
-            this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is: OFF\" NEWLINE);");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\" NEWLINE);");`
+            this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\" NEWLINE);");
         } // end of behavior for OFF
     }
     

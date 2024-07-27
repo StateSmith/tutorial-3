@@ -146,10 +146,10 @@ static void OFF_enter(LightSm* sm)
     sm->current_event_handlers[LightSm_EventId_INC] = OFF_inc;
     
     // OFF behavior
-    // uml: enter / { printf("Light is: OFF" NEWLINE); }
+    // uml: enter / { printf("Light is OFF" NEWLINE); }
     {
-        // Step 1: execute action `printf("Light is: OFF" NEWLINE);`
-        printf("Light is: OFF" NEWLINE);
+        // Step 1: execute action `printf("Light is OFF" NEWLINE);`
+        printf("Light is OFF" NEWLINE);
     } // end of behavior for OFF
 }
 
