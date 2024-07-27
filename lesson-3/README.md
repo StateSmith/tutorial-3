@@ -74,14 +74,8 @@ Similar to inheritance approach.
 <br>
 <br>
 
-# Congratulations! 🎉
-You now know how to create a state machine using PlantUML and StateSmith.
+# Onwards! ⏭️
+The next lesson covers language specific details.
 
-Here are some next steps if you are interested in learning more:
-* [fundamentals page](https://statesmith.github.io/fundamentals-1/) - tons of useful interactive demos and information.
-* [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) for language specific details. You don't need to run code generation again. It's already done for you. You can run/explore the projects without needing to run .csx files.
-* [examples](https://github.com/StateSmith/StateSmith-examples/blob/main/README.md)
-    * [draw nicer diagrams with PlantUML](https://github.com/StateSmith/StateSmith-examples/blob/main/embedded-solar-1/README.md)
-* [draw.io](https://github.com/StateSmith/StateSmith/wiki/draw.io) - great for large designs
-* [YouTube channel](https://www.youtube.com/@statesmith)
+Head on over to [lesson 4 README.md](../lesson-4/README.md).
 

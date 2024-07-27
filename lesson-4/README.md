@@ -7,9 +7,51 @@ About darn time we get to our favorite languages. Wait! What's this? It's the ðŸ
 
 Before we head on to our favorite languages, it is [important to consider concurrency](https://github.com/StateSmith/StateSmith/wiki/Concurrency).
 
-Once you got that figured out, navigate to the directory of your desired language/framework and check the README.md there.
+Once you have got that figured out, continue on to your desired language/framework.
 
-# More Languages Coming Soon
-I'm still migrating files from tutorial 2 here.
+# Language Specifics
 
-In the mean time, see [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) for language specific details. You don't need to run code generation again. It's already done for you. You can run/explore the projects without needing to run .csx files.
+## C99
+See [./c99-gcc/](./c99-gcc/README.md) directory.
+
+## C++
+I am still migrating/updating [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) files for this tutorial.
+
+ Recommend [this recent example](https://github.com/StateSmith/StateSmith-examples/tree/main/button-simple-1) in the meantime.
+
+Relevant StateSmith config settings:
+```toml
+SmRunnerSettings.transpilerId = "C99"
+RenderConfig.C.CFileExtension = ".cpp"
+```
+
+## C#
+See [./csharp/](./csharp/README.md) directory.
+
+## JavaScript
+I am still migrating/updating [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) files for this tutorial.
+
+If you are using node.js, here are some relevant StateSmith config settings:
+```toml
+RenderConfig.JavaScript.UseExportOnClass = true
+
+RenderConfig.FileTop = """
+    "use strict";    
+    import { LightSmBase } from "./LightSmBase.js"; // or whatever you need...
+    """;
+```
+
+
+<br>
+<br>
+
+# Congratulations! ðŸŽ‰
+You now know how to create a state machine using PlantUML and StateSmith.
+
+Here are some next steps if you are interested in learning more:
+* [fundamentals page](https://statesmith.github.io/fundamentals-1/) - tons of useful interactive demos and information.
+* [examples](https://github.com/StateSmith/StateSmith-examples/blob/main/README.md)
+* [draw.io](https://github.com/StateSmith/StateSmith/wiki/draw.io) - great for large designs
+* [YouTube channel](https://www.youtube.com/@statesmith)
+
+
