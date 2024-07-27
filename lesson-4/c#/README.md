@@ -5,9 +5,6 @@ If you like StateSmith and want to help improve it, your help would be very much
 
 https://github.com/StateSmith/StateSmith/wiki/Contributing
 
-# Assumptions
-This lesson assumes you've covered the previous ones.
-
 # Diagram
 See [LightSm.plantuml](./LightSm.plantuml) for the PlantUML code.
 
