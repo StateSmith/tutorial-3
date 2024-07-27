@@ -1,5 +1,5 @@
-# C - Welcome!
-This example uses gcc for convenience, but you can use any C99 compiler you like.
+# C++ - Welcome!
+This example uses gcc for convenience, but you can use any C++ compiler you like.
 
 The only GCC specific things are:
 - the tiny build shell script `build_run.sh`
@@ -7,14 +7,12 @@ The only GCC specific things are:
 # Diagram
 See [LightSm.plantuml](./LightSm.plantuml) for the PlantUML code.
 
+![](docs/fsm.png)
+
 > NOTE: I just noticed a minor issue with StateSmith PlantUML support and `\n` characters.
-I don't normally use `printf()` directly in my state machines, but I did in this example.
+C++ already has `std::endl` so this is less of an issue for C++ than for C.
 See [issue 369](https://github.com/StateSmith/StateSmith/issues/369) for workaround and details.
 
-> This project defines a macro `NEWLINE` to get around this issue.
-
-
-![](docs/fsm.png)
 
 # Run The Code Gen
 Run in this directory:

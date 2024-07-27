@@ -12,18 +12,14 @@ Once you have got that figured out, continue on to your desired language/framewo
 # Language Specifics
 
 ## C99
+Below example uses gcc for convenience, but you can use any C99 compiler you like.
+
 See [./c99-gcc/](./c99-gcc/README.md) directory.
 
 ## C++
-I am still migrating/updating [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) files for this tutorial.
+Below example uses gcc for convenience, but you can use any C++ compiler you like.
 
- Recommend [this recent example](https://github.com/StateSmith/StateSmith-examples/tree/main/button-simple-1) in the meantime.
-
-Relevant StateSmith config settings:
-```toml
-SmRunnerSettings.transpilerId = "C99"
-RenderConfig.C.CFileExtension = ".cpp"
-```
+See [./cpp-gcc/](./cpp-gcc/README.md) directory.
 
 ## C#
 See [./csharp/](./csharp/README.md) directory.

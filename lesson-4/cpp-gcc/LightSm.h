@@ -7,7 +7,7 @@
 #pragma once
 #include <stdint.h>
 
-// any additional includes you want in the header file
+// any includes you want in the header file go here
 
 typedef enum LightSm_EventId
 {

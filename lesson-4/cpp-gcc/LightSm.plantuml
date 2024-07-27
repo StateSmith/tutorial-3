@@ -17,24 +17,25 @@ state ON_GROUP {
 ' ///////////////////////// STATE HANDLERS /////////////////////////
 ' Syntax: https://github.com/StateSmith/StateSmith/wiki/Behaviors
 
-OFF: enter / printf("Light is OFF" NEWLINE);
+OFF: enter / std::cout << "Light is OFF" << std::endl;
 OFF --> ON1: INC
 
 ON_GROUP --> OFF : OFF
 
-ON1: enter / Light_blue();
+ON1: enter / Light::blue();
 ON1 --> ON2: INC
 ON1 --> OFF: DIM
 
-ON2: enter / Light_yellow();
+ON2: enter / Light::yellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
-ON2: 2. INC / printf("    Count: %i" NEWLINE, count);
+ON2: 2. INC / std::cout << "    Count: " << count << std::endl;
 ON2 --> ON_HOT: INC [count >= 3]
 ON2 --> ON1: DIM
 
-ON_HOT: enter / Light_red();
+ON_HOT: enter / Light::red();
 ON_HOT --> ON2: DIM
+
 
 
 ' //////////////////////// StateSmith config ////////////////////////
@@ -55,15 +56,14 @@ AutoExpandedVars = """
     """
 
 [RenderConfig.C]
+CFileExtension = ".cpp"
+# HFileExtension = ".hpp"
 HFileIncludes = """
-    // any additional includes you want in the header file
+    // any includes you want in the header file go here
     """
 CFileIncludes = """
-    #include <stdio.h> // user include. required for printf.
-    #include "Light.h" // user include. required for Light_* functions.
-    """
-CFileTop = """
-    #define NEWLINE "\\n" // For StateSmith PlantUML issue https://github.com/StateSmith/StateSmith/issues/369
+    #include "Light.h" // user include. required for Light functions.
+    #include <iostream> // user include. required for printf.
     """
 
 # Uncomment below line to tell GCC to pack the enum to save some RAM
