@@ -32,7 +32,7 @@ If you already have a dotnet SDK (6,7,8) installed, you can quickly install the 
 ```sh
 dotnet tool install --global StateSmith.Cli
 ```
-Make sure that the StateSmith.Cli version is at least `0.12.2`. You can check the version by running:
+Make sure that the StateSmith.Cli version is at least `0.10.0`. I generally recommend using the latest release available. You can check the version by running:
 
 ```sh
 ss.cli --version
