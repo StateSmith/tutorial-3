@@ -32,7 +32,7 @@ If you already have a dotnet SDK (6,7,8) installed, you can quickly install the 
 ```sh
 dotnet tool install --global StateSmith.Cli
 ```
-Make sure that the StateSmith.Cli version is at least `0.10.0`. You can check the version by running:
+Make sure that the StateSmith.Cli version is at least `0.12.2`. You can check the version by running:
 
 ```sh
 ss.cli --version
@@ -53,7 +53,7 @@ If you run into any issues, please consider installing the StateSmith CLI using 
 Release files: [https://github.com/StateSmith/StateSmith/releases](https://github.com/StateSmith/StateSmith/releases)
 
 ### Windows
-1. Download binary from releases page. If unsure, use [windows-x64-compressed](https://github.com/StateSmith/StateSmith/releases/download/cli-v0.11.0/ss.cli-win-x64-compressed.exe).
+1. Download binary from [releases page](https://github.com/StateSmith/StateSmith/releases). If unsure, use [windows-x64-compressed](https://github.com/StateSmith/StateSmith/releases/download/cli-v0.12.2/ss.cli-win-x64-compressed.exe).
 2. Put the binary in this directory.
 3. Rename the downloaded binary to `ss.cli.exe`.
 
@@ -62,7 +62,7 @@ The below instructions assume Linux x64 (non-Alpine). Alpine and `ARM` binaries 
 
 ```sh
 # download the 60 MB binary
-wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.11.0/ss.cli-linux-x64-compressed
+wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.12.2/ss.cli-linux-x64-compressed
 
 # rename the binary so that following instructions are cross platform
 mv ss.cli-linux-x64-compressed ss.cli
@@ -81,7 +81,7 @@ sudo mv ss.cli /usr/local/bin
 
 ```sh
 # download the 60 MB binary
-wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.11.0/ss.cli-osx-x64-compressed
+wget https://github.com/StateSmith/StateSmith/releases/download/cli-v0.12.2/ss.cli-osx-x64-compressed
 
 # rename the binary so that following instructions are cross platform
 mv ss.cli-osx-x64-compressed ss.cli
