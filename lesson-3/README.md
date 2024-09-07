@@ -10,6 +10,7 @@ Each language has various technical options for connecting your state machine to
 | C99/C++    | ✅      | ✅   | ✅          | ❌          | ✅        | ❌            |
 | C#         | ✅      | ✅   | ✅          | ✅          | ❌        | ✅            |
 | JavaScript | ✅      | ✅   | ✅          | ✅          | ❌        | ❌            |
+| Java       | ✅      | ✅   | ✅          | ✅          | ❌        | ❌            |
 
 > C++ is still using the C99 transpiler. It will eventually support C++ features.
 
