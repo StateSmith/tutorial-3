@@ -25,9 +25,10 @@ See [./cpp-gcc/](./cpp-gcc/README.md) directory.
 See [./csharp/](./csharp/README.md) directory.
 
 ## JavaScript
-I am still migrating/updating [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) files for this tutorial.
+Most of this tutorial used JavaScript so you should have a good base already.
 
 If you are using node.js, here are some relevant StateSmith config settings:
+
 ```toml
 RenderConfig.JavaScript.UseExportOnClass = true
 
@@ -36,6 +37,13 @@ RenderConfig.FileTop = """
     import { LightSmBase } from "./LightSmBase.js"; // or whatever you need...
     """
 ```
+
+I am still migrating/updating [tutorial 2 lesson 5](https://github.com/StateSmith/tutorial-2/tree/main/lesson-5) files for this tutorial.
+
+
+## Java
+See [./java/](./java/README.md) directory.
+
 
 
 <br>
