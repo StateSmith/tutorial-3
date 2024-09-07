@@ -110,7 +110,13 @@ SMALL --> DEFEAT: HIT
 ## Pro PlantUML Tip
 If you are new to PlantUML, you can use the [PlantUML online editor](https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuOhMYbNGjLC8zdNqyU42amgwGBwFOv2xAvT3QbuAK140). It is a great way to learn PlantUML and see your diagrams in real time.
 
-I would also highly recommend the [PlantUML extension for vscode](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml). It is a great way to see your diagrams in vscode and get syntax highlighting. You can see a graphical representation of the diagram by opening the plantuml file in vscode and pressing `Alt + D` or clicking the `Preview` button in the top right corner of the editor.
+I would also highly recommend the [PlantUML extension for vscode](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml). It is a great way to see your diagrams in vscode and get syntax highlighting. 
+
+📢 NOTE! The PlantUML extension requires java or you can configure it to use an online server to the do the rendering.
+
+![](docs/puml-extension-settings.png)
+
+You can see a graphical representation of the diagram by opening the plantuml file in vscode and pressing `Alt + D` or clicking the `Preview` button in the top right corner of the editor.
 
 ![](docs/preview-button.png)
 
