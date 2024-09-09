@@ -193,7 +193,7 @@ RenderConfig.AutoExpandedVars = """
 Note the following about the `AutoExpandedVars` section:
 * We are using a TOML multi-line string here so that it is easy to add more than one variable.
 * The variable is in the `AutoExpandedVars` section so we can reference it in the PlantUML file naturally instead of writing `this.vars.count` or something similar.
-* **<u>This</u> declaration syntax is programming language specific**. If we were generating C/C++/C#/Java (instead of JS), we would use different syntax to initialize the variable. 
+* **<u>This</u> declaration syntax is programming language specific**. If we were generating C/C++/C#/Java/... (instead of JS), we would use different syntax to initialize the variable. 
 More info [here](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md#renderconfigautoexpandedvars).
 
 

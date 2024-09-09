@@ -45,6 +45,10 @@ I am still migrating/updating [tutorial 2 lesson 5](https://github.com/StateSmit
 See [./java/](./java/README.md) directory.
 
 
+## Python
+See [./python/](./python/README.md) directory.
+
+
 
 <br>
 <br>

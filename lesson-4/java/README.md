@@ -1,5 +1,5 @@
 # Java - Welcome!
-Java support was added in CLI version 0.13.0 (lib version 0.14.0).
+📢 Java support was added in CLI version 0.13.0 (lib version 0.14.0).
 
 # Diagram
 See [LightSm.plantuml](./my_light_package/LightSm.plantuml) for the PlantUML code.
