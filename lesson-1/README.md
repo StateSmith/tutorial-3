@@ -24,7 +24,7 @@ In this directory (`lesson-1`) run the following command to run StateSmith <u>h<
 ss.cli run -h
 ```
 
-If you don't have the `ss.cli` binary in your PATH, you will need to run the following command instead to access the ss.cli binary in the tutorial root directory:
+If you don't have the `ss.cli` binary in your PATH, you may need to adjust the command something like below (assuming the binary is in the parent directory).
 
 ```sh
 ../ss.cli run -h
