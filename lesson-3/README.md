@@ -13,7 +13,7 @@ Each language has various technical options for connecting your state machine to
 | Java       | ✅      | ✅   | ✅          | ✅          | ❌        | ❌            |
 | Python     | ✅      | ✅   | ✅          | ✅          | ❌        | ❌            |
 
-> C++ is still using the C99 transpiler. It will eventually support C++ features.
+> C++ is still using the C99 transpiler. We will support C++ features in the future.
 
 See [`RenderConfig`](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md) options for your particular language.
 
