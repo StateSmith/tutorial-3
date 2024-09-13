@@ -7,23 +7,23 @@ class LightSm
     static EventId = 
     {
         DO : 0, // The `do` event is special. State event handlers do not consume this event (ancestors all get it too) unless a transition occurs.
-        OFF_PRESS : 1,
-        ON_PRESS : 2,
     }
     static { Object.freeze(this.EventId); }
     
-    static EventIdCount = 3;
+    static EventIdCount = 1;
     static { Object.freeze(this.EventIdCount); }
     
     static StateId = 
     {
         ROOT : 0,
         OFF : 1,
-        ON1 : 2,
+        OFF_READY : 2,
+        OFF_TIMED_OUT : 3,
+        ON1 : 4,
     }
     static { Object.freeze(this.StateId); }
     
-    static StateIdCount = 3;
+    static StateIdCount = 5;
     static { Object.freeze(this.StateIdCount); }
     
     // Used internally by state machine. Feel free to inspect, but don't modify.
@@ -32,6 +32,7 @@ class LightSm
     // Variables. Can be used for inputs, outputs, user variables...
     vars = {
         // INPUTs
+        input_active: false,
         timer_ms: 0, // state machine clears this value as needed
         // OUTPUTs from the state machine
         font_color: "white",
@@ -63,8 +64,9 @@ class LightSm
                 // Step 3: Enter/move towards transition target `OFF`.
                 this.#OFF_enter();
                 
-                // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
-                return;
+                // Finish transition by calling pseudo state transition function.
+                this.#OFF_InitialState_transition();
+                return; // event processing immediately stops when a transition finishes. No other behaviors for this state are checked.
             } // end of behavior for ROOT.<InitialState>
         } // end of behavior for ROOT
     }
@@ -73,28 +75,32 @@ class LightSm
     // Note! This function assumes that the `eventId` parameter is valid.
     dispatchEvent(eventId)
     {
+        
         switch (this.stateId)
         {
             // STATE: LightSm
             case LightSm.StateId.ROOT:
-                // No events handled by this state (or its ancestors).
+                // state and ancestors have no handler for `do` event.
                 break;
             
             // STATE: OFF
             case LightSm.StateId.OFF:
-                switch (eventId)
-                {
-                    case LightSm.EventId.ON_PRESS: this.#OFF_on_press(); break;
-                }
+                // state and ancestors have no handler for `do` event.
+                break;
+            
+            // STATE: OFF_READY
+            case LightSm.StateId.OFF_READY:
+                this.#OFF_READY_do(); 
+                break;
+            
+            // STATE: OFF_TIMED_OUT
+            case LightSm.StateId.OFF_TIMED_OUT:
+                this.#OFF_TIMED_OUT_do(); 
                 break;
             
             // STATE: ON1
             case LightSm.StateId.ON1:
-                switch (eventId)
-                {
-                    case LightSm.EventId.OFF_PRESS: this.#ON1_off_press(); break;
-                    case LightSm.EventId.DO: this.#ON1_do(); break;
-                }
+                this.#ON1_do(); 
                 break;
         }
         
@@ -109,6 +115,10 @@ class LightSm
             switch (this.stateId)
             {
                 case LightSm.StateId.OFF: this.#OFF_exit(); break;
+                
+                case LightSm.StateId.OFF_READY: this.#OFF_READY_exit(); break;
+                
+                case LightSm.StateId.OFF_TIMED_OUT: this.#OFF_TIMED_OUT_exit(); break;
                 
                 case LightSm.StateId.ON1: this.#ON1_exit(); break;
                 
@@ -163,13 +173,46 @@ class LightSm
         this.stateId = LightSm.StateId.ROOT;
     }
     
-    #OFF_on_press()
+    #OFF_InitialState_transition()
     {
-        // OFF behavior
-        // uml: ON_PRESS TransitionTo(ON1)
+        // OFF.<InitialState> behavior
+        // uml: TransitionTo(OFF_READY)
+        {
+            // Step 1: Exit states until we reach `OFF` state (Least Common Ancestor for transition). Already at LCA, no exiting required.
+            
+            // Step 2: Transition action: ``.
+            
+            // Step 3: Enter/move towards transition target `OFF_READY`.
+            this.#OFF_READY_enter();
+            
+            // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
+            return;
+        } // end of behavior for OFF.<InitialState>
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    // event handlers for state OFF_READY
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    #OFF_READY_enter()
+    {
+        this.stateId = LightSm.StateId.OFF_READY;
+    }
+    
+    #OFF_READY_exit()
+    {
+        this.stateId = LightSm.StateId.OFF;
+    }
+    
+    #OFF_READY_do()
+    {
+        // OFF_READY behavior
+        // uml: do [input_active] TransitionTo(ON1)
+        if (this.vars.input_active)
         {
             // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
-            this.#OFF_exit();
+            this.#exitUpToStateHandler(LightSm.StateId.ROOT);
             
             // Step 2: Transition action: ``.
             
@@ -178,7 +221,43 @@ class LightSm
             
             // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
             return;
-        } // end of behavior for OFF
+        } // end of behavior for OFF_READY
+        
+        // No ancestor handles this event.
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    // event handlers for state OFF_TIMED_OUT
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    #OFF_TIMED_OUT_enter()
+    {
+        this.stateId = LightSm.StateId.OFF_TIMED_OUT;
+    }
+    
+    #OFF_TIMED_OUT_exit()
+    {
+        this.stateId = LightSm.StateId.OFF;
+    }
+    
+    #OFF_TIMED_OUT_do()
+    {
+        // OFF_TIMED_OUT behavior
+        // uml: do [! input_active] TransitionTo(OFF_READY)
+        if (! this.vars.input_active)
+        {
+            // Step 1: Exit states until we reach `OFF` state (Least Common Ancestor for transition).
+            this.#OFF_TIMED_OUT_exit();
+            
+            // Step 2: Transition action: ``.
+            
+            // Step 3: Enter/move towards transition target `OFF_READY`.
+            this.#OFF_READY_enter();
+            
+            // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
+            return;
+        } // end of behavior for OFF_TIMED_OUT
         
         // No ancestor handles this event.
     }
@@ -222,7 +301,24 @@ class LightSm
     #ON1_do()
     {
         // ON1 behavior
-        // uml: do [timer_ms > 3000] TransitionTo(OFF)
+        // uml: do [! input_active] TransitionTo(OFF)
+        if (! this.vars.input_active)
+        {
+            // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
+            this.#ON1_exit();
+            
+            // Step 2: Transition action: ``.
+            
+            // Step 3: Enter/move towards transition target `OFF`.
+            this.#OFF_enter();
+            
+            // Finish transition by calling pseudo state transition function.
+            this.#OFF_InitialState_transition();
+            return; // event processing immediately stops when a transition finishes. No other behaviors for this state are checked.
+        } // end of behavior for ON1
+        
+        // ON1 behavior
+        // uml: do [timer_ms > 3000] TransitionTo(OFF_TIMED_OUT)
         if (this.vars.timer_ms > 3000)
         {
             // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
@@ -230,28 +326,9 @@ class LightSm
             
             // Step 2: Transition action: ``.
             
-            // Step 3: Enter/move towards transition target `OFF`.
+            // Step 3: Enter/move towards transition target `OFF_TIMED_OUT`.
             this.#OFF_enter();
-            
-            // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
-            return;
-        } // end of behavior for ON1
-        
-        // No ancestor handles this event.
-    }
-    
-    #ON1_off_press()
-    {
-        // ON1 behavior
-        // uml: OFF_PRESS TransitionTo(OFF)
-        {
-            // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
-            this.#ON1_exit();
-            
-            // Step 2: Transition action: ``.
-            
-            // Step 3: Enter/move towards transition target `OFF`.
-            this.#OFF_enter();
+            this.#OFF_TIMED_OUT_enter();
             
             // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
             return;
@@ -267,6 +344,8 @@ class LightSm
         {
             case LightSm.StateId.ROOT: return "ROOT";
             case LightSm.StateId.OFF: return "OFF";
+            case LightSm.StateId.OFF_READY: return "OFF_READY";
+            case LightSm.StateId.OFF_TIMED_OUT: return "OFF_TIMED_OUT";
             case LightSm.StateId.ON1: return "ON1";
             default: return "?";
         }
@@ -278,8 +357,6 @@ class LightSm
         switch (id)
         {
             case LightSm.EventId.DO: return "DO";
-            case LightSm.EventId.OFF_PRESS: return "OFF_PRESS";
-            case LightSm.EventId.ON_PRESS: return "ON_PRESS";
             default: return "?";
         }
     }

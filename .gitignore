@@ -4,3 +4,5 @@ a.out
 lesson-4/java/**/*.class
 
 lesson-4/python/__pycache__/
+
+*.bkp

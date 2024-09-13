@@ -1,3 +1,11 @@
+# Design
+This example is equivalent to the others in this lesson, but looks a bit different because it is also polling the switch instead of using button events.
+
+Turn on the switch to see the light turn on. The light will turn off after 3 seconds.
+
+![](docs/fsm.png)
+
+
 # Variable Based (no functions)
 Your state machine doesn't need to call functions or access globals to be useful.
 
@@ -8,6 +16,7 @@ In this example, the state machine only uses input and output variables:
 
 <!-- ```js
 // INPUTs to state machine
+input_active: false,
 timer_ms: 0, // state machine clears this value as needed
 
 // OUTPUTs from state machine
@@ -22,6 +31,7 @@ You use this state machines like this (pseudo code):
 // LightController.js
 function updateStateMachine(sm) {
     // set inputs to the state machine
+    sm.vars.input_active = getSwitchState();
     sm.vars.timer_ms += loopTimeMs;
 
     // run the state machine
@@ -39,13 +49,6 @@ function updateStateMachine(sm) {
 
 <br>
 
-
-# Design
-This example is equivalent to the composition and inheritance examples in this lesson.
-
-Turn on the switch to see the light turn on. The light will turn off after 3 seconds or if you turn off the switch.
-
-![](docs/fsm.png)
 
 # Interactive Example
 Open `index.html` in your browser and use the different switches.

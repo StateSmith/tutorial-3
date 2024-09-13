@@ -216,15 +216,19 @@
         <pre class="mermaid">
 stateDiagram
 
-OFF
+state OFF {
 
-OFF : OFF
+        OFF_READY
 
-OFF : enter / #123; count++#59; #125;
+        OFF_READY : OFF_READY
 
-OFF : enter / #123; font_color = "white"#59; #125;
+        OFF_TIMED_OUT
 
-OFF : enter / #123; bg_color = "black"#59; #125;
+        OFF_TIMED_OUT : OFF_TIMED_OUT
+
+        state "$initial_state" as OFF.(InitialState)
+
+}
 
 ON1
 
@@ -238,11 +242,15 @@ ON1 : enter / #123; timer_ms = 0#59; #125;
 
 state "$initial_state" as ROOT.(InitialState)
 
-OFF --> ON1 : ON_PRESS
+OFF_READY --> ON1 : do [input_active]
 
-ON1 --> OFF : OFF_PRESS
+OFF_TIMED_OUT --> OFF_READY : do [! input_active]
 
-ON1 --> OFF : do [timer_ms > 3000]
+OFF.(InitialState) --> OFF_READY
+
+ON1 --> OFF : do [! input_active]
+
+ON1 --> OFF_TIMED_OUT : do [timer_ms > 3000]
 
 ROOT.(InitialState) --> OFF
 
@@ -290,23 +298,23 @@ evaluateGuard = null;
     static EventId = 
     {
         DO : 0, // The `do` event is special. State event handlers do not consume this event (ancestors all get it too) unless a transition occurs.
-        OFF_PRESS : 1,
-        ON_PRESS : 2,
     }
     static { Object.freeze(this.EventId); }
     
-    static EventIdCount = 3;
+    static EventIdCount = 1;
     static { Object.freeze(this.EventIdCount); }
     
     static StateId = 
     {
         ROOT : 0,
         OFF : 1,
-        ON1 : 2,
+        OFF_READY : 2,
+        OFF_TIMED_OUT : 3,
+        ON1 : 4,
     }
     static { Object.freeze(this.StateId); }
     
-    static StateIdCount = 3;
+    static StateIdCount = 5;
     static { Object.freeze(this.StateIdCount); }
     
     // Used internally by state machine. Feel free to inspect, but don't modify.
@@ -327,18 +335,19 @@ evaluateGuard = null;
             // ROOT.<InitialState> is a pseudo state and cannot have an `enter` trigger.
             
             // ROOT.<InitialState> behavior
-            // uml: / { this.tracer?.edgeTransition("edge3"); } TransitionTo(OFF)
+            // uml: / { this.tracer?.edgeTransition("edge5"); } TransitionTo(OFF)
             {
                 // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition). Already at LCA, no exiting required.
                 
-                // Step 2: Transition action: `this.tracer?.edgeTransition("edge3");`.
-                this.tracer?.edgeTransition("edge3");
+                // Step 2: Transition action: `this.tracer?.edgeTransition("edge5");`.
+                this.tracer?.edgeTransition("edge5");
                 
                 // Step 3: Enter/move towards transition target `OFF`.
                 this.#OFF_enter();
                 
-                // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
-                return;
+                // Finish transition by calling pseudo state transition function.
+                this.#OFF_InitialState_transition();
+                return; // event processing immediately stops when a transition finishes. No other behaviors for this state are checked.
             } // end of behavior for ROOT.<InitialState>
         } // end of behavior for ROOT
     }
@@ -347,28 +356,32 @@ evaluateGuard = null;
     // Note! This function assumes that the `eventId` parameter is valid.
     dispatchEvent(eventId)
     {
+        
         switch (this.stateId)
         {
             // STATE: LightSm
             case LightSm.StateId.ROOT:
-                // No events handled by this state (or its ancestors).
+                // state and ancestors have no handler for `do` event.
                 break;
             
             // STATE: OFF
             case LightSm.StateId.OFF:
-                switch (eventId)
-                {
-                    case LightSm.EventId.ON_PRESS: this.#OFF_on_press(); break;
-                }
+                // state and ancestors have no handler for `do` event.
+                break;
+            
+            // STATE: OFF_READY
+            case LightSm.StateId.OFF_READY:
+                this.#OFF_READY_do(); 
+                break;
+            
+            // STATE: OFF_TIMED_OUT
+            case LightSm.StateId.OFF_TIMED_OUT:
+                this.#OFF_TIMED_OUT_do(); 
                 break;
             
             // STATE: ON1
             case LightSm.StateId.ON1:
-                switch (eventId)
-                {
-                    case LightSm.EventId.OFF_PRESS: this.#ON1_off_press(); break;
-                    case LightSm.EventId.DO: this.#ON1_do(); break;
-                }
+                this.#ON1_do(); 
                 break;
         }
         
@@ -383,6 +396,10 @@ evaluateGuard = null;
             switch (this.stateId)
             {
                 case LightSm.StateId.OFF: this.#OFF_exit(); break;
+                
+                case LightSm.StateId.OFF_READY: this.#OFF_READY_exit(); break;
+                
+                case LightSm.StateId.OFF_TIMED_OUT: this.#OFF_TIMED_OUT_exit(); break;
                 
                 case LightSm.StateId.ON1: this.#ON1_exit(); break;
                 
@@ -451,13 +468,61 @@ evaluateGuard = null;
         this.stateId = LightSm.StateId.ROOT;
     }
     
-    #OFF_on_press()
+    #OFF_InitialState_transition()
     {
-        // OFF behavior
-        // uml: ON_PRESS / { this.tracer?.edgeTransition("edge0"); } TransitionTo(ON1)
+        // OFF.<InitialState> behavior
+        // uml: / { this.tracer?.edgeTransition("edge2"); } TransitionTo(OFF_READY)
+        {
+            // Step 1: Exit states until we reach `OFF` state (Least Common Ancestor for transition). Already at LCA, no exiting required.
+            
+            // Step 2: Transition action: `this.tracer?.edgeTransition("edge2");`.
+            this.tracer?.edgeTransition("edge2");
+            
+            // Step 3: Enter/move towards transition target `OFF_READY`.
+            this.#OFF_READY_enter();
+            
+            // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
+            return;
+        } // end of behavior for OFF.<InitialState>
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    // event handlers for state OFF_READY
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    #OFF_READY_enter()
+    {
+        this.stateId = LightSm.StateId.OFF_READY;
+        
+        // OFF_READY behavior
+        // uml: enter / { this.tracer?.enterState('OFF_READY'); }
+        {
+            // Step 1: execute action `this.tracer?.enterState('OFF_READY');`
+            this.tracer?.enterState('OFF_READY');
+        } // end of behavior for OFF_READY
+    }
+    
+    #OFF_READY_exit()
+    {
+        // OFF_READY behavior
+        // uml: exit / { this.tracer?.exitState('OFF_READY'); }
+        {
+            // Step 1: execute action `this.tracer?.exitState('OFF_READY');`
+            this.tracer?.exitState('OFF_READY');
+        } // end of behavior for OFF_READY
+        
+        this.stateId = LightSm.StateId.OFF;
+    }
+    
+    #OFF_READY_do()
+    {
+        // OFF_READY behavior
+        // uml: do [this.tracer?.log("🛡️ User evaluating guard: " + "input_active") || this.evaluateGuard("OFF_READY","do [input_active] TransitionTo(ON1)")] / { this.tracer?.edgeTransition("edge0"); } TransitionTo(ON1)
+        if (this.tracer?.log("🛡️ User evaluating guard: " + "input_active") || this.evaluateGuard("OFF_READY","do [input_active] TransitionTo(ON1)"))
         {
             // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
-            this.#OFF_exit();
+            this.#exitUpToStateHandler(LightSm.StateId.ROOT);
             
             // Step 2: Transition action: `this.tracer?.edgeTransition("edge0");`.
             this.tracer?.edgeTransition("edge0");
@@ -467,7 +532,58 @@ evaluateGuard = null;
             
             // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
             return;
-        } // end of behavior for OFF
+        } // end of behavior for OFF_READY
+        
+        // No ancestor handles this event.
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    // event handlers for state OFF_TIMED_OUT
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    #OFF_TIMED_OUT_enter()
+    {
+        this.stateId = LightSm.StateId.OFF_TIMED_OUT;
+        
+        // OFF_TIMED_OUT behavior
+        // uml: enter / { this.tracer?.enterState('OFF_TIMED_OUT'); }
+        {
+            // Step 1: execute action `this.tracer?.enterState('OFF_TIMED_OUT');`
+            this.tracer?.enterState('OFF_TIMED_OUT');
+        } // end of behavior for OFF_TIMED_OUT
+    }
+    
+    #OFF_TIMED_OUT_exit()
+    {
+        // OFF_TIMED_OUT behavior
+        // uml: exit / { this.tracer?.exitState('OFF_TIMED_OUT'); }
+        {
+            // Step 1: execute action `this.tracer?.exitState('OFF_TIMED_OUT');`
+            this.tracer?.exitState('OFF_TIMED_OUT');
+        } // end of behavior for OFF_TIMED_OUT
+        
+        this.stateId = LightSm.StateId.OFF;
+    }
+    
+    #OFF_TIMED_OUT_do()
+    {
+        // OFF_TIMED_OUT behavior
+        // uml: do [this.tracer?.log("🛡️ User evaluating guard: " + "! input_active") || this.evaluateGuard("OFF_TIMED_OUT","do [! input_active] TransitionTo(OFF_READY)")] / { this.tracer?.edgeTransition("edge1"); } TransitionTo(OFF_READY)
+        if (this.tracer?.log("🛡️ User evaluating guard: " + "! input_active") || this.evaluateGuard("OFF_TIMED_OUT","do [! input_active] TransitionTo(OFF_READY)"))
+        {
+            // Step 1: Exit states until we reach `OFF` state (Least Common Ancestor for transition).
+            this.#OFF_TIMED_OUT_exit();
+            
+            // Step 2: Transition action: `this.tracer?.edgeTransition("edge1");`.
+            this.tracer?.edgeTransition("edge1");
+            
+            // Step 3: Enter/move towards transition target `OFF_READY`.
+            this.#OFF_READY_enter();
+            
+            // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
+            return;
+        } // end of behavior for OFF_TIMED_OUT
         
         // No ancestor handles this event.
     }
@@ -525,38 +641,36 @@ evaluateGuard = null;
     #ON1_do()
     {
         // ON1 behavior
-        // uml: do [this.tracer?.log("🛡️ User evaluating guard: " + "timer_ms > 3000") || this.evaluateGuard("ON1","do [timer_ms > 3000] TransitionTo(OFF)")] / { this.tracer?.edgeTransition("edge2"); } TransitionTo(OFF)
-        if (this.tracer?.log("🛡️ User evaluating guard: " + "timer_ms > 3000") || this.evaluateGuard("ON1","do [timer_ms > 3000] TransitionTo(OFF)"))
+        // uml: do [this.tracer?.log("🛡️ User evaluating guard: " + "! input_active") || this.evaluateGuard("ON1","do [! input_active] TransitionTo(OFF)")] / { this.tracer?.edgeTransition("edge3"); } TransitionTo(OFF)
+        if (this.tracer?.log("🛡️ User evaluating guard: " + "! input_active") || this.evaluateGuard("ON1","do [! input_active] TransitionTo(OFF)"))
         {
             // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
             this.#ON1_exit();
             
-            // Step 2: Transition action: `this.tracer?.edgeTransition("edge2");`.
-            this.tracer?.edgeTransition("edge2");
+            // Step 2: Transition action: `this.tracer?.edgeTransition("edge3");`.
+            this.tracer?.edgeTransition("edge3");
             
             // Step 3: Enter/move towards transition target `OFF`.
             this.#OFF_enter();
             
-            // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
-            return;
+            // Finish transition by calling pseudo state transition function.
+            this.#OFF_InitialState_transition();
+            return; // event processing immediately stops when a transition finishes. No other behaviors for this state are checked.
         } // end of behavior for ON1
         
-        // No ancestor handles this event.
-    }
-    
-    #ON1_off_press()
-    {
         // ON1 behavior
-        // uml: OFF_PRESS / { this.tracer?.edgeTransition("edge1"); } TransitionTo(OFF)
+        // uml: do [this.tracer?.log("🛡️ User evaluating guard: " + "timer_ms > 3000") || this.evaluateGuard("ON1","do [timer_ms > 3000] TransitionTo(OFF_TIMED_OUT)")] / { this.tracer?.edgeTransition("edge4"); } TransitionTo(OFF_TIMED_OUT)
+        if (this.tracer?.log("🛡️ User evaluating guard: " + "timer_ms > 3000") || this.evaluateGuard("ON1","do [timer_ms > 3000] TransitionTo(OFF_TIMED_OUT)"))
         {
             // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
             this.#ON1_exit();
             
-            // Step 2: Transition action: `this.tracer?.edgeTransition("edge1");`.
-            this.tracer?.edgeTransition("edge1");
+            // Step 2: Transition action: `this.tracer?.edgeTransition("edge4");`.
+            this.tracer?.edgeTransition("edge4");
             
-            // Step 3: Enter/move towards transition target `OFF`.
+            // Step 3: Enter/move towards transition target `OFF_TIMED_OUT`.
             this.#OFF_enter();
+            this.#OFF_TIMED_OUT_enter();
             
             // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
             return;
@@ -572,6 +686,8 @@ evaluateGuard = null;
         {
             case LightSm.StateId.ROOT: return "ROOT";
             case LightSm.StateId.OFF: return "OFF";
+            case LightSm.StateId.OFF_READY: return "OFF_READY";
+            case LightSm.StateId.OFF_TIMED_OUT: return "OFF_TIMED_OUT";
             case LightSm.StateId.ON1: return "ON1";
             default: return "?";
         }
@@ -583,8 +699,6 @@ evaluateGuard = null;
         switch (id)
         {
             case LightSm.EventId.DO: return "DO";
-            case LightSm.EventId.OFF_PRESS: return "OFF_PRESS";
-            case LightSm.EventId.ON_PRESS: return "ON_PRESS";
             default: return "?";
         }
     }
@@ -622,7 +736,7 @@ evaluateGuard = null;
             center: true
         });
 
-        const diagramEventNamesArray = ['do', 'OFF_PRESS', 'ON_PRESS', ];
+        const diagramEventNamesArray = ['do', ];
 
         const leftPane = document.querySelector(".main");
         const rightPane = document.querySelector(".sidebar");

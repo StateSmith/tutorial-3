@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="LightSm.js"></script> <!-- Include the generated state machine js. Depends on LightSmBase.js. -->
+    <script src="LightController.js"></script> <!-- Include the user hand written js. Depends on LightSm.js. -->
+</head>
+
+<body>
+    <div>
+        <h2>Light Bulb 1</h2>
+        <div id="id-light-bulb-1" style="width: 100px; height: 100px;"></div>
+        <br>
+        <input type="checkbox" id="switch-1">
+        <label for="switch-1">switch setting</label>
+    </div>
+
+    <div>
+        <h2>Light Bulb 2</h2>
+        <div id="id-light-bulb-2" style="width: 100px; height: 100px;"></div>
+        <br>
+        <input type="checkbox" id="switch-2">
+        <label for="switch-2">switch setting</label>
+    </div>
+</body>
+
+<script>
+    // each light controller is created with a light bulb and switch element
+    const lightController1 = new LightController(document.getElementById('id-light-bulb-1'), document.getElementById('switch-1'));
+    const lightController2 = new LightController(document.getElementById('id-light-bulb-2'), document.getElementById('switch-2'));
+
+    // run the light controllers periodically
+    const updateIntervalMs = 100;
+    setInterval(() => {
+        lightController1.update(updateIntervalMs);
+        lightController2.update(updateIntervalMs);
+    }, updateIntervalMs);
+
+</script>
+
+</html>
