@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram id="E5w3tozpNWtozj-WJqJC" name="Page-1">
+        <mxGraphModel dx="1019" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="LightSm" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#ffffff;fillColor=#1ba1e2;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#006EAF;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="80" width="140" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="vars.ctx&lt;br&gt;dispatchEvent();" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;" parent="2" vertex="1" connectable="0">
+                    <mxGeometry y="30" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="LightController.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="80" width="220" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="vars.ctx&lt;br&gt;dispatchEvent();" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;" parent="4" vertex="1" connectable="0">
+                    <mxGeometry y="30" width="140" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
