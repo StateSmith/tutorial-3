@@ -9,8 +9,6 @@ class LightController
     constructor(lightHtmlObject) {
         this._sm._lightHtmlObject = lightHtmlObject;
 
-        this._sm.vars.me = this._sm;
-
         // start the state machine
         this._sm.start();
     }
