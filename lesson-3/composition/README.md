@@ -5,6 +5,8 @@ Instead of relying on globals, we give our state machine a reference to an inter
 
 This makes it easy to have multiple state machine instances and has other benefits like easier testing.
 
+In the below image, `ctx` ("context") is a user declared state machine variable that points an interface/context object. The state machine can call functions like `ctx.turnOff()`.
+
 ![](docs/ref-to-interface.png)
 
 <!-- ![](docs/sm-ref-to-ctx.png) -->
@@ -14,8 +16,6 @@ This makes it easy to have multiple state machine instances and has other benefi
 <br>
 
 ## Example State Machine
-The state machine below has a reference to a "context" (`ctx`) object that provides functions (like `ctx.turnOff()`) and variables (like `ctx.count`).
-
 The behavior of the state machine is as follows:
 
 * `OFF` is the initial state and transitions to `ON1` when the on button is pressed.
@@ -24,11 +24,11 @@ The behavior of the state machine is as follows:
 ![](./docs/fsm.png)
 
 
-If you don't like having to type `ctx.` infront of everything, you have a few options:
+If you don't like having to type `ctx.` in front of everything, you have a few options:
 - use a shorter variable name like `c`
+- use [`RenderConfig.DefaultAnyExpTemplate`](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md#renderconfigdefaultanyexptemplate) and be aware of its current [limitations/quirks](https://github.com/StateSmith/StateSmith/issues/363).
+- use `.csx` files and [StateSmith expansions](https://github.com/StateSmith/tutorial-2/tree/main/lesson-3).
 - use `inheritance` and a language like `C#`/`Java` that don't need `this.`/`self.` to access class members.
-- use [`RenderConfig.DefaultAnyExpTemplate`](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md#renderconfigdefaultanyexptemplate) and be aware of its [limitations/quirks](https://github.com/StateSmith/StateSmith/issues/363).
-- use `.csx` files and StateSmith expansions.
 
 <br>
 
@@ -81,26 +81,6 @@ In this example, we have a handwritten `LightController` class that the main cod
 
 ![](docs/main-calls-controller.png)
 
-The `LightController` can also provide a useful place to write functions that the state machine needs to call like the `_turnOn()` function below.
-
-```js
-class LightController // handwritten class
-{
-    //...
-
-    // Called by the state machine when the light should be turned on
-    _turnOn() {
-        this._lightHtmlObject.style.backgroundColor = "yellow";
-        this._lightHtmlObject.style.color = "black"; // text color
-        this._lightHtmlObject.textContent = "Count: " + this._smContext.count;
-    }
-}
-```
-
-You could technically put the above lines into the StateSmith design, but it could lead to "noisy" diagrams and also make it harder to refactor your code later on.
-
-With practice, you'll find the sweet spot of how much code and detail to put into the state machine. Too little detail and the state machine diagram won't contain enough important detail (forcing readers to flip constantly between the diagram and code).
-
 
 <br>
 
@@ -108,16 +88,57 @@ With practice, you'll find the sweet spot of how much code and detail to put int
 ## Basic Wiring (few files)
 Let's start small.
 
-In essence, the `LightController` depends on the state machine `LightSm` and vice versa. As pictured below.
+We have a simple handwritten `LightController` class that provides 2 things:
+1. it provides an abstraction between the main code base and the state machine
+2. it provides functions that the state machine needs to call
 
-Before starting the state machine, the `LightController` class sets the `_sm.vars.ctx` variable to reference itself (`LightController`). Then the state machine can make calls like `ctx._resetTimer()`.
+```javascript
+class LightController
+{
+    // Our state machine instance. Private to this class.
+    #sm = new LightSm();
+
+    constructor() {
+        // Give the state machine a reference to this class.
+        // This MUST be done before starting the state machine.
+        this.#sm.vars.ctx = this;
+
+        // start the state machine
+        this.#sm.start();
+    }
+
+    // Called by the state machine when the light should be turned on.
+    // Technically a public function, but only the state machine should call it.
+    // Leading underscore to discourage main code base from calling it.
+    _turnOn() {
+        this._lightHtmlObject.style.backgroundColor = "yellow";
+        this._lightHtmlObject.style.color = "black"; // text color
+        this._lightHtmlObject.textContent = "Count: " + this._smContext.count;
+    }
+
+    //...
+}
+```
+
+> You could technically put the `_turnOn()` function code into the StateSmith design, but it could lead to "noisy" diagrams and also make it harder to refactor your code later on.
+>
+> With practice, you'll find the sweet spot of how much code and detail to put into the state machine. Too little detail and the state machine diagram won't contain enough important detail (forcing readers to flip constantly between the diagram and code).
+
+
+<br>
+
+
+From a pure architecture perspective, the above code is not ideal. The `LightController` depends on the state machine `LightSm` and vice versa. As pictured below.
+
+In practice and in small/contained projects, this situation is often good enough. It also has the benefit of being quick and easy to implement. The diagram below is more confusing than the actual code.
+
 
 ![](docs/simple.png)
 
 
-We can "improve" the architecture and involve another class, but sometimes we don't want/need the additional overhead of more classes and files.
+We can improve the architecture and involve another class, but sometimes we don't want/need the additional overhead of more classes and files.
 
-One downside to the simple pattern above is that functions like `_resetTimer()` need to be public so that the state machine can call it. Those functions being public may not be desirable though as they can also be seen by the main code base that interacts with `LightController`.
+One downside to the simple pattern above is that functions like `_resetTimer()` need to be public so that the state machine can call it. Those functions being public may not be desirable though as they can also be seen by the main code base that interacts with `LightController`. That's why they are named with a leading underscore.
 
 
 <br>

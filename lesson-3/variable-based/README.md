@@ -5,21 +5,9 @@ In this example, the state machine only uses input and output variables:
 
 ![](docs/vars.png)
 
-
-<!-- ```js
-// INPUTs to state machine
-timer_ms: 0, // state machine clears this value as needed
-
-// OUTPUTs from state machine
-font_color: "white",
-bg_color: "black",
-count: 0,
-``` -->
-
-
 You use this state machines like this (pseudo code):
 ```js
-// LightController.js
+// pseudo code that runs the state machine `sm` every loop
 function updateStateMachine(sm) {
     // set inputs to the state machine
     sm.vars.timer_ms += loopTimeMs;
@@ -33,6 +21,8 @@ function updateStateMachine(sm) {
     //...
 }
 ```
+
+In this example, there is another class `LightController` that has an instance of the state machine `LightSm`. The `LightController` class is responsible for setting the input variables and using the output variables.
 
 ![](docs/info-flow.png)
 

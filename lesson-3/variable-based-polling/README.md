@@ -14,18 +14,6 @@ In this example, the state machine only uses input and output variables:
 ![](docs/vars.png)
 
 
-<!-- ```js
-// INPUTs to state machine
-input_active: false,
-timer_ms: 0, // state machine clears this value as needed
-
-// OUTPUTs from state machine
-font_color: "white",
-bg_color: "black",
-count: 0,
-``` -->
-
-
 You use this state machines like this (pseudo code):
 ```js
 // LightController.js

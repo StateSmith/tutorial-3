@@ -15,7 +15,6 @@ class LightController
         this.#sm.start();
     }
 
-
     ///////////// Public methods //////////////
 
     // called by GUI index.html
