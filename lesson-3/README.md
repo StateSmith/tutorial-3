@@ -1,3 +1,12 @@
+# This Is Optional
+This is an architectural lesson. It is more useful if you want to have multiple instances of the same state machine.
+
+If you only have a single instance of a state machine, you can continue to use the global functions approach and skip this lesson.
+
+
+<br>
+
+
 # Connecting Your State Machine to the Outside World
 A state machine is often part of a larger system.
 
@@ -26,10 +35,16 @@ You can also mix and match techniques. StateSmith doesn't care. Do what works be
 
 I recommend reading the following sections in order.
 
+
+
+
 <br>
 
 ## Globals
 Very simple. This usually works best if you only have a single state machine instance. This is what we've been doing so far.
+
+
+
 
 <br>
 
@@ -38,40 +53,63 @@ Your state machine doesn't need to call functions or access globals to be useful
 
 See [./variable-based/](./variable-based/README.md) for more details.
 
+![](docs/var-based.png)
+
+
+
 <br>
 
 ## `C99/C++` .inc file
 If you are using C/C++, check out this [.inc file tutorial](https://github.com/StateSmith/StateSmith-examples/tree/main/c-include-sm-basic-2-plantuml-tutorial).
 
+You can generate a `.inc` file instead of a `.c` file and then include it in your main file.
+
+![](docs/inc-file.png)
+
+
+
 <br>
 
-## Composition
+## Composition / Interface
+Instead of relying on globals, we can give our state machine a reference to an interface/context object that provides functions/variables to the state machine.
+
+See [./composition/](./composition/README.md) for more details.
+
+![](docs/composition.png)
+
+<!-- 
 When compared to inheritance:
 
 Pros:
-- very flexible
 - works for any language
 - easy to test
 
 Cons:
 - a bit more work to wire up
-- may require more typing (depends on language)
+- may require more typing (depends on language) -->
 
-See [./composition/](./composition/README.md) for more details.
+
+
 
 <br>
 
 ## Inheritance
-When compared to composition:
+We can connect our state machine to other handwritten code by using inheritance. In the below image `LightSmBase` is handwritten code. It provides functions and variables to the state machine.
+
+See [./inheritance/](./inheritance/README.md) for more details.
+
+![](docs/inheritance.png)
+
+
+<!-- When compared to composition:
 
 Pros:
 - often less work wiring stuff up
 
 Cons:
 - less flexible
-- doesn't abstract/hide state machine details
+- doesn't abstract/hide state machine details -->
 
-See [./inheritance/](./inheritance/README.md) for more details.
 
 <br>
 
