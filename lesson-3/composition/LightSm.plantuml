@@ -7,30 +7,31 @@ state ON1
 ' STATE HANDLERS
 [*] -> OFF
 
-OFF: enter / count++;
-OFF: enter / turnOff();
+OFF: enter / ctx.count++;
+OFF: enter / ctx.turnOff();
 OFF --> ON1: ON_PRESS
 
-note "Increment count just to show we can" as N1
+note "'ctx' is short for 'context'" as N1
 
-ON1: enter / turnOn();
-ON1: enter / resetTimer();
+ON1: enter / ctx.turnOn();
+ON1: enter / ctx.resetTimer();
 ON1 --> OFF: OFF_PRESS
-ON1 --> OFF: [isTimerExpired()]
+ON1 --> OFF: [ctx.isTimerExpired()]
 
+' //////////////////////// StateSmith config ////////////////////////
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
 
 /'! $CONFIG : toml
-# This is a TOML comment line
-
 SmRunnerSettings.transpilerId = "JavaScript"
-
-# Below is a TOML "table"
-# It's like a prefix for all the keys below it until the next table
-[RenderConfig]
-VariableDeclarations = """
-    // needs to be set before running the state machine
-    myInterface: null,
+SmRunnerSettings.simulation.enableGeneration = false  # just to show it off
+RenderConfig.AutoExpandedVars = """
+    /**
+     * The context object that provides functions and variables to the state machine.
+     * This state machine variable must be set before starting the state machine.
+     * @type {LightSmContext}
+     */
+    ctx: null, 
     """
-DefaultAnyExpTemplate = "{VarsPath}myInterface.{AutoNameCopy()}"
 '/
 @enduml

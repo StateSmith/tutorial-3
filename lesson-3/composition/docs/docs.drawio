@@ -1,0 +1,279 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram id="E5w3tozpNWtozj-WJqJC" name="Page-1">
+    <mxGraphModel dx="819" dy="1278" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="LightSm.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#ffffff;fillColor=#1ba1e2;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#006EAF;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="80" width="250" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;stateId&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;vars&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;ctx&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;null&lt;/span&gt;, &lt;span style=&quot;color: #6a9955;&quot;&gt;// context obj&lt;/span&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;start&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatchEvent&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;eventId&lt;/span&gt;)&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=default;" parent="2" vertex="1" connectable="0">
+          <mxGeometry y="30" width="250" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="LightController.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;container=0;labelBackgroundColor=none;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+          <mxGeometry x="80" y="80" width="240" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;_sm&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;new&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;LightSm&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;constructor&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;handleOnPress&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;handleOffPress&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;update&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;_resetTimer&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;_isTimerExpired&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;_turnOn&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;_turnOff&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=none;" parent="4" vertex="1" connectable="0">
+          <mxGeometry y="30" width="170" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#e3c800;strokeColor=#B09500;" parent="4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="111" y="87" as="sourcePoint" />
+            <mxPoint x="365" y="142" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="310" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-10" value="" style="labelPosition=right;align=left;strokeWidth=3;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#B09500;direction=east;rotation=90;fillColor=#e3c800;fontColor=#000000;" parent="4" vertex="1">
+          <mxGeometry x="103" y="134" width="65" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-13" value="" style="labelPosition=right;align=left;strokeWidth=3;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#006EAF;direction=east;rotation=90;fillColor=#1ba1e2;fontColor=#ffffff;" parent="4" vertex="1">
+          <mxGeometry x="101.25" y="218.75" width="82.5" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-8" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#e3c800;strokeColor=#B09500;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="220" as="sourcePoint" />
+            <mxPoint x="444" y="241" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-12" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="250" as="sourcePoint" />
+            <mxPoint x="234" y="306" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="280" />
+              <mxPoint x="480" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-23" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#e3c800;strokeColor=#B09500;entryX=-0.006;entryY=0.125;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="235" y="127" as="sourcePoint" />
+            <mxPoint x="519.75" y="66" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="127" />
+              <mxPoint x="400" y="104" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-24" value="Handwritten class" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="125" y="50" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-26" value="Generated FSM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="495" y="50" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-22" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;entryX=1.003;entryY=0.055;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="472" y="166" as="sourcePoint" />
+            <mxPoint x="323" y="93" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="430" y="160" />
+              <mxPoint x="360" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-29" value="LightSm.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#ffffff;fillColor=#1ba1e2;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#006EAF;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="490" y="-640" width="190" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-30" value="&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(220, 220, 170);&quot;&gt;start&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); line-height: 19px;&quot;&gt;&lt;span style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(220, 220, 170);&quot;&gt;dispatchEvent&lt;/span&gt;(&lt;span style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(156, 220, 254);&quot;&gt;eventId&lt;/span&gt;)&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=default;" parent="GDTSGlAvMcTRKh1b276R-29" vertex="1" connectable="0">
+          <mxGeometry y="30" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GDTSGlAvMcTRKh1b276R-31" target="GDTSGlAvMcTRKh1b276R-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-31" value="LightController.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;container=0;labelBackgroundColor=none;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+          <mxGeometry x="270" y="-640" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-32" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;handleOnPress&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;handleOffPress&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;update&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=none;" parent="GDTSGlAvMcTRKh1b276R-31" vertex="1" connectable="0">
+          <mxGeometry y="30" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GDTSGlAvMcTRKh1b276R-38" target="GDTSGlAvMcTRKh1b276R-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-38" value="main code" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#333333;fillColor=#f5f5f5;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#666666;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="110" y="-640" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-39" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=default;" parent="GDTSGlAvMcTRKh1b276R-38" vertex="1" connectable="0">
+          <mxGeometry y="30" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-41" value="Handwritten class" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="285" y="-670" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-42" value="Generated FSM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="485" y="-670" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-43" value="Handwritten code" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="100" y="-670" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-45" value="LightSm.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#ffffff;fillColor=#1ba1e2;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#006EAF;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="400" y="460" width="200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-46" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;stateId&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;vars&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;ctx&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;null&lt;/span&gt;,&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;start&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatchEvent&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;eventId&lt;/span&gt;)&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=default;" parent="GDTSGlAvMcTRKh1b276R-45" vertex="1" connectable="0">
+          <mxGeometry y="30" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-47" value="LightController.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;container=0;labelBackgroundColor=none;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="1" vertex="1">
+          <mxGeometry x="130" y="460" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-48" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;_sm&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;new&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;LightSm&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;constructor&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;handleOnPress&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;handleOffPress&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;update&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=none;" parent="GDTSGlAvMcTRKh1b276R-47" vertex="1" connectable="0">
+          <mxGeometry y="30" width="170" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-49" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#e3c800;strokeColor=#B09500;" parent="GDTSGlAvMcTRKh1b276R-47" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="109" y="86" as="sourcePoint" />
+            <mxPoint x="275" y="142" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="132" y="86" />
+              <mxPoint x="193" y="139" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-50" value="" style="labelPosition=right;align=left;strokeWidth=3;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#B09500;direction=east;rotation=90;fillColor=#e3c800;fontColor=#000000;" parent="GDTSGlAvMcTRKh1b276R-47" vertex="1">
+          <mxGeometry x="103" y="134" width="65" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-52" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#e3c800;strokeColor=#B09500;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="275" y="602" as="sourcePoint" />
+            <mxPoint x="405" y="621" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-53" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;entryX=0.001;entryY=0.122;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="GDTSGlAvMcTRKh1b276R-58" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="516" y="543" as="sourcePoint" />
+            <mxPoint x="633" y="461" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="576" y="543" />
+              <mxPoint x="620" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-54" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#e3c800;strokeColor=#B09500;entryX=0.001;entryY=0.117;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="285" y="507" as="sourcePoint" />
+            <mxPoint x="400.20000000000005" y="482.23" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="507" />
+              <mxPoint x="360" y="484" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-55" value="Handwritten class" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="160" y="430" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-56" value="Generated FSM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="440" y="430" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-58" value="LightSmContext.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;container=0;labelBackgroundColor=none;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" parent="1" vertex="1">
+          <mxGeometry x="660" y="460" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-59" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;background-color: initial; color: rgb(220, 220, 170);&quot;&gt;resetTimer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;()&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;isTimerExpired&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;turnOn&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;turnOff&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=14;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=none;" parent="GDTSGlAvMcTRKh1b276R-58" vertex="1" connectable="0">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-61" value="" style="labelPosition=right;align=left;strokeWidth=3;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#005700;direction=east;rotation=-90;fillColor=#008a00;fontColor=#ffffff;" parent="GDTSGlAvMcTRKh1b276R-58" vertex="1">
+          <mxGeometry x="-30" y="70.5" width="75" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-63" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;" parent="GDTSGlAvMcTRKh1b276R-58" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-79.5" y="158" as="sourcePoint" />
+            <mxPoint x="-1" y="78" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-46" y="158" />
+              <mxPoint x="-33" y="81" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-64" value="Handwritten class" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="670" y="430" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-66" value="LightSm.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#ffffff;fillColor=#1ba1e2;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#006EAF;collapsible=0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="-360" width="200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-67" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;stateId&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;vars&lt;/span&gt; &lt;span style=&quot;color: #d4d4d4;&quot;&gt;=&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;ctx&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;null&lt;/span&gt;,&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;start&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatchEvent&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;eventId&lt;/span&gt;)&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=default;" parent="GDTSGlAvMcTRKh1b276R-66" vertex="1" connectable="0">
+          <mxGeometry y="30" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-68" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;entryX=0.001;entryY=0.122;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="GDTSGlAvMcTRKh1b276R-70" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="286" y="-277" as="sourcePoint" />
+            <mxPoint x="403" y="-359" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="346" y="-277" />
+              <mxPoint x="390" y="-340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-69" value="Generated FSM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="210" y="-390" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-70" value="some &quot;interface&quot; code" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;container=0;labelBackgroundColor=none;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" parent="1" vertex="1">
+          <mxGeometry x="430" y="-360" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-71" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;background-color: initial; color: rgb(220, 220, 170);&quot;&gt;resetTimer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;()&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;isTimerExpired&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;turnOn&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;turnOff&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=14;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=none;" parent="GDTSGlAvMcTRKh1b276R-70" vertex="1" connectable="0">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-72" value="" style="labelPosition=right;align=left;strokeWidth=3;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#005700;direction=east;rotation=-90;fillColor=#008a00;fontColor=#ffffff;" parent="GDTSGlAvMcTRKh1b276R-70" vertex="1">
+          <mxGeometry x="-30" y="70.5" width="75" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-73" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;" parent="GDTSGlAvMcTRKh1b276R-70" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-79.5" y="158" as="sourcePoint" />
+            <mxPoint x="-1" y="78" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-46" y="158" />
+              <mxPoint x="-33" y="81" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GDTSGlAvMcTRKh1b276R-74" value="Handwritten class" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="455" y="-390" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-5" value="LightSm.js" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;fontColor=#ffffff;fillColor=#1ba1e2;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;strokeColor=#006EAF;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="840" y="-360" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-6" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(156, 220, 254);&quot;&gt;vars&lt;/span&gt; &lt;span style=&quot;color: rgb(212, 212, 212);&quot;&gt;=&lt;/span&gt; {&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;context&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;null&lt;/span&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;dispatchEvent&lt;/span&gt;(&lt;span style=&quot;color: rgb(156, 220, 254);&quot;&gt;eventId&lt;/span&gt;)&lt;br&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=4;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=default;" vertex="1" connectable="0" parent="DXP8oaQowGPsyv5lDipk-5">
+          <mxGeometry y="30" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;entryX=0.001;entryY=0.122;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" target="DXP8oaQowGPsyv5lDipk-9" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="981" y="-295" as="sourcePoint" />
+            <mxPoint x="1073" y="-359" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1017" y="-295" />
+              <mxPoint x="1060" y="-340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-8" value="Generated FSM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" vertex="1" parent="1">
+          <mxGeometry x="880" y="-390" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-9" value="some &quot;interface&quot; code" style="shape=swimlane;rotatable=0;align=center;verticalAlign=top;fontFamily=Lucida Console;startSize=30;fontSize=14;fontStyle=1;swimlaneFillColor=default;rounded=1;arcSize=15;absoluteArcSize=1;container=0;labelBackgroundColor=none;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="-360" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-10" value="&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;background-color: initial; color: rgb(220, 220, 170);&quot;&gt;resetTimer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;()&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space-collapse: preserve;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;isTimerExpired&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;turnOn&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;turnOff&lt;/span&gt;()&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="fontFamily=Lucida Console;align=left;verticalAlign=top;fillColor=none;gradientColor=none;strokeColor=none;rounded=0;spacingLeft=18;resizable=0;movable=0;deletable=0;rotatable=0;autosize=1;html=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="DXP8oaQowGPsyv5lDipk-9">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-11" value="" style="labelPosition=right;align=left;strokeWidth=3;shape=mxgraph.mockup.markup.curlyBrace;html=1;shadow=0;dashed=0;strokeColor=#005700;direction=east;rotation=-90;fillColor=#008a00;fontColor=#ffffff;" vertex="1" parent="DXP8oaQowGPsyv5lDipk-9">
+          <mxGeometry x="-26" y="69.5" width="75" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-12" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=8.333333333333334;endSize=4.691275167785236;width=4.026845637583892;fillColor=#1ba1e2;strokeColor=#006EAF;" edge="1" parent="DXP8oaQowGPsyv5lDipk-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-83" y="123" as="sourcePoint" />
+            <mxPoint x="3" y="77" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-50" y="122" />
+              <mxPoint x="-33" y="81" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DXP8oaQowGPsyv5lDipk-13" value="Handwritten class" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;" vertex="1" parent="1">
+          <mxGeometry x="1125" y="-390" width="150" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

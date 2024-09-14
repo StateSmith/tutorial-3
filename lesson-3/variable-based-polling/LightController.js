@@ -6,32 +6,23 @@ class LightController
     // Our state machine instance
     #sm = new LightSm();
 
-    #lightHtmlObject;
+    #lightHtmlObject = null;
+    #switchHtmlObject = null;
 
-    constructor(lightHtmlObject) {
+    constructor(lightHtmlObject, switchHtmlObject) {
         this.#lightHtmlObject = lightHtmlObject;
+        this.#switchHtmlObject = switchHtmlObject;
 
         // start the state machine
         this.#sm.start();
     }
 
-    ///////////// Public methods //////////////
-
-    // called by GUI index.html
-    handleOnPress() {
-        this.#sm.dispatchEvent(LightSm.EventId.ON_PRESS);
-    }
-
-    // called by GUI index.html
-    handleOffPress() {
-        this.#sm.dispatchEvent(LightSm.EventId.OFF_PRESS);
-    }
-
     // called by GUI index.html. This is essentially "poll the state machine".
     update(timeSinceLastUpdate) {
-        let sm = this.#sm; // shorthand variable
+        let sm = this.#sm;
 
         // set up inputs to the state machine
+        sm.vars.input_active = this.#switchHtmlObject.checked;
         sm.vars.timer_ms += timeSinceLastUpdate;
 
         // run the state machine
