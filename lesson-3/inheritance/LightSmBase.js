@@ -14,6 +14,10 @@ class LightSmBase {
     // private variable
     #timerStartMs = 0;
 
+    setLightHtmlObject(lightHtmlObject) {
+        this.#lightHtmlObject = lightHtmlObject;
+    }
+
     resetTimer() {
         this.#timerStartMs = Date.now();
     }
