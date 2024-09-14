@@ -16,11 +16,11 @@ Each language has various technical options for connecting your state machine to
 
 | Language   | Globals | Vars | Composition | Inheritance | .inc File | Partial Class |
 | ---------- |:-------:|:----:|:-----------:|:-----------:|:---------:|:-------------:|
-| C99/C++    | ✅      | ✅   | ✅          | -          | ✅        | -            |
-| C#         | ✅      | ✅   | ✅          | ✅          | -        | ✅            |
-| JavaScript | ✅      | ✅   | ✅          | ✅          | -        | -            |
-| Java       | ✅      | ✅   | ✅          | ✅          | -        | -            |
-| Python     | ✅      | ✅   | ✅          | ✅          | -        | -            |
+| C99/C++    | ✅      | ✅   | ✅         | -           | ✅       | -             |
+| C#         | ✅      | ✅   | ✅         | ✅         | -         | ✅           |
+| JavaScript | ✅      | ✅   | ✅         | ✅         | -         | -             |
+| Java       | ✅      | ✅   | ✅         | ✅         | -         | -             |
+| Python     | ✅      | ✅   | ✅         | ✅         | -         | -             |
 
 > C++ is still using the C99 transpiler. We will support C++ features in the future.
 
