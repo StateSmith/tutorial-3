@@ -1,4 +1,4 @@
-This tutorial (`tutorial-3`) is specific to PlantUML. If you prefer draw.io, check out [tutorial-4](https://github.com/StateSmith/tutorial-4).
+> This tutorial (`tutorial-3`) is specific to PlantUML. If you prefer draw.io, check out [tutorial-4](https://github.com/StateSmith/tutorial-4).
 
 <br>
 
