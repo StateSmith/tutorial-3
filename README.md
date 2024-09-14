@@ -1,3 +1,7 @@
+This tutorial (`tutorial-3`) is specific to PlantUML. If you prefer draw.io, check out [tutorial-4](https://github.com/StateSmith/tutorial-4).
+
+<br>
+
 # Let's try it quick!
 With the goal of keeping things as simple as possible to start, this tutorial uses `PlantUML` as the diagram tool, but StateSmith also supports `draw.io` (covered in other tutorials). PlantUML is a great place to start.
 
