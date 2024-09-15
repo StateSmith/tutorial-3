@@ -200,10 +200,10 @@ static void OFF_enter(LightSm* sm)
     sm->state_id = LightSm_StateId_OFF;
     
     // OFF behavior
-    // uml: enter / { std::cout << "Light is OFF" << std::endl; }
+    // uml: enter / { std::cout << "Light is OFF\n"; }
     {
-        // Step 1: execute action `std::cout << "Light is OFF" << std::endl;`
-        std::cout << "Light is OFF" << std::endl;
+        // Step 1: execute action `std::cout << "Light is OFF\n";`
+        std::cout << "Light is OFF\n";
     } // end of behavior for OFF
 }
 

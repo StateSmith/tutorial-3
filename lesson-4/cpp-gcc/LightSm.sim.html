@@ -220,7 +220,7 @@ OFF
 
 OFF : OFF
 
-OFF : enter / #123; std#58#59;#58#59;cout << "Light is OFF" << std#58#59;#58#59;endl#59; #125;
+OFF : enter / #123; std#58#59;#58#59;cout << "Light is OFF#92;n"#59; #125;
 
 state ON_GROUP {
 
@@ -477,10 +477,10 @@ evaluateGuard = null;
         } // end of behavior for OFF
         
         // OFF behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"Light is OFF\" << std::endl;"); }
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"Light is OFF\n\";"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"Light is OFF\" << std::endl;");`
-            this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"Light is OFF\" << std::endl;");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"Light is OFF\n\";");`
+            this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"Light is OFF\n\";");
         } // end of behavior for OFF
     }
     

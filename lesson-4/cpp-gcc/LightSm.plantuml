@@ -1,5 +1,5 @@
 @startuml LightSm
-
+scale 1.25
 
 ' //////////////////////// STATE ORGANIZATION ///////////////////////
 ' Note: StateSmith treats state names and events as case insensitive.
@@ -17,7 +17,8 @@ state ON_GROUP {
 ' ///////////////////////// STATE HANDLERS /////////////////////////
 ' Syntax: https://github.com/StateSmith/StateSmith/wiki/Behaviors
 
-OFF: enter / std::cout << "Light is OFF" << std::endl;
+OFF: enter / std::cout << "Light is OFF\\n";
+' >>> NOTE the extra escape in `\\n` above. This is required for PlantUML.
 OFF --> ON1: INC
 
 ON_GROUP --> OFF : OFF
