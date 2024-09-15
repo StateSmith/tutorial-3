@@ -1,3 +1,5 @@
+> [🎥 A video for this lesson is available](https://www.youtube.com/watch?v=NHsyFOqH_yU&list=PLC7mUEDZkCILp_Xvi6wjHv2EqMn_MbEXl&index=6).
+
 # Language specific party time 🎉 
 
 About darn time we get to our favorite languages. Wait! What's this? It's the 🚨fuzzy logic cops!🚨
