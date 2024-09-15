@@ -57,7 +57,7 @@ public class Program
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("What you trying to pull!? I ain't not silly AI. Feed me proper input please :)");
+            Console.WriteLine("What you trying to pull!? I ain't no silly AI. Feed me proper input please :)");
             Console.ResetColor();
         }
     }
