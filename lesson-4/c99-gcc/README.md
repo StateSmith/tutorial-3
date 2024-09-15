@@ -7,13 +7,6 @@ The only GCC specific things are:
 # Diagram
 See [LightSm.plantuml](./LightSm.plantuml) for the PlantUML code.
 
-> NOTE: I just noticed a minor issue with StateSmith PlantUML support and `\n` characters.
-I don't normally use `printf()` directly in my state machines, but I did in this example.
-See [issue 369](https://github.com/StateSmith/StateSmith/issues/369) for workaround and details.
-
-> This project defines a macro `NEWLINE` to get around this issue.
-
-
 ![](docs/fsm.png)
 
 # Run The Code Gen

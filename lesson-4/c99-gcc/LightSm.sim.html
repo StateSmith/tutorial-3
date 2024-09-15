@@ -220,7 +220,7 @@ OFF
 
 OFF : OFF
 
-OFF : enter / #123; printf("Light is OFF" NEWLINE)#59; #125;
+OFF : enter / #123; printf("Light is OFF#92;n")#59; #125;
 
 state ON_GROUP {
 
@@ -240,7 +240,7 @@ state ON_GROUP {
 
         ON2 : 1. INC / #123; count++#59; #125;
 
-        ON2 : 2. INC / #123; printf("    Count#58#59; %i" NEWLINE, count)#59; #125;
+        ON2 : 2. INC / #123; printf("    Count#58#59; %i#92;n", count)#59; #125;
 
         ON_HOT
 
@@ -477,10 +477,10 @@ evaluateGuard = null;
         } // end of behavior for OFF
         
         // OFF behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\" NEWLINE);"); }
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\n\");"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\" NEWLINE);");`
-            this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\" NEWLINE);");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\n\");");`
+            this.tracer?.log("⚡ FSM would execute action: " + "printf(\"Light is OFF\n\");");
         } // end of behavior for OFF
     }
     
@@ -777,10 +777,10 @@ evaluateGuard = null;
         } // end of behavior for ON2
         
         // ON2 behavior
-        // uml: 2. INC / { this.tracer?.log("⚡ FSM would execute action: " + "printf(\"    Count: %i\" NEWLINE, count);"); }
+        // uml: 2. INC / { this.tracer?.log("⚡ FSM would execute action: " + "printf(\"    Count: %i\n\", count);"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "printf(\"    Count: %i\" NEWLINE, count);");`
-            this.tracer?.log("⚡ FSM would execute action: " + "printf(\"    Count: %i\" NEWLINE, count);");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "printf(\"    Count: %i\n\", count);");`
+            this.tracer?.log("⚡ FSM would execute action: " + "printf(\"    Count: %i\n\", count);");
         } // end of behavior for ON2
         
         // ON2 behavior

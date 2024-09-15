@@ -1,5 +1,5 @@
 @startuml LightSm
-
+scale 1.25
 
 ' //////////////////////// STATE ORGANIZATION ///////////////////////
 ' Note: StateSmith treats state names and events as case insensitive.
@@ -17,7 +17,8 @@ state ON_GROUP {
 ' ///////////////////////// STATE HANDLERS /////////////////////////
 ' Syntax: https://github.com/StateSmith/StateSmith/wiki/Behaviors
 
-OFF: enter / printf("Light is OFF" NEWLINE);
+OFF: enter / printf("Light is OFF\\n");
+' >>> NOTE the extra escape in `\\n` above. This is required for PlantUML.
 OFF --> ON1: INC
 
 ON_GROUP --> OFF : OFF
@@ -29,7 +30,9 @@ ON1 --> OFF: DIM
 ON2: enter / Light_yellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
-ON2: 2. INC / printf("    Count: %i" NEWLINE, count);
+ON2: 2. INC / printf("    Count: %i\\n", count);
+' >>> NOTE the extra escape in `\\n` above. This is required for PlantUML.
+
 ON2 --> ON_HOT: INC [count >= 3]
 ON2 --> ON1: DIM
 
@@ -61,9 +64,6 @@ HFileIncludes = """
 CFileIncludes = """
     #include <stdio.h> // user include. required for printf.
     #include "Light.h" // user include. required for Light_* functions.
-    """
-CFileTop = """
-    #define NEWLINE "\\n" // For StateSmith PlantUML issue https://github.com/StateSmith/StateSmith/issues/369
     """
 
 # Uncomment below line to tell GCC to pack the enum to save some RAM

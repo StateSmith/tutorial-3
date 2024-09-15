@@ -4,8 +4,6 @@
 // Whatever you put in this `FileTop` section will end up 
 // being printed at the top of every generated code file.
 
-#define NEWLINE "\n" // For StateSmith PlantUML issue https://github.com/StateSmith/StateSmith/issues/369
-
 #include "LightSm.h"
 #include <stdbool.h> // required for `consume_event` flag
 #include <string.h> // for memset
@@ -202,10 +200,10 @@ static void OFF_enter(LightSm* sm)
     sm->state_id = LightSm_StateId_OFF;
     
     // OFF behavior
-    // uml: enter / { printf("Light is OFF" NEWLINE); }
+    // uml: enter / { printf("Light is OFF\n"); }
     {
-        // Step 1: execute action `printf("Light is OFF" NEWLINE);`
-        printf("Light is OFF" NEWLINE);
+        // Step 1: execute action `printf("Light is OFF\n");`
+        printf("Light is OFF\n");
     } // end of behavior for OFF
 }
 
@@ -433,10 +431,10 @@ static void ON2_inc(LightSm* sm)
     } // end of behavior for ON2
     
     // ON2 behavior
-    // uml: 2. INC / { printf("    Count: %i" NEWLINE, count); }
+    // uml: 2. INC / { printf("    Count: %i\n", count); }
     {
-        // Step 1: execute action `printf("    Count: %i" NEWLINE, count);`
-        printf("    Count: %i" NEWLINE, sm->vars.count);
+        // Step 1: execute action `printf("    Count: %i\n", count);`
+        printf("    Count: %i\n", sm->vars.count);
     } // end of behavior for ON2
     
     // ON2 behavior
