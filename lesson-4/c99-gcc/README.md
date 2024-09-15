@@ -4,10 +4,17 @@ This example uses gcc for convenience, but you can use any C99 compiler you like
 The only GCC specific things are:
 - the tiny build shell script `build_run.sh`
 
+<br>
+
+
 # Diagram
 See [LightSm.plantuml](./LightSm.plantuml) for the PlantUML code.
 
 ![](docs/fsm.png)
+
+
+<br>
+
 
 # Run The Code Gen
 Run in this directory:
@@ -15,11 +22,16 @@ Run in this directory:
 ss.cli run -h
 ```
 
+<br>
+
+
 # Run The Example Project
 Run in this directory:
 ```
 ./build_run.sh
 ```
+
+<br>
 
 
 # More examples
