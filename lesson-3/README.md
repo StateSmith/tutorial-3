@@ -1,3 +1,5 @@
+> [🎥 A video for this lesson is available](https://www.youtube.com/watch?v=O7_sHEuebwo&list=PLC7mUEDZkCILp_Xvi6wjHv2EqMn_MbEXl&index=5&pp=iAQB).
+
 # This Is Optional
 This is an architectural lesson. It is more useful if you want to have multiple instances of the same state machine.
 
