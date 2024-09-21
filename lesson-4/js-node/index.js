@@ -25,7 +25,9 @@ while (true)
  */
 function ReadInputRunSm(sm)
 {
-    var line = prompt("");
+    console.log(`\n\nCurrent state: ${LightSm.stateIdToString(sm.stateId)}`);
+
+    var line = prompt("Please type 'i', 'd', 'o': ");
     let c = "";
 
     if (line)
@@ -51,10 +53,11 @@ function RunSmForChar(sm, c)
 
     if (eventId !== null)
     {
+        console.log(`Dispatching event: ${LightSm.eventIdToString(eventId)}`);
         sm.dispatchEvent(eventId);
     }
     else
     {
-        console.log("What you trying to pull!? I ain't not silly AI. Feed me proper input please :)");
+        console.log("Invalid input. Not running state machine.");
     }
 }

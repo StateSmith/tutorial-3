@@ -240,7 +240,7 @@ state ON_GROUP {
 
         ON2 : 1. INC / #123; count++#59; #125;
 
-        ON2 : 2. INC / #123; console.log("    Count#58#59; " + count)#59; #125;
+        ON2 : 2. INC / #123; console.log("vars.count#58#59; " + count)#59; #125;
 
         ON_HOT
 
@@ -777,10 +777,10 @@ evaluateGuard = null;
         } // end of behavior for ON2
         
         // ON2 behavior
-        // uml: 2. INC / { this.tracer?.log("⚡ FSM would execute action: " + "console.log(\"    Count: \" + count);"); }
+        // uml: 2. INC / { this.tracer?.log("⚡ FSM would execute action: " + "console.log(\"vars.count: \" + count);"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "console.log(\"    Count: \" + count);");`
-            this.tracer?.log("⚡ FSM would execute action: " + "console.log(\"    Count: \" + count);");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "console.log(\"vars.count: \" + count);");`
+            this.tracer?.log("⚡ FSM would execute action: " + "console.log(\"vars.count: \" + count);");
         } // end of behavior for ON2
         
         // ON2 behavior

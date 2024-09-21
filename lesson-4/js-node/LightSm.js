@@ -405,10 +405,10 @@ export class LightSm extends LightSmBase
         } // end of behavior for ON2
         
         // ON2 behavior
-        // uml: 2. INC / { console.log("    Count: " + count); }
+        // uml: 2. INC / { console.log("vars.count: " + count); }
         {
-            // Step 1: execute action `console.log("    Count: " + count);`
-            console.log("    Count: " + this.vars.count);
+            // Step 1: execute action `console.log("vars.count: " + count);`
+            console.log("vars.count: " + this.vars.count);
         } // end of behavior for ON2
         
         // ON2 behavior

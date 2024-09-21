@@ -21,7 +21,10 @@ ss.cli run -h
 <br>
 
 # Retrieve required packages
-Use npm to restore the required packages. We just rely on `prompt-sync` to easily get user input.
+Use npm to restore the required packages for handwritten user code. 
+
+**NOTE:** the generated StateSmith code does not require **any** packages.
+
 ```bash
 npm install
 ```
