@@ -1,13 +1,14 @@
 # TypeScript (nodejs) Welcome!
 All the other TypeScript/JavaScript examples are web-based, so this one is a nodejs example.
 
+📢 TypeScript support was added in CLI version 0.15.0 (lib version 0.16.0).
+
 
 <br>
 
 # Diagram
 See [LightSm.plantuml](./LightSm.plantuml) for the PlantUML code.
 
-TODOooooooooooooooooooooooooooooooooooooooooooooooooooo
 ![](docs/fsm.png)
 
 

@@ -28,7 +28,7 @@ ON1 --> OFF: DIM
 ON2: enter / this.lightYellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
-ON2: 2. INC / console.log("    Count: " + count);
+ON2: 2. INC / console.log("vars.count: " + count);
 ON2 --> ON_HOT: INC [count >= 3]
 ON2 --> ON1: DIM
 
@@ -41,21 +41,19 @@ ON_HOT --> ON2: DIM
 ' More info: https://github.com/StateSmith/StateSmith/issues/335
 
 /'! $CONFIG : toml
-SmRunnerSettings.transpilerId = "JavaScript"
+SmRunnerSettings.transpilerId = "TypeScript"
 
 [RenderConfig]
 AutoExpandedVars = """
-    count : 0, // variable for state machine
+    public count: number = 0; // Variable for state machine. Must end with a semicolon for TypeScript.
     """
 FileTop = """
-    "use strict";    
     // any text you put in IRenderConfig.FileTop (like this comment) will be written to the generated .h file
-    import { LightSmBase } from "./LightSmBase.js";
+    import { LightSmBase } from "./LightSmBase";
     """
 
-[RenderConfig.JavaScript]
-ExtendsSuperClass = "LightSmBase"
-UseExportOnClass = true
+[RenderConfig.TypeScript]
+Extends = "LightSmBase"
 
 '/
 @enduml
