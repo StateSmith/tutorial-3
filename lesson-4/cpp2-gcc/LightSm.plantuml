@@ -1,0 +1,73 @@
+@startuml LightSm
+scale 1.25
+
+' //////////////////////// STATE ORGANIZATION ///////////////////////
+' Note: StateSmith treats state names and events as case insensitive.
+' More info: https://github.com/StateSmith/StateSmith/wiki/PlantUML
+
+state OFF
+state ON_GROUP {
+    state ON1
+    state ON2
+    state ON_HOT
+}
+
+[*] -> OFF
+
+' ///////////////////////// STATE HANDLERS /////////////////////////
+' Syntax: https://github.com/StateSmith/StateSmith/wiki/Behaviors
+
+OFF: enter / std::cout << "Light is OFF\\n";
+' >>> NOTE the extra escape in `\\n` above. This is required for PlantUML.
+OFF --> ON1: INC
+
+ON_GROUP --> OFF : OFF
+
+ON1: enter / Light::blue();
+ON1 --> ON2: INC
+ON1 --> OFF: DIM
+
+ON2: enter / Light::yellow();
+ON2: enter / count = 0;
+ON2: 1. INC / count++;
+ON2: 2. INC / std::cout << "    Count: " << count << std::endl;
+ON2 --> ON_HOT: INC [count >= 3]
+ON2 --> ON1: DIM
+
+ON_HOT: enter / Light::red();
+ON_HOT --> ON2: DIM
+
+
+
+' //////////////////////// StateSmith config ////////////////////////
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+
+/'! $CONFIG : toml
+[SmRunnerSettings]
+transpilerId = "C99"
+
+[RenderConfig]
+FileTop = """
+    // Whatever you put in this `FileTop` section will end up 
+    // being printed at the top of every generated code file.
+    """
+AutoExpandedVars = """
+    uint16_t count; // this var can be referenced in diagram
+    """
+
+[RenderConfig.C]
+CFileExtension = ".cpp"
+# HFileExtension = ".hpp"
+HFileIncludes = """
+    // any includes you want in the header file go here
+    """
+CFileIncludes = """
+    #include "Light.h" // user include. required for Light functions.
+    #include <iostream> // user include. required for printf.
+    """
+
+# Uncomment below line to tell GCC to pack the enum to save some RAM
+# CEnumDeclarer = "typedef enum __attribute__ ((packed)) {enumName}"
+'/
+@enduml
