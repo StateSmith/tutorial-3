@@ -28,6 +28,9 @@ public class Program
 
     private static void ReadInputRunSm(LightSm sm)
     {
+        Console.WriteLine($"\nCurrent state: {LightSm.StateIdToString(sm.stateId)}");
+        Console.Write("Please type 'i', 'd', 'o': ");
+
         var line = Console.ReadLine();
         char c = '\0';
 
@@ -52,12 +55,13 @@ public class Program
 
         if (validInput)
         {
+            Console.WriteLine($"Dispatching event: {LightSm.EventIdToString(eventId)}");
             sm.DispatchEvent(eventId);
         }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("What you trying to pull!? I ain't no silly AI. Feed me proper input please :)");
+            Console.WriteLine("Invalid input. Not running state machine.");
             Console.ResetColor();
         }
     }

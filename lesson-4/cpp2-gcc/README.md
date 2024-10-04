@@ -1,11 +1,7 @@
-# C++ Welcome!
-> See [cpp2-gcc](../cpp2-gcc/README.md) for a more modern C++ way of using StateSmith.
-> 
-> This is the old way of using StateSmith with C++. It generates C style C++ code.
-> You might want to use this style if you don't have a C++11 or greater compiler. <br>
+# C++11 Welcome!
+📢 Idiomatic C++11 support was added in CLI version 0.16.0 (lib version 0.17.0).
 
-
-This example uses gcc for convenience, but you can use any C++ compiler you like.
+This example uses gcc for convenience, but you can use any C++11 compiler you like.
 
 The only GCC specific things are:
 - the tiny build shell script `build_run.sh`

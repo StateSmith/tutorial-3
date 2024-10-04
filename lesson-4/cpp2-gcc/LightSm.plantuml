@@ -23,21 +23,20 @@ OFF --> ON1: INC
 
 ON_GROUP --> OFF : OFF
 
-ON1: enter / Light::blue();
+ON1: enter / blue();
 ON1 --> ON2: INC
 ON1 --> OFF: DIM
 
-ON2: enter / Light::yellow();
+ON2: enter / yellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
 ON2: 2. INC / std::cout << "count var: " << count << '\\n';
-' >>> NOTE the extra escape in `\\n` above. This is required for PlantUML.
+' >>> NOTE the extra escape in `\\n` above for PlantUML
 ON2 --> ON_HOT: INC [count >= 3]
 ON2 --> ON1: DIM
 
-ON_HOT: enter / Light::red();
+ON_HOT: enter / red();
 ON_HOT --> ON2: DIM
-
 
 
 ' //////////////////////// StateSmith config ////////////////////////
@@ -45,30 +44,30 @@ ON_HOT --> ON2: DIM
 ' More info: https://github.com/StateSmith/StateSmith/issues/335
 
 /'! $CONFIG : toml
-[SmRunnerSettings]
-transpilerId = "C99"
 
 [RenderConfig]
 FileTop = """
     // Whatever you put in this `FileTop` section will end up 
     // being printed at the top of every generated code file.
     """
-AutoExpandedVars = """
-    uint16_t count; // this var can be referenced in diagram
-    """
+# we get the `count` variable from the base class, but we could
+# also have used `AutoExpandedVars` to declare it here.
 
-[RenderConfig.C]
-CFileExtension = ".cpp"
-# HFileExtension = ".hpp"
+[RenderConfig.Cpp]
+HFileExtension = ".h"
+# IncludeGuardLabel = "{FILENAME}_H"
+# NameSpace = "MyNamespace"
+BaseClassCode = "public LightSmBase"
 HFileIncludes = """
-    // any includes you want in the header file go here
+    #include "LightSmBase.h" // user include. required for Light functions.
     """
 CFileIncludes = """
-    #include "Light.h" // user include. required for Light functions.
-    #include <iostream> // user include. required for printf.
+    #include <iostream> // user include. required for printing action code.
     """
 
-# Uncomment below line to tell GCC to pack the enum to save some RAM
-# CEnumDeclarer = "typedef enum __attribute__ ((packed)) {enumName}"
+# More Cpp settings are available. See docs.
+
+[SmRunnerSettings]
+transpilerId = "Cpp"
 '/
 @enduml

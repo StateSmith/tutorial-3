@@ -7,61 +7,14 @@
 #include "LightSm.h"
 #include <stdbool.h> // required for `consume_event` flag
 #include <string.h> // for memset
-#include <stdio.h> // user include. required for printf.
-#include "Light.h" // user include. required for Light_* functions.
+#include <iostream> // user include. required for printing action code.
 
 
-// This function is used when StateSmith doesn't know what the active leaf state is at
-// compile time due to sub states or when multiple states need to be exited.
-static void exit_up_to_state_handler(LightSm* sm, LightSm_StateId desired_state);
-
-static void ROOT_enter(LightSm* sm);
-
-static void OFF_enter(LightSm* sm);
-
-static void OFF_exit(LightSm* sm);
-
-static void OFF_inc(LightSm* sm);
-
-static void ON_GROUP_enter(LightSm* sm);
-
-static void ON_GROUP_exit(LightSm* sm);
-
-static void ON_GROUP_off(LightSm* sm);
-
-static void ON_HOT_enter(LightSm* sm);
-
-static void ON_HOT_exit(LightSm* sm);
-
-static void ON_HOT_dim(LightSm* sm);
-
-static void ON1_enter(LightSm* sm);
-
-static void ON1_exit(LightSm* sm);
-
-static void ON1_dim(LightSm* sm);
-
-static void ON1_inc(LightSm* sm);
-
-static void ON2_enter(LightSm* sm);
-
-static void ON2_exit(LightSm* sm);
-
-static void ON2_dim(LightSm* sm);
-
-static void ON2_inc(LightSm* sm);
-
-
-// State machine constructor. Must be called before start or dispatch event functions. Not thread safe.
-void LightSm_ctor(LightSm* sm)
-{
-    memset(sm, 0, sizeof(*sm));
-}
 
 // Starts the state machine. Must be called before dispatching events. Not thread safe.
-void LightSm_start(LightSm* sm)
+void LightSm::start()
 {
-    ROOT_enter(sm);
+    ROOT_enter();
     // ROOT behavior
     // uml: TransitionTo(ROOT.<InitialState>)
     {
@@ -80,7 +33,7 @@ void LightSm_start(LightSm* sm)
             // Step 2: Transition action: ``.
             
             // Step 3: Enter/move towards transition target `OFF`.
-            OFF_enter(sm);
+            OFF_enter();
             
             // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
             return;
@@ -89,66 +42,66 @@ void LightSm_start(LightSm* sm)
 }
 
 // Dispatches an event to the state machine. Not thread safe.
-// Note! This function assumes that the `event_id` parameter is valid.
-void LightSm_dispatch_event(LightSm* sm, LightSm_EventId event_id)
+// Note! This function assumes that the `eventId` parameter is valid.
+void LightSm::dispatchEvent(EventId eventId)
 {
-    switch (sm->state_id)
+    switch (this->stateId)
     {
         // STATE: LightSm
-        case LightSm_StateId_ROOT:
+        case StateId::ROOT:
             // No events handled by this state (or its ancestors).
             break;
         
         // STATE: OFF
-        case LightSm_StateId_OFF:
-            switch (event_id)
+        case StateId::OFF:
+            switch (eventId)
             {
-                case LightSm_EventId_INC: OFF_inc(sm); break;
+                case EventId::INC: OFF_inc(); break;
                 
                 default: break; // to avoid "unused enumeration value in switch" warning
             }
             break;
         
         // STATE: ON_GROUP
-        case LightSm_StateId_ON_GROUP:
-            switch (event_id)
+        case StateId::ON_GROUP:
+            switch (eventId)
             {
-                case LightSm_EventId_OFF: ON_GROUP_off(sm); break;
+                case EventId::OFF: ON_GROUP_off(); break;
                 
                 default: break; // to avoid "unused enumeration value in switch" warning
             }
             break;
         
         // STATE: ON_HOT
-        case LightSm_StateId_ON_HOT:
-            switch (event_id)
+        case StateId::ON_HOT:
+            switch (eventId)
             {
-                case LightSm_EventId_DIM: ON_HOT_dim(sm); break;
-                case LightSm_EventId_OFF: ON_GROUP_off(sm); break; // First ancestor handler for this event
+                case EventId::DIM: ON_HOT_dim(); break;
+                case EventId::OFF: ON_GROUP_off(); break; // First ancestor handler for this event
                 
                 default: break; // to avoid "unused enumeration value in switch" warning
             }
             break;
         
         // STATE: ON1
-        case LightSm_StateId_ON1:
-            switch (event_id)
+        case StateId::ON1:
+            switch (eventId)
             {
-                case LightSm_EventId_INC: ON1_inc(sm); break;
-                case LightSm_EventId_DIM: ON1_dim(sm); break;
-                case LightSm_EventId_OFF: ON_GROUP_off(sm); break; // First ancestor handler for this event
+                case EventId::INC: ON1_inc(); break;
+                case EventId::DIM: ON1_dim(); break;
+                case EventId::OFF: ON_GROUP_off(); break; // First ancestor handler for this event
                 
                 default: break; // to avoid "unused enumeration value in switch" warning
             }
             break;
         
         // STATE: ON2
-        case LightSm_StateId_ON2:
-            switch (event_id)
+        case StateId::ON2:
+            switch (eventId)
             {
-                case LightSm_EventId_INC: ON2_inc(sm); break;
-                case LightSm_EventId_DIM: ON2_dim(sm); break;
-                case LightSm_EventId_OFF: ON_GROUP_off(sm); break; // First ancestor handler for this event
+                case EventId::INC: ON2_inc(); break;
+                case EventId::DIM: ON2_dim(); break;
+                case EventId::OFF: ON_GROUP_off(); break; // First ancestor handler for this event
                 
                 default: break; // to avoid "unused enumeration value in switch" warning
             }
@@ -159,21 +112,21 @@ void LightSm_dispatch_event(LightSm* sm, LightSm_EventId event_id)
 
 // This function is used when StateSmith doesn't know what the active leaf state is at
 // compile time due to sub states or when multiple states need to be exited.
-static void exit_up_to_state_handler(LightSm* sm, LightSm_StateId desired_state)
+void LightSm::exitUpToStateHandler(StateId desiredState)
 {
-    while (sm->state_id != desired_state)
+    while (this->stateId != desiredState)
     {
-        switch (sm->state_id)
+        switch (this->stateId)
         {
-            case LightSm_StateId_OFF: OFF_exit(sm); break;
+            case StateId::OFF: OFF_exit(); break;
             
-            case LightSm_StateId_ON_GROUP: ON_GROUP_exit(sm); break;
+            case StateId::ON_GROUP: ON_GROUP_exit(); break;
             
-            case LightSm_StateId_ON_HOT: ON_HOT_exit(sm); break;
+            case StateId::ON_HOT: ON_HOT_exit(); break;
             
-            case LightSm_StateId_ON1: ON1_exit(sm); break;
+            case StateId::ON1: ON1_exit(); break;
             
-            case LightSm_StateId_ON2: ON2_exit(sm); break;
+            case StateId::ON2: ON2_exit(); break;
             
             default: return;  // Just to be safe. Prevents infinite loop if state ID memory is somehow corrupted.
         }
@@ -185,9 +138,9 @@ static void exit_up_to_state_handler(LightSm* sm, LightSm_StateId desired_state)
 // event handlers for state ROOT
 ////////////////////////////////////////////////////////////////////////////////
 
-static void ROOT_enter(LightSm* sm)
+void LightSm::ROOT_enter()
 {
-    sm->state_id = LightSm_StateId_ROOT;
+    this->stateId = StateId::ROOT;
 }
 
 
@@ -195,36 +148,36 @@ static void ROOT_enter(LightSm* sm)
 // event handlers for state OFF
 ////////////////////////////////////////////////////////////////////////////////
 
-static void OFF_enter(LightSm* sm)
+void LightSm::OFF_enter()
 {
-    sm->state_id = LightSm_StateId_OFF;
+    this->stateId = StateId::OFF;
     
     // OFF behavior
-    // uml: enter / { printf("Light is OFF\n"); }
+    // uml: enter / { std::cout << "Light is OFF\n"; }
     {
-        // Step 1: execute action `printf("Light is OFF\n");`
-        printf("Light is OFF\n");
+        // Step 1: execute action `std::cout << "Light is OFF\n";`
+        std::cout << "Light is OFF\n";
     } // end of behavior for OFF
 }
 
-static void OFF_exit(LightSm* sm)
+void LightSm::OFF_exit()
 {
-    sm->state_id = LightSm_StateId_ROOT;
+    this->stateId = StateId::ROOT;
 }
 
-static void OFF_inc(LightSm* sm)
+void LightSm::OFF_inc()
 {
     // OFF behavior
     // uml: INC TransitionTo(ON1)
     {
         // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
-        OFF_exit(sm);
+        OFF_exit();
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `ON1`.
-        ON_GROUP_enter(sm);
-        ON1_enter(sm);
+        ON_GROUP_enter();
+        ON1_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -238,28 +191,28 @@ static void OFF_inc(LightSm* sm)
 // event handlers for state ON_GROUP
 ////////////////////////////////////////////////////////////////////////////////
 
-static void ON_GROUP_enter(LightSm* sm)
+void LightSm::ON_GROUP_enter()
 {
-    sm->state_id = LightSm_StateId_ON_GROUP;
+    this->stateId = StateId::ON_GROUP;
 }
 
-static void ON_GROUP_exit(LightSm* sm)
+void LightSm::ON_GROUP_exit()
 {
-    sm->state_id = LightSm_StateId_ROOT;
+    this->stateId = StateId::ROOT;
 }
 
-static void ON_GROUP_off(LightSm* sm)
+void LightSm::ON_GROUP_off()
 {
     // ON_GROUP behavior
     // uml: OFF TransitionTo(OFF)
     {
         // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
-        exit_up_to_state_handler(sm, LightSm_StateId_ROOT);
+        exitUpToStateHandler(StateId::ROOT);
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `OFF`.
-        OFF_enter(sm);
+        OFF_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -273,35 +226,35 @@ static void ON_GROUP_off(LightSm* sm)
 // event handlers for state ON_HOT
 ////////////////////////////////////////////////////////////////////////////////
 
-static void ON_HOT_enter(LightSm* sm)
+void LightSm::ON_HOT_enter()
 {
-    sm->state_id = LightSm_StateId_ON_HOT;
+    this->stateId = StateId::ON_HOT;
     
     // ON_HOT behavior
-    // uml: enter / { Light_red(); }
+    // uml: enter / { red(); }
     {
-        // Step 1: execute action `Light_red();`
-        Light_red();
+        // Step 1: execute action `red();`
+        red();
     } // end of behavior for ON_HOT
 }
 
-static void ON_HOT_exit(LightSm* sm)
+void LightSm::ON_HOT_exit()
 {
-    sm->state_id = LightSm_StateId_ON_GROUP;
+    this->stateId = StateId::ON_GROUP;
 }
 
-static void ON_HOT_dim(LightSm* sm)
+void LightSm::ON_HOT_dim()
 {
     // ON_HOT behavior
     // uml: DIM TransitionTo(ON2)
     {
         // Step 1: Exit states until we reach `ON_GROUP` state (Least Common Ancestor for transition).
-        ON_HOT_exit(sm);
+        ON_HOT_exit();
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `ON2`.
-        ON2_enter(sm);
+        ON2_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -315,35 +268,35 @@ static void ON_HOT_dim(LightSm* sm)
 // event handlers for state ON1
 ////////////////////////////////////////////////////////////////////////////////
 
-static void ON1_enter(LightSm* sm)
+void LightSm::ON1_enter()
 {
-    sm->state_id = LightSm_StateId_ON1;
+    this->stateId = StateId::ON1;
     
     // ON1 behavior
-    // uml: enter / { Light_blue(); }
+    // uml: enter / { blue(); }
     {
-        // Step 1: execute action `Light_blue();`
-        Light_blue();
+        // Step 1: execute action `blue();`
+        blue();
     } // end of behavior for ON1
 }
 
-static void ON1_exit(LightSm* sm)
+void LightSm::ON1_exit()
 {
-    sm->state_id = LightSm_StateId_ON_GROUP;
+    this->stateId = StateId::ON_GROUP;
 }
 
-static void ON1_dim(LightSm* sm)
+void LightSm::ON1_dim()
 {
     // ON1 behavior
     // uml: DIM TransitionTo(OFF)
     {
         // Step 1: Exit states until we reach `ROOT` state (Least Common Ancestor for transition).
-        exit_up_to_state_handler(sm, LightSm_StateId_ROOT);
+        exitUpToStateHandler(StateId::ROOT);
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `OFF`.
-        OFF_enter(sm);
+        OFF_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -352,18 +305,18 @@ static void ON1_dim(LightSm* sm)
     // No ancestor handles this event.
 }
 
-static void ON1_inc(LightSm* sm)
+void LightSm::ON1_inc()
 {
     // ON1 behavior
     // uml: INC TransitionTo(ON2)
     {
         // Step 1: Exit states until we reach `ON_GROUP` state (Least Common Ancestor for transition).
-        ON1_exit(sm);
+        ON1_exit();
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `ON2`.
-        ON2_enter(sm);
+        ON2_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -377,42 +330,42 @@ static void ON1_inc(LightSm* sm)
 // event handlers for state ON2
 ////////////////////////////////////////////////////////////////////////////////
 
-static void ON2_enter(LightSm* sm)
+void LightSm::ON2_enter()
 {
-    sm->state_id = LightSm_StateId_ON2;
+    this->stateId = StateId::ON2;
     
     // ON2 behavior
-    // uml: enter / { Light_yellow(); }
+    // uml: enter / { yellow(); }
     {
-        // Step 1: execute action `Light_yellow();`
-        Light_yellow();
+        // Step 1: execute action `yellow();`
+        yellow();
     } // end of behavior for ON2
     
     // ON2 behavior
     // uml: enter / { count = 0; }
     {
         // Step 1: execute action `count = 0;`
-        sm->vars.count = 0;
+        count = 0;
     } // end of behavior for ON2
 }
 
-static void ON2_exit(LightSm* sm)
+void LightSm::ON2_exit()
 {
-    sm->state_id = LightSm_StateId_ON_GROUP;
+    this->stateId = StateId::ON_GROUP;
 }
 
-static void ON2_dim(LightSm* sm)
+void LightSm::ON2_dim()
 {
     // ON2 behavior
     // uml: DIM TransitionTo(ON1)
     {
         // Step 1: Exit states until we reach `ON_GROUP` state (Least Common Ancestor for transition).
-        ON2_exit(sm);
+        ON2_exit();
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `ON1`.
-        ON1_enter(sm);
+        ON1_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -421,33 +374,33 @@ static void ON2_dim(LightSm* sm)
     // No ancestor handles this event.
 }
 
-static void ON2_inc(LightSm* sm)
+void LightSm::ON2_inc()
 {
     // ON2 behavior
     // uml: 1. INC / { count++; }
     {
         // Step 1: execute action `count++;`
-        sm->vars.count++;
+        count++;
     } // end of behavior for ON2
     
     // ON2 behavior
-    // uml: 2. INC / { printf("count var: %i\n", count); }
+    // uml: 2. INC / { std::cout << "count var: " << count << '\n'; }
     {
-        // Step 1: execute action `printf("count var: %i\n", count);`
-        printf("count var: %i\n", sm->vars.count);
+        // Step 1: execute action `std::cout << "count var: " << count << '\n';`
+        std::cout << "count var: " << count << '\n';
     } // end of behavior for ON2
     
     // ON2 behavior
     // uml: INC [count >= 3] TransitionTo(ON_HOT)
-    if (sm->vars.count >= 3)
+    if (count >= 3)
     {
         // Step 1: Exit states until we reach `ON_GROUP` state (Least Common Ancestor for transition).
-        ON2_exit(sm);
+        ON2_exit();
         
         // Step 2: Transition action: ``.
         
         // Step 3: Enter/move towards transition target `ON_HOT`.
-        ON_HOT_enter(sm);
+        ON_HOT_enter();
         
         // Step 4: complete transition. Ends event dispatch. No other behaviors are checked.
         return;
@@ -457,28 +410,28 @@ static void ON2_inc(LightSm* sm)
 }
 
 // Thread safe.
-char const * LightSm_state_id_to_string(LightSm_StateId id)
+char const * LightSm::stateIdToString(StateId id)
 {
     switch (id)
     {
-        case LightSm_StateId_ROOT: return "ROOT";
-        case LightSm_StateId_OFF: return "OFF";
-        case LightSm_StateId_ON_GROUP: return "ON_GROUP";
-        case LightSm_StateId_ON_HOT: return "ON_HOT";
-        case LightSm_StateId_ON1: return "ON1";
-        case LightSm_StateId_ON2: return "ON2";
+        case StateId::ROOT: return "ROOT";
+        case StateId::OFF: return "OFF";
+        case StateId::ON_GROUP: return "ON_GROUP";
+        case StateId::ON_HOT: return "ON_HOT";
+        case StateId::ON1: return "ON1";
+        case StateId::ON2: return "ON2";
         default: return "?";
     }
 }
 
 // Thread safe.
-char const * LightSm_event_id_to_string(LightSm_EventId id)
+char const * LightSm::eventIdToString(EventId id)
 {
     switch (id)
     {
-        case LightSm_EventId_DIM: return "DIM";
-        case LightSm_EventId_INC: return "INC";
-        case LightSm_EventId_OFF: return "OFF";
+        case EventId::DIM: return "DIM";
+        case EventId::INC: return "INC";
+        case EventId::OFF: return "OFF";
         default: return "?";
     }
 }

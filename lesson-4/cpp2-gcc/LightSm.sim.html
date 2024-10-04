@@ -228,13 +228,13 @@ state ON_GROUP {
 
         ON1 : ON1
 
-        ON1 : enter / #123; Light#58#59;#58#59;blue()#59; #125;
+        ON1 : enter / #123; blue()#59; #125;
 
         ON2
 
         ON2 : ON2
 
-        ON2 : enter / #123; Light#58#59;#58#59;yellow()#59; #125;
+        ON2 : enter / #123; yellow()#59; #125;
 
         ON2 : enter / #123; count = 0#59; #125;
 
@@ -246,7 +246,7 @@ state ON_GROUP {
 
         ON_HOT : ON_HOT
 
-        ON_HOT : enter / #123; Light#58#59;#58#59;red()#59; #125;
+        ON_HOT : enter / #123; red()#59; #125;
 
 }
 
@@ -587,10 +587,10 @@ evaluateGuard = null;
         } // end of behavior for ON_HOT
         
         // ON_HOT behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "Light::red();"); }
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "red();"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "Light::red();");`
-            this.tracer?.log("⚡ FSM would execute action: " + "Light::red();");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "red();");`
+            this.tracer?.log("⚡ FSM would execute action: " + "red();");
         } // end of behavior for ON_HOT
     }
     
@@ -644,10 +644,10 @@ evaluateGuard = null;
         } // end of behavior for ON1
         
         // ON1 behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "Light::blue();"); }
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "blue();"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "Light::blue();");`
-            this.tracer?.log("⚡ FSM would execute action: " + "Light::blue();");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "blue();");`
+            this.tracer?.log("⚡ FSM would execute action: " + "blue();");
         } // end of behavior for ON1
     }
     
@@ -722,10 +722,10 @@ evaluateGuard = null;
         } // end of behavior for ON2
         
         // ON2 behavior
-        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "Light::yellow();"); }
+        // uml: enter / { this.tracer?.log("⚡ FSM would execute action: " + "yellow();"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "Light::yellow();");`
-            this.tracer?.log("⚡ FSM would execute action: " + "Light::yellow();");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "yellow();");`
+            this.tracer?.log("⚡ FSM would execute action: " + "yellow();");
         } // end of behavior for ON2
         
         // ON2 behavior
