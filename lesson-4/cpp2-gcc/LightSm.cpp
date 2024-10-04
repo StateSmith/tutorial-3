@@ -384,10 +384,10 @@ void LightSm::ON2_inc()
     } // end of behavior for ON2
     
     // ON2 behavior
-    // uml: 2. INC / { std::cout << "    Count: " << count << '\n'; }
+    // uml: 2. INC / { std::cout << "vars.count: " << count << '\n'; }
     {
-        // Step 1: execute action `std::cout << "    Count: " << count << '\n';`
-        std::cout << "    Count: " << this->vars.count << '\n';
+        // Step 1: execute action `std::cout << "vars.count: " << count << '\n';`
+        std::cout << "vars.count: " << this->vars.count << '\n';
     } // end of behavior for ON2
     
     // ON2 behavior

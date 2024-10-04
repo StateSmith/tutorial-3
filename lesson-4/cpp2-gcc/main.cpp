@@ -17,7 +17,7 @@ static char readCharFromLine(void);
 
 int main(void)
 {
-    static LightSm sm;
+    LightSm sm;
 
     std::cout << "---------------------------------------\n\n";
     std::cout << "USAGE:\n";
@@ -46,6 +46,9 @@ static void readInputRunStateMachine(LightSm& sm)
     bool isValidInput = true;
     enum LightSm::EventId eventId = LightSm::EventId::OFF;
 
+    std::cout << "\nCurrent state: " << LightSm::stateIdToString(sm.stateId) << "\n";
+    std::cout << "Please type 'i', 'd', 'o': \n";
+
     char c = readCharFromLine();
     switch (c)
     {
@@ -57,11 +60,12 @@ static void readInputRunStateMachine(LightSm& sm)
 
     if (isValidInput)
     {
+        std::cout << "Dispatching event: " << LightSm::eventIdToString(eventId) << "\n";
         sm.dispatchEvent(eventId);
     }
     else
     {
-        std::cout << "What you trying to pull!? Bad input.\n";
+        std::cout << "Invalid input. Not running state machine.\n";
     }
 }
 

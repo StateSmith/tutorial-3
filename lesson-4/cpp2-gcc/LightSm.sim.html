@@ -240,7 +240,7 @@ state ON_GROUP {
 
         ON2 : 1. INC / #123; count++#59; #125;
 
-        ON2 : 2. INC / #123; std#58#59;#58#59;cout << "    Count#58#59; " << count << '#92;n'#59; #125;
+        ON2 : 2. INC / #123; std#58#59;#58#59;cout << "vars.count#58#59; " << count << '#92;n'#59; #125;
 
         ON_HOT
 
@@ -779,10 +779,10 @@ evaluateGuard = null;
         } // end of behavior for ON2
         
         // ON2 behavior
-        // uml: 2. INC / { this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"    Count: \" << count << '\n';"); }
+        // uml: 2. INC / { this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"vars.count: \" << count << '\n';"); }
         {
-            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"    Count: \" << count << '\n';");`
-            this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"    Count: \" << count << '\n';");
+            // Step 1: execute action `this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"vars.count: \" << count << '\n';");`
+            this.tracer?.log("⚡ FSM would execute action: " + "std::cout << \"vars.count: \" << count << '\n';");
         } // end of behavior for ON2
         
         // ON2 behavior
