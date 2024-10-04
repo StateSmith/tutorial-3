@@ -1,4 +1,5 @@
 @startuml LightSm
+scale 1.25
 
 ' //////////////////////// STATE ORGANIZATION ///////////////////////
 ' Note: StateSmith treats state names and events as case insensitive.
@@ -28,7 +29,7 @@ ON1 --> OFF: DIM
 ON2: enter / this.lightYellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
-ON2: 2. INC / console.log("vars.count: " + count);
+ON2: 2. INC / console.log("count var: " + count);
 ON2 --> ON_HOT: INC [count >= 3]
 ON2 --> ON1: DIM
 
@@ -47,6 +48,7 @@ SmRunnerSettings.transpilerId = "JavaScript"
 AutoExpandedVars = """
     count : 0, // variable for state machine
     """
+# You could also put the variable in the base class instead.
 FileTop = """
     "use strict";    
     // any text you put in IRenderConfig.FileTop (like this comment) will be written to the generated .h file

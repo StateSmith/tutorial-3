@@ -1,4 +1,10 @@
 # C++ Welcome!
+> See [cpp2-gcc](../cpp2-gcc/README.md) for a more modern C++ way of using StateSmith.
+> 
+> This is the old way of using StateSmith with C++. It generates C style C++ code.
+> You might want to use this style if you don't have a C++11 or greater compiler. <br>
+
+
 This example uses gcc for convenience, but you can use any C++ compiler you like.
 
 The only GCC specific things are:
