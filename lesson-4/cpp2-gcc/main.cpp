@@ -7,8 +7,8 @@
 // prototypes
 ////////////////////////////////////////////////////////////////////////////////
 
-static void read_input_run_state_machine(LightSm& sm);
-static char read_char_from_line(void);
+static void readInputRunStateMachine(LightSm& sm);
+static char readCharFromLine(void);
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,37 +27,37 @@ int main(void)
     std::cout << "\n";
     std::cout << "Hit <enter> to start\n";
 
-    read_char_from_line();
+    readCharFromLine();
 
     // setup and start state machine
     sm.start();
 
     while (true)
     {
-        read_input_run_state_machine(sm);
+        readInputRunStateMachine(sm);
     }
 
     return 0;
 }
 
 
-static void read_input_run_state_machine(LightSm& sm)
+static void readInputRunStateMachine(LightSm& sm)
 {
-    bool valid_input = true;
-    enum LightSm::EventId event_id = LightSm::EventId_OFF;
+    bool isValidInput = true;
+    enum LightSm::EventId eventId = LightSm::EventId::OFF;
 
-    char c = read_char_from_line();
+    char c = readCharFromLine();
     switch (c)
     {
-        case 'i': event_id = LightSm::EventId_INC; break;
-        case 'd': event_id = LightSm::EventId_DIM; break;
-        case 'o': event_id = LightSm::EventId_OFF; break;
-        default: valid_input = false; break;
+        case 'i': eventId = LightSm::EventId::INC; break;
+        case 'd': eventId = LightSm::EventId::DIM; break;
+        case 'o': eventId = LightSm::EventId::OFF; break;
+        default: isValidInput = false; break;
     }
 
-    if (valid_input)
+    if (isValidInput)
     {
-        sm.dispatch_event(event_id);
+        sm.dispatchEvent(eventId);
     }
     else
     {
@@ -65,7 +65,7 @@ static void read_input_run_state_machine(LightSm& sm)
     }
 }
 
-static char read_char_from_line(void)
+static char readCharFromLine(void)
 {
     std::string line;
     std::getline(std::cin, line);

@@ -1,5 +1,5 @@
-# C++ Welcome!
-This example uses gcc for convenience, but you can use any C++ compiler you like.
+# C++11 Welcome!
+This example uses gcc for convenience, but you can use any C++11 compiler you like.
 
 The only GCC specific things are:
 - the tiny build shell script `build_run.sh`

@@ -6,7 +6,7 @@ set -e
 
 # compile code
 echo Compiling with GCC g++
-g++ -g -Wall -std=c++98 *.cpp
+g++ -std=c++11 -g -Wall *.cpp
 # you can also use a newer c++ standard
 
 # run the program

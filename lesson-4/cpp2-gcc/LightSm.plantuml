@@ -38,14 +38,11 @@ ON_HOT: enter / Light::red();
 ON_HOT --> ON2: DIM
 
 
-
 ' //////////////////////// StateSmith config ////////////////////////
 ' The below special comment block sets the StateSmith configuration.
 ' More info: https://github.com/StateSmith/StateSmith/issues/335
 
 /'! $CONFIG : toml
-[SmRunnerSettings]
-transpilerId = "C99"
 
 [RenderConfig]
 FileTop = """
@@ -56,18 +53,22 @@ AutoExpandedVars = """
     uint16_t count; // this var can be referenced in diagram
     """
 
-[RenderConfig.C]
-CFileExtension = ".cpp"
-# HFileExtension = ".hpp"
+[RenderConfig.Cpp]
+HFileExtension = ".h"
+# IncludeGuardLabel = "{FILENAME}_H"
+# NameSpace = "MyNamespace"
+# BaseClassCode = "public: MyUserBaseClass"
 HFileIncludes = """
-    // any includes you want in the header file go here
+    #include <stdint.h> // for count var
     """
 CFileIncludes = """
     #include "Light.h" // user include. required for Light functions.
     #include <iostream> // user include. required for printf.
     """
 
-# Uncomment below line to tell GCC to pack the enum to save some RAM
-# CEnumDeclarer = "typedef enum __attribute__ ((packed)) {enumName}"
+# More Cpp settings are available. See docs.
+
+[SmRunnerSettings]
+transpilerId = "Cpp"
 '/
 @enduml

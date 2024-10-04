@@ -16,15 +16,15 @@ So far, our designs have mostly been calling global functions to interact with t
 
 Each language has various technical options for connecting your state machine to the outside world:
 
-| Language   | Globals | Vars | Composition | Inheritance | .inc File | Partial Class |
-| ---------- |:-------:|:----:|:-----------:|:-----------:|:---------:|:-------------:|
-| C99/C++    | ✅      | ✅   | ✅         | -           | ✅       | -             |
-| C#         | ✅      | ✅   | ✅         | ✅         | -         | ✅           |
-| JavaScript | ✅      | ✅   | ✅         | ✅         | -         | -             |
-| Java       | ✅      | ✅   | ✅         | ✅         | -         | -             |
-| Python     | ✅      | ✅   | ✅         | ✅         | -         | -             |
-
-> C++ is still using the C99 transpiler. We will support C++ features in the future.
+| Language      | Globals | Vars  | Composition | Inheritance | .inc File | Partial Class |
+| ------------- | :-----: | :---: | :---------: | :---------: | :-------: | :-----------: |
+| C99           |    ✅    |   ✅   |      ✅      |      -      |     ✅     |       -       |
+| C++ (c style) |    ✅    |   ✅   |      ✅      |      -      |     ✅     |       -       |
+| C++11         |    ✅    |   ✅   |      ✅      |      ✅      |     ✅     |       -       |
+| C#            |    ✅    |   ✅   |      ✅      |      ✅      |     -     |       ✅       |
+| JavaScript    |    ✅    |   ✅   |      ✅      |      ✅      |     -     |       -       |
+| Java          |    ✅    |   ✅   |      ✅      |      ✅      |     -     |       -       |
+| Python        |    ✅    |   ✅   |      ✅      |      ✅      |     -     |       -       |
 
 See [`RenderConfig`](https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md) options for your particular language.
 
@@ -61,8 +61,8 @@ See [./variable-based/](./variable-based/README.md) for more details.
 
 <br>
 
-## `C99/C++` .inc file
-If you are using C/C++, check out this [.inc file tutorial](https://github.com/StateSmith/StateSmith-examples/tree/main/c-include-sm-basic-2-plantuml-tutorial).
+## `C99` .inc file
+If you are using C (or C style C++), check out this [.inc file tutorial](https://github.com/StateSmith/StateSmith-examples/tree/main/c-include-sm-basic-2-plantuml-tutorial).
 
 You can generate a `.inc` file instead of a `.c` file and then include it in your main file.
 
