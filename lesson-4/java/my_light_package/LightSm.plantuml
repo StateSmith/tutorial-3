@@ -28,7 +28,7 @@ ON1 --> OFF: DIM
 ON2: enter / lightYellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
-ON2: 2. INC / System.out.println("    Count: " + count);
+ON2: 2. INC / System.out.println("vars.count: " + count);
 ON2 --> ON_HOT: INC [count >= 3]
 ON2 --> ON1: DIM
 

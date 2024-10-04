@@ -22,6 +22,9 @@ public class Program {
     }
 
     private static void readInputRunSm(LightSm sm, Scanner scanner) {
+        System.out.println("\nCurrent state: " + LightSm.stateIdToString(sm.stateId));
+        System.out.print("Please type 'i', 'd', 'o': ");
+
         String line = scanner.nextLine();
         char c = '\0';
 
@@ -51,9 +54,10 @@ public class Program {
         }
 
         if (validInput) {
+            System.out.println("Dispatching event: " + LightSm.eventIdToString(eventId));
             sm.dispatchEvent(eventId);
         } else {
-            System.err.println("What you trying to pull!? I ain't no silly AI. Feed me proper input please :)");
+            System.err.println("Invalid input. Not running state machine.");
         }
     }
 }
