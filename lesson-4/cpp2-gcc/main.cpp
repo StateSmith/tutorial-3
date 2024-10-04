@@ -40,14 +40,13 @@ int main(void)
     return 0;
 }
 
-
 static void readInputRunStateMachine(LightSm& sm)
 {
     bool isValidInput = true;
     enum LightSm::EventId eventId = LightSm::EventId::OFF;
 
     std::cout << "\nCurrent state: " << LightSm::stateIdToString(sm.stateId) << "\n";
-    std::cout << "Please type 'i', 'd', 'o': \n";
+    std::cout << "Please type 'i', 'd', 'o': ";
 
     char c = readCharFromLine();
     switch (c)

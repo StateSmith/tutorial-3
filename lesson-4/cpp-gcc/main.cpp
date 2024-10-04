@@ -4,17 +4,10 @@
 #include "LightSm.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-// global vars
-////////////////////////////////////////////////////////////////////////////////
-
-static LightSm g_state_machine;
-
-
-////////////////////////////////////////////////////////////////////////////////
 // prototypes
 ////////////////////////////////////////////////////////////////////////////////
 
-static void read_input_run_state_machine(void);
+static void read_input_run_state_machine(LightSm& sm);
 static char read_char_from_line(void);
 
 
@@ -24,6 +17,8 @@ static char read_char_from_line(void);
 
 int main(void)
 {
+    LightSm sm;
+
     std::cout << "---------------------------------------\n\n";
     std::cout << "USAGE:\n";
     std::cout << "  type i <enter> to send INCREASE event to state machine.\n";
@@ -35,22 +30,24 @@ int main(void)
     read_char_from_line();
 
     // setup and start state machine
-    LightSm_ctor(&g_state_machine);
-    LightSm_start(&g_state_machine);
+    LightSm_ctor(&sm);
+    LightSm_start(&sm);
 
     while (true)
     {
-        read_input_run_state_machine();
+        read_input_run_state_machine(sm);
     }
 
     return 0;
 }
 
-
-static void read_input_run_state_machine(void)
+static void read_input_run_state_machine(LightSm& sm)
 {
     bool valid_input = true;
     enum LightSm_EventId event_id = LightSm_EventId_OFF;
+
+    std::cout << "\nCurrent state: " << LightSm_state_id_to_string(sm.state_id) << "\n";
+    std::cout << "Please type 'i', 'd', 'o': ";
 
     char c = read_char_from_line();
     switch (c)
@@ -63,11 +60,12 @@ static void read_input_run_state_machine(void)
 
     if (valid_input)
     {
-        LightSm_dispatch_event(&g_state_machine, event_id);
+        std::cout << "Dispatching event: " << LightSm_event_id_to_string(event_id) << "\n";
+        LightSm_dispatch_event(&sm, event_id);
     }
     else
     {
-        std::cout << "What you trying to pull!? Bad input.\n";
+        std::cout << "Invalid input. Not running state machine.\n";
     }
 }
 
