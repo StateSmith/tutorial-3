@@ -7,7 +7,6 @@
 #include "LightSm.h"
 #include <stdbool.h> // required for `consume_event` flag
 #include <string.h> // for memset
-#include "Light.h" // user include. required for Light functions.
 #include <iostream> // user include. required for printf.
 
 
@@ -232,10 +231,10 @@ void LightSm::ON_HOT_enter()
     this->stateId = StateId::ON_HOT;
     
     // ON_HOT behavior
-    // uml: enter / { Light::red(); }
+    // uml: enter / { red(); }
     {
-        // Step 1: execute action `Light::red();`
-        Light::red();
+        // Step 1: execute action `red();`
+        red();
     } // end of behavior for ON_HOT
 }
 
@@ -274,10 +273,10 @@ void LightSm::ON1_enter()
     this->stateId = StateId::ON1;
     
     // ON1 behavior
-    // uml: enter / { Light::blue(); }
+    // uml: enter / { blue(); }
     {
-        // Step 1: execute action `Light::blue();`
-        Light::blue();
+        // Step 1: execute action `blue();`
+        blue();
     } // end of behavior for ON1
 }
 
@@ -336,10 +335,10 @@ void LightSm::ON2_enter()
     this->stateId = StateId::ON2;
     
     // ON2 behavior
-    // uml: enter / { Light::yellow(); }
+    // uml: enter / { yellow(); }
     {
-        // Step 1: execute action `Light::yellow();`
-        Light::yellow();
+        // Step 1: execute action `yellow();`
+        yellow();
     } // end of behavior for ON2
     
     // ON2 behavior
@@ -385,10 +384,10 @@ void LightSm::ON2_inc()
     } // end of behavior for ON2
     
     // ON2 behavior
-    // uml: 2. INC / { std::cout << "    Count: " << count << std::endl; }
+    // uml: 2. INC / { std::cout << "    Count: " << count << '\n'; }
     {
-        // Step 1: execute action `std::cout << "    Count: " << count << std::endl;`
-        std::cout << "    Count: " << this->vars.count << std::endl;
+        // Step 1: execute action `std::cout << "    Count: " << count << '\n';`
+        std::cout << "    Count: " << this->vars.count << '\n';
     } // end of behavior for ON2
     
     // ON2 behavior

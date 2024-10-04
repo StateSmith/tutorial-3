@@ -6,11 +6,12 @@
 
 #pragma once  // You can also specify normal include guard. See https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md
 #include <stdint.h>
+#include "LightSmBase.h" // user include. required for Light functions.
 #include <stdint.h> // for count var
 
 
 // Generated state machine
-class LightSm
+class LightSm : public LightSmBase
 {
 public:
     enum class EventId: uint8_t
@@ -44,7 +45,7 @@ public:
     StateId stateId;
     
     // State machine variables. Can be used for inputs, outputs, user variables...
-    class Vars
+    class Vars : public LightSmBase
     {
     public:
         uint16_t count; // this var can be referenced in diagram
