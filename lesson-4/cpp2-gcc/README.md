@@ -1,4 +1,6 @@
 # C++11 Welcome!
+📢 Idiomatic C++11 support was added in CLI version 0.16.0 (lib version 0.17.0).
+
 This example uses gcc for convenience, but you can use any C++11 compiler you like.
 
 The only GCC specific things are:
