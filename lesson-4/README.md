@@ -19,9 +19,11 @@ Below example uses gcc for convenience, but you can use any C99 compiler you lik
 See [./c99-gcc/](./c99-gcc/README.md) directory.
 
 ## C++
-Below example uses gcc for convenience, but you can use any C++ compiler you like.
+Below examples uses gcc for convenience, but you can use any C++ compiler you like.
 
-See [./cpp-gcc/](./cpp-gcc/README.md) directory.
+If you are using C++11 or greater, see [./cpp2-gcc/](./cpp2-gcc/README.md) directory.
+
+For older compilers, see [./cpp-gcc/](./cpp-gcc/README.md) directory.
 
 ## C#
 See [./csharp/](./csharp/README.md) directory.
