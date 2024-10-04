@@ -30,7 +30,7 @@ ON1 --> OFF: DIM
 ON2: enter / Light_yellow();
 ON2: enter / count = 0;
 ON2: 1. INC / count++;
-ON2: 2. INC / printf("    Count: %i\\n", count);
+ON2: 2. INC / printf("vars.count: %i\\n", count);
 ' >>> NOTE the extra escape in `\\n` above. This is required for PlantUML.
 
 ON2 --> ON_HOT: INC [count >= 3]
