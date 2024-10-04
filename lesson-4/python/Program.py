@@ -2,6 +2,9 @@ import sys
 from LightSm import LightSm
 
 def read_input_run_sm(sm):
+    print("\nCurrent state: " + LightSm.stateIdToString(sm.stateId))
+    print("Please type 'i', 'd', 'o': ", end='')
+
     line = input().strip()
     if len(line) > 0:
         c = line[0]  # Get the first character
@@ -24,9 +27,10 @@ def run_sm_for_char(sm, c):
         valid_input = False
 
     if valid_input:
+        print("Dispatching event: " + LightSm.eventIdToString(event_id))
         sm.dispatchEvent(event_id)
     else:
-        print("What you trying to pull!? I ain't no silly AI. Feed me proper input please :)", file=sys.stderr)
+        print("Invalid input. Not running state machine.", file=sys.stderr)
 
 
 if __name__ == "__main__":
