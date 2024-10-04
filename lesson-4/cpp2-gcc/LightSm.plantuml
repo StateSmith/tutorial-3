@@ -50,9 +50,8 @@ FileTop = """
     // Whatever you put in this `FileTop` section will end up 
     // being printed at the top of every generated code file.
     """
-AutoExpandedVars = """
-    uint16_t count; // this var can be referenced in diagram
-    """
+# we get the `count` variable from the base class, but we could
+# also have used `AutoExpandedVars` to declare it here.
 
 [RenderConfig.Cpp]
 HFileExtension = ".h"
@@ -61,10 +60,9 @@ HFileExtension = ".h"
 BaseClassCode = "public LightSmBase"
 HFileIncludes = """
     #include "LightSmBase.h" // user include. required for Light functions.
-    #include <stdint.h> // for count var
     """
 CFileIncludes = """
-    #include <iostream> // user include. required for printf.
+    #include <iostream> // user include. required for printing action code.
     """
 
 # More Cpp settings are available. See docs.

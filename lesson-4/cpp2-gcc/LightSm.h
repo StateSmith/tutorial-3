@@ -7,7 +7,6 @@
 #pragma once  // You can also specify normal include guard. See https://github.com/StateSmith/StateSmith/blob/main/docs/settings.md
 #include <stdint.h>
 #include "LightSmBase.h" // user include. required for Light functions.
-#include <stdint.h> // for count var
 
 
 // Generated state machine
@@ -43,16 +42,6 @@ public:
     
     // Used internally by state machine. Feel free to inspect, but don't modify.
     StateId stateId;
-    
-    // State machine variables. Can be used for inputs, outputs, user variables...
-    class Vars : public LightSmBase
-    {
-    public:
-        uint16_t count; // this var can be referenced in diagram
-    };
-    
-    // Variables. Can be used for inputs, outputs, user variables...
-    Vars vars {};
     
     // State machine constructor. Must be called before start or dispatch event functions. Not thread safe.
     LightSm()

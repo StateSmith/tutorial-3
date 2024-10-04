@@ -345,7 +345,7 @@ void LightSm::ON2_enter()
     // uml: enter / { count = 0; }
     {
         // Step 1: execute action `count = 0;`
-        this->vars.count = 0;
+        count = 0;
     } // end of behavior for ON2
 }
 
@@ -380,19 +380,19 @@ void LightSm::ON2_inc()
     // uml: 1. INC / { count++; }
     {
         // Step 1: execute action `count++;`
-        this->vars.count++;
+        count++;
     } // end of behavior for ON2
     
     // ON2 behavior
     // uml: 2. INC / { std::cout << "vars.count: " << count << '\n'; }
     {
         // Step 1: execute action `std::cout << "vars.count: " << count << '\n';`
-        std::cout << "vars.count: " << this->vars.count << '\n';
+        std::cout << "vars.count: " << count << '\n';
     } // end of behavior for ON2
     
     // ON2 behavior
     // uml: INC [count >= 3] TransitionTo(ON_HOT)
-    if (this->vars.count >= 3)
+    if (count >= 3)
     {
         // Step 1: Exit states until we reach `ON_GROUP` state (Least Common Ancestor for transition).
         ON2_exit();
