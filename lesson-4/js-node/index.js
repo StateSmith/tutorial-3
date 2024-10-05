@@ -25,7 +25,7 @@ while (true)
  */
 function ReadInputRunSm(sm)
 {
-    console.log(`\n\nCurrent state: ${LightSm.stateIdToString(sm.stateId)}`);
+    console.log(`\nCurrent state: ${LightSm.stateIdToString(sm.stateId)}`);
 
     var line = prompt("Please type 'i', 'd', 'o': ");
     let c = "";

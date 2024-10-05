@@ -43,7 +43,7 @@ while (true) {
     ReadInputRunSm(sm);
 }
 function ReadInputRunSm(sm) {
-    console.log("\n\nCurrent state: ".concat(LightSm.LightSm.stateIdToString(sm.stateId)));
+    console.log("\nCurrent state: ".concat(LightSm.LightSm.stateIdToString(sm.stateId)));
     var line = prompt("Please type 'i', 'd', 'o': ");
     var c = "";
     if (line)
