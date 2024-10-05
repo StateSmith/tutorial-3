@@ -33,6 +33,9 @@ Most of this tutorial used JavaScript so you should have a good base already.
 
 If you are using node.js, see [./js-node/](./js-node/README.md) directory.
 
+## TypeScript
+See [./ts-node/](./ts-node/README.md) directory.
+
 ## Java
 See [./java/](./java/README.md) directory.
 
