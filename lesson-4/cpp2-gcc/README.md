@@ -37,6 +37,5 @@ Run in this directory:
 
 # More examples
 https://github.com/StateSmith/StateSmith-examples
-* Highly recommend checking out tutorial on [how to use `.inc` files](https://github.com/StateSmith/StateSmith-examples/blob/main/c-include-sm-basic-2-plantuml-tutorial/README.md)
 
 
