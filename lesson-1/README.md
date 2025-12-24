@@ -112,9 +112,38 @@ If you are new to PlantUML, you can use the [PlantUML online editor](https://www
 
 I would also highly recommend the [PlantUML extension for vscode](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml). It is a great way to see your diagrams in vscode and get syntax highlighting. 
 
-📢 NOTE! The PlantUML extension requires java or you can configure it to use an online server to the do the rendering.
+📢 NOTE! You can either use local (control your data) or server side rendering (easier).
+
+### Server Side Rendering
+Easiest to get going, but it sends your diagram to an external server.
 
 ![](docs/puml-extension-settings.png)
+
+### Local Rendering
+You'll need to install:
+1. a java runtime
+2. graphviz (Linux/Mac only)
+
+Additional info [here](https://github.com/qjebbs/vscode-plantuml?tab=readme-ov-file#requirements-for-local-render) if needed.
+
+#### Ubuntu/Debian quick install
+```
+sudo apt install default-jre
+sudo apt install graphviz
+```
+
+#### Mac quick install
+```
+brew install --cask temurin
+brew install graphviz
+```
+
+#### Windows instructions
+Graphviz already comes bundled in windows vscode extension, so you only need java.
+
+Download a Java Runtime Environment (JRE) or JDK. Recommend [OpenJDK/Temurin](https://adoptium.net/temurin/releases) to avoid any issues with Oracle licensing restrictions.
+
+### Preview PlantUML Diagram Live
 
 You can see a graphical representation of the diagram by opening the plantuml file in vscode and pressing `Alt + D` or clicking the `Preview` button in the top right corner of the editor.
 
