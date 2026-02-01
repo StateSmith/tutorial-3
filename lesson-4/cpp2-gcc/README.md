@@ -36,6 +36,9 @@ Run in this directory:
 <br>
 
 # More examples
+* [cpp-inheritance-1](./cpp-inheritance-1/README.md) - Shows easy state machine testing. Uses a base class. `ss.cli` `plantuml`.
+* [cpp-inheritance-2](./cpp-inheritance-2/README.md) - Shows easy state machine testing. Uses custom `ClassCode`. `ss.cli` `plantuml`.
+
 https://github.com/StateSmith/StateSmith-examples
 
 
