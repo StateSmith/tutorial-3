@@ -40,8 +40,8 @@ Run in this directory:
 <br>
 
 # More examples
-* [cpp-inheritance-1](./cpp-inheritance-1/README.md) - Shows easy state machine testing. Uses a base class. `ss.cli` `plantuml`.
-* [cpp-inheritance-2](./cpp-inheritance-2/README.md) - Shows easy state machine testing. Uses custom `ClassCode`. `ss.cli` `plantuml`.
+* [cpp-inheritance-1](https://github.com/StateSmith/StateSmith-examples/tree/main/cpp-inheritance-1/README.md) - Shows easy state machine testing. Uses a base class. `ss.cli` `plantuml`.
+* [cpp-inheritance-2](https://github.com/StateSmith/StateSmith-examples/tree/main/cpp-inheritance-2/README.md) - Shows easy state machine testing. Uses custom `ClassCode`. `ss.cli` `plantuml`.
 
 https://github.com/StateSmith/StateSmith-examples
 * Highly recommend checking out tutorial on [how to use `.inc` files](https://github.com/StateSmith/StateSmith-examples/blob/main/c-include-sm-basic-2-plantuml-tutorial/README.md)
